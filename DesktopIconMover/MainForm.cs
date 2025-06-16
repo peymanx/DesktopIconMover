@@ -14,7 +14,7 @@ namespace DesktopIconMover
 {
     public partial class MainForm : Form
     {
-        public int Step { get; set; } = 5;
+        public int Step { get; set; } = 10;
         public enum Direction { Up, Left, Right, Down, Null };
 
         public Direction Dir { get; set; } = Direction.Null;
@@ -141,31 +141,14 @@ namespace DesktopIconMover
 
         private void button2_Click(object sender, EventArgs e)
         {
+            checkBox2.Checked = false;
 
         }
 
         private void btnGo(object sender, EventArgs e)
         {
+            MoveIconRelative(comboBox1.SelectedIndex, (int)numX.Value, (int)numY.Value);
 
-
-
-            IntPtr hwndListView = GetDesktopListView();
-            if (hwndListView == IntPtr.Zero)
-            {
-                MessageBox.Show("لیست آیکون‌های دسکتاپ یافت نشد!");
-                return;
-            }
-
-            int count = SendMessage(hwndListView, LVM_GETITEMCOUNT, IntPtr.Zero, IntPtr.Zero);
-            //MessageBox.Show($"تعداد آیکون‌ها: {count}");
-
-            for (int i = 0; i < count; i++)
-            {
-                IntPtr lParam = (IntPtr)(((int)numY.Value << 16) | ((int)numX.Value & 0xFFFF));
-                SendMessage(hwndListView, LVM_SETITEMPOSITION, (IntPtr)i, lParam);
-            }
-
-            //MessageBox.Show("تمام آیکون‌ها به نقطه (100, 100) منتقل شدند.");
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -189,8 +172,6 @@ namespace DesktopIconMover
                     break;
             }
 
-            btnGo(sender, e);
-
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -212,42 +193,113 @@ namespace DesktopIconMover
 
         private void btnUp(object sender, EventArgs e)
         {
-
-            MoveIconRelative(comboBox1.SelectedIndex, 0, Step);
+            numY.Value -= Step;
+            MoveIconRelative(comboBox1.SelectedIndex, (int)numX.Value, (int)numY.Value);
             Dir = Direction.Up;
+
+            ButtonRight.BackColor = Color.WhiteSmoke;
+            ButtonLeft.BackColor = Color.WhiteSmoke;
+            ButtonUp.BackColor = Color.Gold;
+            ButtonDown.BackColor = Color.WhiteSmoke;
+            panel1.Focus();
+
         }
 
         private void btnDown(object sender, EventArgs e)
         {
+            numY.Value += Step;
 
-            MoveIconRelative(comboBox1.SelectedIndex, 0, -Step);
+            MoveIconRelative(comboBox1.SelectedIndex, (int)numX.Value, (int)numY.Value);
             Dir = Direction.Down;
+            ButtonRight.BackColor = Color.WhiteSmoke;
+            ButtonLeft.BackColor = Color.WhiteSmoke;
+            ButtonUp.BackColor = Color.WhiteSmoke;
+            ButtonDown.BackColor = Color.Gold;
+
+            panel1.Focus();
 
         }
 
         private void btnLeft(object sender, EventArgs e)
         {
-
-            MoveIconRelative(comboBox1.SelectedIndex, -Step, 0);
+            numX.Value -= Step;
+            MoveIconRelative(comboBox1.SelectedIndex, (int)numX.Value, (int)numY.Value);
             Dir = Direction.Left;
+
+            ButtonRight.BackColor = Color.WhiteSmoke;
+            ButtonLeft.BackColor = Color.Gold;
+            ButtonUp.BackColor = Color.WhiteSmoke;
+            ButtonDown.BackColor = Color.WhiteSmoke;
+            panel1.Focus();
 
         }
 
         private void btnRight(object sender, EventArgs e)
         {
+            numX.Value += Step;
 
-            MoveIconRelative(comboBox1.SelectedIndex, Step, 0);
+            MoveIconRelative(comboBox1.SelectedIndex, (int)numX.Value, (int)numY.Value);
             Dir = Direction.Right;
+          
+            ButtonRight.BackColor = Color.Gold;
+            ButtonLeft.BackColor = Color.WhiteSmoke;
+            ButtonUp.BackColor = Color.WhiteSmoke;
+            ButtonDown.BackColor = Color.WhiteSmoke;
+
+            panel1.Focus();
 
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             timer1.Enabled = checkBox2.Checked;
+            comboBox1.Enabled = !checkBox2.Checked;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+          
+
+        }
+
+        private void MainForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+                btnUp(null, null);
+            if (e.KeyCode == Keys.Down)
+                btnDown(null, null);
+
+            if (e.KeyCode == Keys.Left)
+                btnLeft(null, null);
+
+            if (e.KeyCode == Keys.Right)
+                btnRight(null, null);
+        }
+
+        private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           
+        }
+
+        private void MainForm_Click(object sender, EventArgs e)
+        {
+            checkBox2.Checked = false;
+        }
+
+        private void numX_ValueChanged(object sender, EventArgs e)
+        {
+            MoveIconRelative(comboBox1.SelectedIndex, (int)numX.Value, (int)numY.Value);
+
+        }
+
+        private void numY_ValueChanged(object sender, EventArgs e)
+        {
+            MoveIconRelative(comboBox1.SelectedIndex, (int)numX.Value, (int)numY.Value);
 
         }
     }
