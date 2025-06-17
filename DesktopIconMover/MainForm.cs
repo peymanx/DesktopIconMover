@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static Form1;
 
 namespace DesktopIconMover
 {
@@ -28,6 +30,8 @@ namespace DesktopIconMover
         [DllImport("user32.dll", SetLastError = true)]
         static extern bool EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam);
 
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        static extern int SendMessage(IntPtr hWnd, int msg, int wParam, IntPtr lParam);
 
         [DllImport("user32.dll", SetLastError = true)]
         private static extern bool SendMessage2(IntPtr hWnd, uint Msg, IntPtr wParam, StringBuilder lParam);
@@ -43,6 +47,7 @@ namespace DesktopIconMover
         const uint LVM_SETITEMPOSITION = 0x1000 + 15;
         private const uint LVM_GETITEMPOSITION = 0x1000 + 16;
         private const uint LVM_GETITEMTEXT = 0x1000 + 45;
+
 
         static IntPtr GetDesktopListView()
         {
@@ -72,10 +77,6 @@ namespace DesktopIconMover
         {
             InitializeComponent();
 
-
-            this.Text = "مدیریت آیکون‌های دسکتاپ"; 
-            TopMost = true;
-
             LoadDesktopIcons();
         }
         private List<string> iconNames = new List<string>();
@@ -85,19 +86,25 @@ namespace DesktopIconMover
 
         private void LoadDesktopIcons()
         {
+            cmbIconList.Items.Clear();
+
             IntPtr hwndListView = GetDesktopListView();
             if (hwndListView == IntPtr.Zero) return;
 
             int count = SendMessage(hwndListView, LVM_GETITEMCOUNT, IntPtr.Zero, IntPtr.Zero);
-                StringBuilder itemText = new StringBuilder(256);
+            StringBuilder itemText = new StringBuilder(256);
+
             for (int i = 0; i < count; i++)
             {
-               // SendMessage2(hwndListView, LVM_GETITEMTEXT, (IntPtr)i, itemText);
-                string iconName = "icon "+ i;
+                // SendMessage2(hwndListView, LVM_GETITEMTEXT, (IntPtr)i, itemText);
+                string iconName = "icon " + i;
                 iconNames.Add(iconName);
             }
 
-            comboBox1.Items.AddRange(iconNames.ToArray());
+
+            cmbIconList.Items.AddRange(iconNames.ToArray());
+
+            cmbIconList.SelectedIndex = 0;
         }
         public static void MoveIconRelative(int iconIndex, int dx, int dy)
         {
@@ -121,16 +128,16 @@ namespace DesktopIconMover
 
         private void BtnMoveIcon_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex == -1) return;
+            if (cmbIconList.SelectedIndex == -1) return;
 
-            int selectedIndex = comboBox1.SelectedIndex;
+            int selectedIndex = cmbIconList.SelectedIndex;
             IntPtr hwndListView = GetDesktopListView();
             if (hwndListView == IntPtr.Zero) return;
 
             IntPtr lParam = (IntPtr)(((int)numY.Value << 16) | ((int)numX.Value & 0xFFFF));
             SendMessage(hwndListView, LVM_SETITEMPOSITION, (IntPtr)selectedIndex, lParam);
 
-           
+
         }
 
 
@@ -141,13 +148,14 @@ namespace DesktopIconMover
 
         private void button2_Click(object sender, EventArgs e)
         {
-            checkBox2.Checked = false;
+            chkLock.Checked = false;
+            LoadDesktopIcons();
 
         }
 
         private void btnGo(object sender, EventArgs e)
         {
-            MoveIconRelative(comboBox1.SelectedIndex, (int)numX.Value, (int)numY.Value);
+            MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
 
         }
 
@@ -172,36 +180,35 @@ namespace DesktopIconMover
                     break;
             }
 
+
+            panel1.Focus();
         }
 
-        private void timer2_Tick(object sender, EventArgs e)
+        private IntPtr GetLParamItemText(int itemIndex, StringBuilder sb)
         {
-            if (checkBox1.Checked == false) return;
-            Point mousePosition = Cursor.Position;
+            LVITEM lv = new LVITEM();
+            lv.mask = 0x0001; // LVIF_TEXT
+            lv.iItem = itemIndex;
+            lv.iSubItem = 0;
+            lv.cchTextMax = sb.Capacity;
+            lv.pszText = Marshal.AllocHGlobal(sb.Capacity * 2);
+            Marshal.Copy(sb.ToString().ToCharArray(), 0, lv.pszText, sb.Length);
 
-            // Access the X and Y coordinates
-            int x = mousePosition.X;
-            int y = mousePosition.Y;
-
-            // Alternatively, you can directly access the coordinates without creating a Point object:
-            int xDirect = Cursor.Position.X;
-            int yDirect = Cursor.Position.Y;
-
-            numX.Value = x; numY.Value = y;
-            btnGo(sender, e);
+            IntPtr ptr = Marshal.AllocHGlobal(Marshal.SizeOf(lv));
+            Marshal.StructureToPtr(lv, ptr, false);
+            return ptr;
         }
 
         private void btnUp(object sender, EventArgs e)
         {
             numY.Value -= Step;
-            MoveIconRelative(comboBox1.SelectedIndex, (int)numX.Value, (int)numY.Value);
+            MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
             Dir = Direction.Up;
 
-            ButtonRight.BackColor = Color.WhiteSmoke;
-            ButtonLeft.BackColor = Color.WhiteSmoke;
+            ResetArrowButtonColor();
             ButtonUp.BackColor = Color.Gold;
-            ButtonDown.BackColor = Color.WhiteSmoke;
-            panel1.Focus();
+
+
 
         }
 
@@ -209,28 +216,33 @@ namespace DesktopIconMover
         {
             numY.Value += Step;
 
-            MoveIconRelative(comboBox1.SelectedIndex, (int)numX.Value, (int)numY.Value);
+            MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
             Dir = Direction.Down;
+
+            ResetArrowButtonColor();
+            ButtonDown.BackColor = Color.Gold;
+
+
+        }
+
+        private void ResetArrowButtonColor()
+        {
             ButtonRight.BackColor = Color.WhiteSmoke;
             ButtonLeft.BackColor = Color.WhiteSmoke;
             ButtonUp.BackColor = Color.WhiteSmoke;
-            ButtonDown.BackColor = Color.Gold;
-
-            panel1.Focus();
-
+            ButtonDown.BackColor = Color.WhiteSmoke;
         }
 
         private void btnLeft(object sender, EventArgs e)
         {
             numX.Value -= Step;
-            MoveIconRelative(comboBox1.SelectedIndex, (int)numX.Value, (int)numY.Value);
+            MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
             Dir = Direction.Left;
 
-            ButtonRight.BackColor = Color.WhiteSmoke;
+            ResetArrowButtonColor();
             ButtonLeft.BackColor = Color.Gold;
-            ButtonUp.BackColor = Color.WhiteSmoke;
-            ButtonDown.BackColor = Color.WhiteSmoke;
-            panel1.Focus();
+
+
 
         }
 
@@ -238,22 +250,20 @@ namespace DesktopIconMover
         {
             numX.Value += Step;
 
-            MoveIconRelative(comboBox1.SelectedIndex, (int)numX.Value, (int)numY.Value);
+            MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
             Dir = Direction.Right;
-          
+            ResetArrowButtonColor();
             ButtonRight.BackColor = Color.Gold;
-            ButtonLeft.BackColor = Color.WhiteSmoke;
-            ButtonUp.BackColor = Color.WhiteSmoke;
-            ButtonDown.BackColor = Color.WhiteSmoke;
 
-            panel1.Focus();
+
+
 
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            timer1.Enabled = checkBox2.Checked;
-            comboBox1.Enabled = !checkBox2.Checked;
+            timer1.Enabled = chkLock.Checked;
+            cmbIconList.Enabled = !chkLock.Checked;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -263,7 +273,7 @@ namespace DesktopIconMover
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
-          
+
 
         }
 
@@ -283,23 +293,33 @@ namespace DesktopIconMover
 
         private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
+
         }
 
         private void MainForm_Click(object sender, EventArgs e)
         {
-            checkBox2.Checked = false;
+            chkLock.Checked = false;
         }
 
         private void numX_ValueChanged(object sender, EventArgs e)
         {
-            MoveIconRelative(comboBox1.SelectedIndex, (int)numX.Value, (int)numY.Value);
+            MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
 
         }
 
         private void numY_ValueChanged(object sender, EventArgs e)
         {
-            MoveIconRelative(comboBox1.SelectedIndex, (int)numX.Value, (int)numY.Value);
+            MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
+
+        }
+
+        private void timerTarget_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }
