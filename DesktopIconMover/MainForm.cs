@@ -17,6 +17,8 @@ namespace DesktopIconMover
     public partial class MainForm : Form
     {
         public int Step { get; set; } = 10;
+        private readonly List<string> iconNames = new List<string>();
+
         public enum Direction { Up, Left, Right, Down, Null };
 
         public Direction Dir { get; set; } = Direction.Null;
@@ -32,9 +34,6 @@ namespace DesktopIconMover
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         static extern int SendMessage(IntPtr hWnd, int msg, int wParam, IntPtr lParam);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern bool SendMessage2(IntPtr hWnd, uint Msg, IntPtr wParam, StringBuilder lParam);
 
 
         [DllImport("user32.dll", SetLastError = true)]
@@ -79,7 +78,6 @@ namespace DesktopIconMover
 
             LoadDesktopIcons();
         }
-        private List<string> iconNames = new List<string>();
 
 
 
@@ -231,6 +229,7 @@ namespace DesktopIconMover
             ButtonLeft.BackColor = Color.WhiteSmoke;
             ButtonUp.BackColor = Color.WhiteSmoke;
             ButtonDown.BackColor = Color.WhiteSmoke;
+            panel1.Focus();
         }
 
         private void btnLeft(object sender, EventArgs e)

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.cmbIconList = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -41,16 +42,17 @@
             this.ButtonLeft = new System.Windows.Forms.Button();
             this.ButtonDown = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.chkMouse = new System.Windows.Forms.CheckBox();
             this.chkLock = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerTarget = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbIconList
@@ -59,7 +61,7 @@
             this.cmbIconList.FormattingEnabled = true;
             this.cmbIconList.Location = new System.Drawing.Point(53, 21);
             this.cmbIconList.Name = "cmbIconList";
-            this.cmbIconList.Size = new System.Drawing.Size(217, 20);
+            this.cmbIconList.Size = new System.Drawing.Size(192, 24);
             this.cmbIconList.TabIndex = 10000000;
             this.cmbIconList.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -67,23 +69,24 @@
             // 
             this.label1.Location = new System.Drawing.Point(2, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(271, 16);
+            this.label1.Size = new System.Drawing.Size(243, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "کدوم آیکون باشه؟";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(431, 43);
+            this.button1.BackColor = System.Drawing.Color.Gold;
+            this.button1.Location = new System.Drawing.Point(357, 37);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 68);
+            this.button1.Size = new System.Drawing.Size(109, 99);
             this.button1.TabIndex = 2;
             this.button1.Text = "برو به این نقطه:";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.btnGo);
             // 
             // numY
             // 
-            this.numY.Location = new System.Drawing.Point(348, 88);
+            this.numY.Location = new System.Drawing.Point(263, 103);
             this.numY.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -95,7 +98,7 @@
             0,
             -2147483648});
             this.numY.Name = "numY";
-            this.numY.Size = new System.Drawing.Size(76, 20);
+            this.numY.Size = new System.Drawing.Size(76, 23);
             this.numY.TabIndex = 3;
             this.numY.Value = new decimal(new int[] {
             100,
@@ -106,16 +109,15 @@
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(354, 43);
+            this.label2.Location = new System.Drawing.Point(263, 51);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 13);
+            this.label2.Size = new System.Drawing.Size(88, 19);
             this.label2.TabIndex = 4;
             this.label2.Text = "اکس و ایگرگ:";
             // 
             // numX
             // 
-            this.numX.Location = new System.Drawing.Point(347, 61);
+            this.numX.Location = new System.Drawing.Point(262, 76);
             this.numX.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -127,7 +129,7 @@
             0,
             -2147483648});
             this.numX.Name = "numX";
-            this.numX.Size = new System.Drawing.Size(76, 20);
+            this.numX.Size = new System.Drawing.Size(76, 23);
             this.numX.TabIndex = 5;
             this.numX.Value = new decimal(new int[] {
             100,
@@ -150,7 +152,7 @@
             // 
             this.ButtonUp.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ButtonUp.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonUp.Location = new System.Drawing.Point(66, 6);
+            this.ButtonUp.Location = new System.Drawing.Point(71, 6);
             this.ButtonUp.Name = "ButtonUp";
             this.ButtonUp.Size = new System.Drawing.Size(43, 41);
             this.ButtonUp.TabIndex = 2;
@@ -162,7 +164,7 @@
             // 
             this.ButtonRight.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ButtonRight.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonRight.Location = new System.Drawing.Point(115, 30);
+            this.ButtonRight.Location = new System.Drawing.Point(120, 30);
             this.ButtonRight.Name = "ButtonRight";
             this.ButtonRight.Size = new System.Drawing.Size(43, 41);
             this.ButtonRight.TabIndex = 1;
@@ -174,7 +176,7 @@
             // 
             this.ButtonLeft.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ButtonLeft.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonLeft.Location = new System.Drawing.Point(17, 30);
+            this.ButtonLeft.Location = new System.Drawing.Point(22, 30);
             this.ButtonLeft.Name = "ButtonLeft";
             this.ButtonLeft.Size = new System.Drawing.Size(43, 41);
             this.ButtonLeft.TabIndex = 4;
@@ -186,7 +188,7 @@
             // 
             this.ButtonDown.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ButtonDown.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonDown.Location = new System.Drawing.Point(66, 53);
+            this.ButtonDown.Location = new System.Drawing.Point(71, 53);
             this.ButtonDown.Name = "ButtonDown";
             this.ButtonDown.Size = new System.Drawing.Size(43, 41);
             this.ButtonDown.TabIndex = 3;
@@ -199,22 +201,13 @@
             this.timer1.Interval = 25;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // chkMouse
-            // 
-            this.chkMouse.Location = new System.Drawing.Point(71, 173);
-            this.chkMouse.Name = "chkMouse";
-            this.chkMouse.Size = new System.Drawing.Size(199, 20);
-            this.chkMouse.TabIndex = 12;
-            this.chkMouse.Text = "ماوس رو تعقیب کن";
-            this.chkMouse.UseVisualStyleBackColor = true;
-            // 
             // chkLock
             // 
-            this.chkLock.Location = new System.Drawing.Point(94, 152);
+            this.chkLock.Location = new System.Drawing.Point(65, 150);
             this.chkLock.Name = "chkLock";
             this.chkLock.Size = new System.Drawing.Size(176, 20);
             this.chkLock.TabIndex = 13;
-            this.chkLock.Text = "قفل کن و حرکت آخر رو تکرار کن";
+            this.chkLock.Text = "روی حرکت آخر قفل کن";
             this.chkLock.UseVisualStyleBackColor = true;
             this.chkLock.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
@@ -225,9 +218,9 @@
             this.panel1.Controls.Add(this.ButtonUp);
             this.panel1.Controls.Add(this.ButtonLeft);
             this.panel1.Controls.Add(this.ButtonDown);
-            this.panel1.Location = new System.Drawing.Point(42, 47);
+            this.panel1.Location = new System.Drawing.Point(31, 47);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(175, 99);
+            this.panel1.Size = new System.Drawing.Size(183, 99);
             this.panel1.TabIndex = 0;
             // 
             // statusStrip1
@@ -235,32 +228,41 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 196);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 173);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.statusStrip1.Size = new System.Drawing.Size(281, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(256, 26);
             this.statusStrip1.TabIndex = 10000001;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(67, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(83, 20);
             this.toolStripStatusLabel1.Text = "@peymanx";
             // 
             // timerTarget
             // 
             this.timerTarget.Tick += new System.EventHandler(this.timerTarget_Tick);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(459, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(151, 166);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 10000002;
+            this.pictureBox1.TabStop = false;
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(281, 218);
+            this.ClientSize = new System.Drawing.Size(256, 199);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.chkLock);
-            this.Controls.Add(this.chkMouse);
             this.Controls.Add(this.ButtonReload);
             this.Controls.Add(this.numX);
             this.Controls.Add(this.label2);
@@ -268,8 +270,10 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbIconList);
+            this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HelpButton = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "MainForm";
@@ -285,6 +289,7 @@
             this.panel1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,11 +309,11 @@
         private System.Windows.Forms.Button ButtonLeft;
         private System.Windows.Forms.Button ButtonDown;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.CheckBox chkMouse;
         private System.Windows.Forms.CheckBox chkLock;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Timer timerTarget;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
