@@ -16,7 +16,7 @@ namespace DesktopIconMover
 {
     public partial class MainForm : Form
     {
-        public int Step { get; set; } = 10;
+        public int Step { get; set; } = 30;
         private readonly List<string> iconNames = new List<string>();
 
         public enum Direction { Up, Left, Right, Down, Null };
@@ -46,7 +46,7 @@ namespace DesktopIconMover
         const uint LVM_SETITEMPOSITION = 0x1000 + 15;
         private const uint LVM_GETITEMPOSITION = 0x1000 + 16;
         private const uint LVM_GETITEMTEXT = 0x1000 + 45;
-
+        private const string PacmanFile = @"F:\peyman\desktop\pacman.png";
 
         static IntPtr GetDesktopListView()
         {
@@ -95,14 +95,14 @@ namespace DesktopIconMover
             for (int i = 0; i < count; i++)
             {
                 // SendMessage2(hwndListView, LVM_GETITEMTEXT, (IntPtr)i, itemText);
-                string iconName = "icon " + i;
+                string iconName = "آیکون شماره " + i;
                 iconNames.Add(iconName);
             }
 
 
             cmbIconList.Items.AddRange(iconNames.ToArray());
 
-            cmbIconList.SelectedIndex = 0;
+            cmbIconList.SelectedIndex = iconNames.Count-1;
         }
         public static void MoveIconRelative(int iconIndex, int dx, int dy)
         {
@@ -147,8 +147,8 @@ namespace DesktopIconMover
         private void button2_Click(object sender, EventArgs e)
         {
             chkLock.Checked = false;
-            LoadDesktopIcons();
-
+            // LoadDesktopIcons();
+            numX.Value = numY.Value = 100;
         }
 
         private void btnGo(object sender, EventArgs e)
@@ -179,33 +179,24 @@ namespace DesktopIconMover
             }
 
 
-            panel1.Focus();
+            panelArrowKeys.Focus();
         }
 
-        private IntPtr GetLParamItemText(int itemIndex, StringBuilder sb)
-        {
-            LVITEM lv = new LVITEM();
-            lv.mask = 0x0001; // LVIF_TEXT
-            lv.iItem = itemIndex;
-            lv.iSubItem = 0;
-            lv.cchTextMax = sb.Capacity;
-            lv.pszText = Marshal.AllocHGlobal(sb.Capacity * 2);
-            Marshal.Copy(sb.ToString().ToCharArray(), 0, lv.pszText, sb.Length);
 
-            IntPtr ptr = Marshal.AllocHGlobal(Marshal.SizeOf(lv));
-            Marshal.StructureToPtr(lv, ptr, false);
-            return ptr;
-        }
 
         private void btnUp(object sender, EventArgs e)
         {
             numY.Value -= Step;
             MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
-            Dir = Direction.Up;
 
-            ResetArrowButtonColor();
-            ButtonUp.BackColor = Color.Gold;
-
+            if (Dir != Direction.Up)
+            {
+                Dir = Direction.Up;
+                if (chkPacman.Checked)
+                    Properties.Resources.up.Save(PacmanFile);
+                ResetArrowButtonColor();
+                ButtonUp.BackColor = Color.Gold;
+            }
 
 
         }
@@ -215,10 +206,16 @@ namespace DesktopIconMover
             numY.Value += Step;
 
             MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
-            Dir = Direction.Down;
+            if (Dir != Direction.Down)
+            {
+                Dir = Direction.Down;
+                if (chkPacman.Checked)
+                    Properties.Resources.down.Save(PacmanFile);
+                ResetArrowButtonColor();
+                ButtonDown.BackColor = Color.Gold;
+            }
 
-            ResetArrowButtonColor();
-            ButtonDown.BackColor = Color.Gold;
+
 
 
         }
@@ -229,32 +226,40 @@ namespace DesktopIconMover
             ButtonLeft.BackColor = Color.WhiteSmoke;
             ButtonUp.BackColor = Color.WhiteSmoke;
             ButtonDown.BackColor = Color.WhiteSmoke;
-            panel1.Focus();
+             panelArrowKeys.Focus();
         }
 
         private void btnLeft(object sender, EventArgs e)
         {
             numX.Value -= Step;
             MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
-            Dir = Direction.Left;
-
-            ResetArrowButtonColor();
-            ButtonLeft.BackColor = Color.Gold;
-
+            if (Dir != Direction.Left)
+            {
+                Dir = Direction.Left;
+                if (chkPacman.Checked)
+                    Properties.Resources.left.Save(PacmanFile);
+                ResetArrowButtonColor();
+                ButtonLeft.BackColor = Color.Gold;
+            }
 
 
         }
 
         private void btnRight(object sender, EventArgs e)
         {
-            numX.Value += Step;
+            numX.Value += Step ;
 
             MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
-            Dir = Direction.Right;
-            ResetArrowButtonColor();
-            ButtonRight.BackColor = Color.Gold;
 
-
+            if (Dir != Direction.Right)
+            {
+                Dir = Direction.Right;
+                if (chkPacman.Checked)
+                    Properties.Resources.right.Save(PacmanFile);
+                ResetArrowButtonColor();
+                ButtonRight.BackColor = Color.Gold;
+                ButtonRight.Focus();
+            }
 
 
         }
@@ -263,35 +268,50 @@ namespace DesktopIconMover
         {
             timer1.Enabled = chkLock.Checked;
             cmbIconList.Enabled = !chkLock.Checked;
+            ResetArrowButtonColor();
+
+            if (timer1.Enabled) Step = 5;
+            else
+                 Step = 30;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            trackBar1_Scroll(null,null);
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
+
+            if (e.KeyCode == Keys.Escape)
+                chkLock.Checked = false;
 
 
         }
 
         private void MainForm_KeyUp(object sender, KeyEventArgs e)
         {
+
+
             if (e.KeyCode == Keys.Up)
                 btnUp(null, null);
-            if (e.KeyCode == Keys.Down)
+            else if (e.KeyCode == Keys.Down)
                 btnDown(null, null);
 
-            if (e.KeyCode == Keys.Left)
+            else if (e.KeyCode == Keys.Left)
                 btnLeft(null, null);
 
             if (e.KeyCode == Keys.Right)
                 btnRight(null, null);
+
+
+
+
         }
 
         private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
         {
+
 
         }
 
@@ -320,6 +340,17 @@ namespace DesktopIconMover
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void ButtonRight_MouseClick(object sender, MouseEventArgs e)
+        {
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            timer1.Interval = trackBar1.Value * 2;
+            lblSpeed.Text = (trackBar1.Maximum - trackBar1.Value +1).ToString();
+            if(timer1.Enabled) timer1_Tick(sender, e);
         }
     }
 }

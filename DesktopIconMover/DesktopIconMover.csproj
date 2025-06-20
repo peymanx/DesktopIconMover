@@ -71,6 +71,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -87,6 +88,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Microsoft-Fluentui-Emoji-3d-Flashlight-3d.ico" />
+    <None Include="Resources\up.png" />
+    <None Include="Resources\left.png" />
+    <None Include="Resources\down.png" />
+    <None Include="Resources\right.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
