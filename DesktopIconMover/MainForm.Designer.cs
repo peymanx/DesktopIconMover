@@ -216,7 +216,7 @@
             // 
             // chkLock
             // 
-            this.chkLock.Location = new System.Drawing.Point(93, 139);
+            this.chkLock.Location = new System.Drawing.Point(92, 51);
             this.chkLock.Name = "chkLock";
             this.chkLock.Size = new System.Drawing.Size(156, 22);
             this.chkLock.TabIndex = 13;
@@ -231,7 +231,7 @@
             this.panelArrowKeys.Controls.Add(this.ButtonUp);
             this.panelArrowKeys.Controls.Add(this.ButtonDown);
             this.panelArrowKeys.Controls.Add(this.ButtonLeft);
-            this.panelArrowKeys.Location = new System.Drawing.Point(40, 53);
+            this.panelArrowKeys.Location = new System.Drawing.Point(46, 92);
             this.panelArrowKeys.Name = "panelArrowKeys";
             this.panelArrowKeys.Size = new System.Drawing.Size(171, 84);
             this.panelArrowKeys.TabIndex = 0;
@@ -260,7 +260,7 @@
             // 
             // chkPacman
             // 
-            this.chkPacman.Location = new System.Drawing.Point(73, 158);
+            this.chkPacman.Location = new System.Drawing.Point(72, 70);
             this.chkPacman.Name = "chkPacman";
             this.chkPacman.Size = new System.Drawing.Size(176, 20);
             this.chkPacman.TabIndex = 10000002;
@@ -324,6 +324,7 @@
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(557, 257);
+            this.MinimumSize = new System.Drawing.Size(279, 240);
             this.Name = "MainForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TopMost = true;
