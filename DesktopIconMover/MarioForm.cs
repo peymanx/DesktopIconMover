@@ -8,20 +8,33 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
 
 namespace DesktopIconMover
 {
-    public partial class MainForm : Form
+    public partial class MarioForm : Form
     {
-        public int Step { get; set; } = 30;
+        public MarioForm()
+        {
+            InitializeComponent();
+            LoadDesktopIcons();
+
+        }
+
+
+
+
+        public int Step { get; set; } = 10;
+
+
+        public int Target { get; set; }
         private readonly List<string> iconNames = new List<string>();
 
         public enum Direction { Up, Left, Right, Down, Null };
 
         public Direction Dir { get; set; } = Direction.Null;
+        public string MarioFile { get; private set; } = @"f:\peyman\desktop\mario.png";
+
         // توابع WinAPI
         [DllImport("user32.dll", SetLastError = true)]
         static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
@@ -46,7 +59,6 @@ namespace DesktopIconMover
         const uint LVM_SETITEMPOSITION = 0x1000 + 15;
         private const uint LVM_GETITEMPOSITION = 0x1000 + 16;
         private const uint LVM_GETITEMTEXT = 0x1000 + 45;
-        private const string PacmanFile = @"F:\peyman\desktop\pacman.png";
 
         static IntPtr GetDesktopListView()
         {
@@ -72,12 +84,6 @@ namespace DesktopIconMover
 
             return listView;
         }
-        public MainForm()
-        {
-            InitializeComponent();
-
-            LoadDesktopIcons();
-        }
 
 
 
@@ -102,7 +108,7 @@ namespace DesktopIconMover
 
             cmbIconList.Items.AddRange(iconNames.ToArray());
 
-            cmbIconList.SelectedIndex = iconNames.Count-1;
+            cmbIconList.SelectedIndex = iconNames.Count - 1;
         }
         public static void MoveIconRelative(int iconIndex, int dx, int dy)
         {
@@ -139,48 +145,7 @@ namespace DesktopIconMover
         }
 
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            chkLock.Checked = false;
-            // LoadDesktopIcons();
-            numX.Value = numY.Value = 100;
-        }
-
-        private void btnGo(object sender, EventArgs e)
-        {
-            MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
-
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            switch (Dir)
-            {
-                case Direction.Up:
-                    btnUp(null, null);
-                    break;
-                case Direction.Left:
-                    btnLeft(null, null);
-                    break;
-                case Direction.Right:
-                    btnRight(null, null);
-                    break;
-
-                case Direction.Down:
-                    btnDown(null, null);
-                    break;
-                default:
-                    break;
-            }
-
-
-            panelArrowKeys.Focus();
-        }
 
 
 
@@ -192,12 +157,11 @@ namespace DesktopIconMover
             if (Dir != Direction.Up)
             {
                 Dir = Direction.Up;
-                if (chkPacman.Checked)
-                    Properties.Resources.up.Save(PacmanFile);
                 ResetArrowButtonColor();
                 ButtonUp.BackColor = Color.Gold;
             }
 
+            panelArrows.Focus();
 
         }
 
@@ -209,8 +173,6 @@ namespace DesktopIconMover
             if (Dir != Direction.Down)
             {
                 Dir = Direction.Down;
-                if (chkPacman.Checked)
-                    Properties.Resources.down.Save(PacmanFile);
                 ResetArrowButtonColor();
                 ButtonDown.BackColor = Color.Gold;
             }
@@ -226,98 +188,86 @@ namespace DesktopIconMover
             ButtonLeft.BackColor = Color.WhiteSmoke;
             ButtonUp.BackColor = Color.WhiteSmoke;
             ButtonDown.BackColor = Color.WhiteSmoke;
-             panelArrowKeys.Focus();
+            ButtonSpace.BackColor = Color.WhiteSmoke;
+            panelArrows.Focus();
         }
 
-        private void btnLeft(object sender, EventArgs e)
+      
+
+
+
+
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MarioForm_KeyUp(object sender, KeyEventArgs e)
+        {
+
+
+            if (e.KeyCode == Keys.Left)
+                ButtonLeft_Click(null, null);
+
+            else if (e.KeyCode == Keys.Right)
+                ButtonRight_Click(null, null);
+
+            else if (e.KeyCode == Keys.Space)
+            {
+                e.SuppressKeyPress = false;
+                ButtonSpace_Click(null, null);
+
+            }
+        }
+
+        private void MarioForm_KeyDown(object sender, KeyEventArgs e)
+        {
+
+
+        }
+
+        private void ButtonUp_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonLeft_Click(object sender, EventArgs e)
         {
             numX.Value -= Step;
             MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
             if (Dir != Direction.Left)
             {
                 Dir = Direction.Left;
-                if (chkPacman.Checked)
-                    Properties.Resources.left.Save(PacmanFile);
+                if (chkMario.Checked)
+                    Properties.Resources.mario_left.Save(MarioFile);
+
                 ResetArrowButtonColor();
                 ButtonLeft.BackColor = Color.Gold;
             }
-
+            panelArrows.Focus();
 
         }
 
-        private void btnRight(object sender, EventArgs e)
+        private void ButtonRight_Click(object sender, EventArgs e)
         {
-            numX.Value += Step ;
+            numX.Value += Step;
 
             MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
 
             if (Dir != Direction.Right)
             {
                 Dir = Direction.Right;
-                if (chkPacman.Checked)
-                    Properties.Resources.right.Save(PacmanFile);
+                if (chkMario.Checked)
+                    Properties.Resources.mario_right.Save(MarioFile);
+
+
                 ResetArrowButtonColor();
                 ButtonRight.BackColor = Color.Gold;
                 ButtonRight.Focus();
             }
+            panelArrows.Focus();
 
-
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-            timer1.Enabled = chkLock.Checked;
-            cmbIconList.Enabled = !chkLock.Checked;
-            ResetArrowButtonColor();
-
-            if (timer1.Enabled) Step = 5;
-            else
-                 Step = 30;
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            trackBar1_Scroll(null,null);
-        }
-
-        private void MainForm_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            if (e.KeyCode == Keys.Escape)
-                chkLock.Checked = false;
-
-
-        }
-
-        private void MainForm_KeyUp(object sender, KeyEventArgs e)
-        {
-
-
-            if (e.KeyCode == Keys.Up)
-                btnUp(null, null);
-            else if (e.KeyCode == Keys.Down)
-                btnDown(null, null);
-
-            else if (e.KeyCode == Keys.Left)
-                btnLeft(null, null);
-
-            if (e.KeyCode == Keys.Right)
-                btnRight(null, null);
-
-
-
-
-        }
-
-        private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-
-        }
-
-        private void MainForm_Click(object sender, EventArgs e)
-        {
-            chkLock.Checked = false;
         }
 
         private void numX_ValueChanged(object sender, EventArgs e)
@@ -332,33 +282,76 @@ namespace DesktopIconMover
 
         }
 
-        private void timerTarget_Tick(object sender, EventArgs e)
+        private void MarioForm_Load(object sender, EventArgs e)
         {
+            numY.Value = numGround.Value;
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
+            cmbIconList.Enabled = !cmbIconList.Enabled;
+        }
+
+        private void ButtonSpace_Click(object sender, EventArgs e)
+        {
+
+
+
+
+            if (numY.Value == numGround.Value)
+            {
+                panelArrows.Focus();
+
+                ResetArrowButtonColor();
+                ButtonSpace.BackColor = Color.Gold;
+                Target = (int)numY.Value - (int)numJump.Value;
+
+                timerJump.Enabled = true;
+
+            }
 
         }
 
-        private void ButtonRight_MouseClick(object sender, MouseEventArgs e)
+        private void timerJump_Tick(object sender, EventArgs e)
         {
+
+
+                numY.Value -= 5;
+                if (numY.Value < Target)
+                {
+                    timerJump.Enabled  = false;
+                    Target = (int)numY.Value + (int)numJump.Value;
+
+                }
+           
+
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        private void timerGravity_Tick(object sender, EventArgs e)
         {
-            timer1.Interval = trackBar1.Value * 2;
-            lblSpeed.Text = (trackBar1.Maximum - trackBar1.Value +1).ToString();
-            if(timer1.Enabled) timer1_Tick(sender, e);
+            if (numY.Value < numGround.Value && !timerJump.Enabled)
+            {
+                numY.Value += 5;
+                panelArrows.Focus();
+                MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
+
+            }
+
+            else if (numY.Value > numGround.Value)
+            {
+                numY.Value = numGround.Value;
+                panelArrows.Focus();
+                MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
+
+            }
+
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ButtonDown_Click(object sender, EventArgs e)
         {
-            chkLock.Checked = false;
-            this.Hide();
-            new MarioForm().ShowDialog();
-            this.Show();
+
         }
     }
 }
