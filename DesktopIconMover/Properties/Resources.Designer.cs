@@ -73,6 +73,36 @@ namespace DesktopIconMover.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ghost_blue {
+            get {
+                object obj = ResourceManager.GetObject("ghost_blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ghost_pink {
+            get {
+                object obj = ResourceManager.GetObject("ghost_pink", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ghost_yellow {
+            get {
+                object obj = ResourceManager.GetObject("ghost_yellow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap goomba {
             get {
                 object obj = ResourceManager.GetObject("goomba", resourceCulture);
@@ -126,6 +156,16 @@ namespace DesktopIconMover.Properties {
         internal static System.Drawing.Bitmap mario_right {
             get {
                 object obj = ResourceManager.GetObject("mario_right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pacman_wallpaper {
+            get {
+                object obj = ResourceManager.GetObject("pacman_wallpaper", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

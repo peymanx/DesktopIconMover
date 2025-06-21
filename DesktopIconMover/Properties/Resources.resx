@@ -136,6 +136,15 @@
   <data name="mario_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mario_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ghost_blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ghost_blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ghost_pink" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ghost_pink.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ghost_yellow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ghost_yellow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="goomba" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\goomba.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -144,6 +153,9 @@
   </data>
   <data name="mario_jump_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mario_jump_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pacman_wallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pacman_wallpaper.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="supermario_wallpaper01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\supermario_wallpaper01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

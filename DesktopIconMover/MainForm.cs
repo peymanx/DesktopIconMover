@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.IO;
 
 
 namespace DesktopIconMover
@@ -48,6 +49,7 @@ namespace DesktopIconMover
         private const uint LVM_GETITEMTEXT = 0x1000 + 45;
         const int WM_COMMAND = 0x111;
         private string PacmanFile;
+        private string DesktopPath;
 
         static IntPtr GetDesktopListView()
         {
@@ -80,16 +82,7 @@ namespace DesktopIconMover
             LoadDesktopIcons();
         }
 
-        static void RefreshDesktop()
-        {
-            // دریافت هندل پنجره دسکتاپ (SysListView32)
-            IntPtr progman = FindWindow("Progman", null);
-            IntPtr desktopWnd = FindWindowEx(progman, IntPtr.Zero, "SHELLDLL_DefView", null);
-            IntPtr listView = FindWindowEx(desktopWnd, IntPtr.Zero, "SysListView32", "FolderView");
 
-            // ارسال پیام WM_COMMAND با کد ریفرش
-            SendMessage(desktopWnd, WM_COMMAND, new IntPtr(0x7103), IntPtr.Zero);
-        }
 
 
         private void LoadDesktopIcons()
@@ -206,7 +199,7 @@ namespace DesktopIconMover
                     Properties.Resources.up.Save(PacmanFile);
                 ResetArrowButtonColor();
                 ButtonUp.BackColor = Color.Gold;
-                RefreshDesktop();
+                DesktopRefresher.RefreshDesktop();
 
             }
 
@@ -225,7 +218,7 @@ namespace DesktopIconMover
                     Properties.Resources.down.Save(PacmanFile);
                 ResetArrowButtonColor();
                 ButtonDown.BackColor = Color.Gold;
-                RefreshDesktop();
+                DesktopRefresher.RefreshDesktop();
 
             }
 
@@ -254,7 +247,7 @@ namespace DesktopIconMover
                     Properties.Resources.left.Save(PacmanFile);
                 ResetArrowButtonColor();
                 ButtonLeft.BackColor = Color.Gold;
-                RefreshDesktop();
+                DesktopRefresher.RefreshDesktop();
 
             }
 
@@ -276,7 +269,9 @@ namespace DesktopIconMover
                 ButtonRight.BackColor = Color.Gold;
                 ButtonRight.Focus();
 
-                RefreshDesktop();
+                DesktopRefresher.RefreshDesktop();
+
+
             }
 
 
@@ -291,6 +286,7 @@ namespace DesktopIconMover
             if (timer1.Enabled) Step = 5;
             else
                  Step = 30;
+            button3_Click(sender, e);
         }
 
 
@@ -298,7 +294,10 @@ namespace DesktopIconMover
         private void MainForm_Load(object sender, EventArgs e)
         {
             trackBar1_Scroll(null,null);
-            PacmanFile = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            DesktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            PacmanFile = Path.Combine(DesktopPath, "pacman.png");
+
+            button3_Click(sender, e);
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
@@ -400,6 +399,57 @@ namespace DesktopIconMover
         {
 
    
+        }
+        int ghost = 0;
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            var randomName = $"ghost {new Random().Next(111111111, 999999999)}.png";
+            var image = Properties.Resources.ghost_blue;
+
+ 
+            ghost = ++ghost % 3;
+            switch (ghost)
+            {
+                case 0:
+                    image = Properties.Resources.ghost_pink;
+                    break;
+                case 1:
+                    image = Properties.Resources.ghost_blue;
+                    break;
+                case 2:
+                    image = Properties.Resources.ghost_yellow;
+                    break;
+                default:
+                    break;
+            }
+
+            image.Save(Path.Combine(DesktopPath, randomName));
+
+
+            DesktopRefresher.RefreshDesktop();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (button3.Text == "<<")
+            {
+                this.Width = 592;
+                this.Height = 326;
+                button3.Text = ">>";
+            }
+            else
+            {
+                this.Width = 338;
+                this.Height = 165;
+                button3.Text = "<<";
+
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Wallpaper.Set(Properties.Resources.pacman_wallpaper, Wallpaper.Style.Stretched);
+
         }
     }
 }

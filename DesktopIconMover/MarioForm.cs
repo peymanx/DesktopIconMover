@@ -49,6 +49,13 @@ namespace DesktopIconMover
         static extern int SendMessage(IntPtr hWnd, int msg, int wParam, IntPtr lParam);
 
 
+
+        const int LVM_GETITEMPOSITION2 = 0x1010;
+        const int LVM_SETITEMPOSITION2 = 0x100F;
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern IntPtr SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
+
         [DllImport("user32.dll", SetLastError = true)]
         static extern int SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
 
@@ -86,16 +93,7 @@ namespace DesktopIconMover
         }
 
 
-        static void RefreshDesktop()
-        {
-            // دریافت هندل پنجره دسکتاپ (SysListView32)
-            IntPtr progman = FindWindow("Progman", null);
-            IntPtr desktopWnd = FindWindowEx(progman, IntPtr.Zero, "SHELLDLL_DefView", null);
-            IntPtr listView = FindWindowEx(desktopWnd, IntPtr.Zero, "SysListView32", "FolderView");
 
-            // ارسال پیام WM_COMMAND با کد ریفرش
-            SendMessage(desktopWnd, WM_COMMAND, new IntPtr(0x7103), IntPtr.Zero);
-        }
 
 
         private void LoadDesktopIcons()
@@ -139,6 +137,43 @@ namespace DesktopIconMover
             Console.WriteLine($"آیکون {iconIndex} به مکان جدید ({newX}, {newY}) منتقل شد.");
         }
 
+        [StructLayout(LayoutKind.Sequential)]
+        public struct POINT
+        {
+            public int X;
+            public int Y;
+        }
+
+        public static void MoveIconRelative2(int iconIndex, int dx, int dy)
+        {
+            IntPtr hwndListView = GetDesktopListView();
+            if (hwndListView == IntPtr.Zero) return;
+
+            // حافظه موقت برای دریافت مختصات
+            IntPtr pointPtr = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(POINT)));
+            try
+            {
+                bool success = SendMessage(hwndListView, LVM_GETITEMPOSITION2, (IntPtr)iconIndex, pointPtr) != IntPtr.Zero;
+                if (!success)
+                {
+                    Console.WriteLine("موقعیت فعلی آیکون خوانده نشد.");
+                    return;
+                }
+
+                POINT currentPos = Marshal.PtrToStructure<POINT>(pointPtr);
+                int newX = currentPos.X + dx;
+                int newY = currentPos.Y + dy;
+
+                IntPtr lParam = (IntPtr)((newY << 16) | (newX & 0xFFFF));
+                SendMessage(hwndListView, LVM_SETITEMPOSITION, (IntPtr)iconIndex, lParam);
+
+                Console.WriteLine($"آیکون {iconIndex} به مکان جدید ({newX}, {newY}) منتقل شد.");
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(pointPtr);
+            }
+        }
 
         private void BtnMoveIcon_Click(object sender, EventArgs e)
         {
@@ -263,7 +298,7 @@ namespace DesktopIconMover
                 if (chkMario.Checked)
                 {
                     Properties.Resources.mario_left.Save(MarioPath);
-                    RefreshDesktop();
+                    DesktopRefresher.RefreshDesktop();
                 }
 
                 ResetArrowButtonColor();
@@ -286,7 +321,7 @@ namespace DesktopIconMover
                 if (chkMario.Checked)
                 {
                     Properties.Resources.mario_right.Save(MarioPath);
-                    RefreshDesktop();
+                    DesktopRefresher.RefreshDesktop();
                 }
 
                 ResetArrowButtonColor();
@@ -315,6 +350,7 @@ namespace DesktopIconMover
             txtDesktopPath.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
             MarioPath = Path.Combine(txtDesktopPath.Text, "mario.png");
+            button4_Click_2(sender, e);
 
         }
 
@@ -348,7 +384,7 @@ namespace DesktopIconMover
 
                 timerJump.Enabled = true;
 
-                RefreshDesktop();
+                DesktopRefresher.RefreshDesktop();
 
             }
 
@@ -397,7 +433,7 @@ namespace DesktopIconMover
 
 
 
-                RefreshDesktop();
+                DesktopRefresher.RefreshDesktop();
             }
 
 
@@ -425,7 +461,29 @@ namespace DesktopIconMover
             var randomName = $"goomba {new Random().Next(111111111, 999999999)}.png";
             Properties.Resources.goomba.Save(Path.Combine(txtDesktopPath.Text,randomName));
 
-            RefreshDesktop();
+            DesktopRefresher.RefreshDesktop();
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            MyDesktopIconMover.MoveIconRelative(0, 100, 0);
+        }
+
+        private void button4_Click_2(object sender, EventArgs e)
+        {
+            if (button4.Text == "<<")
+            {
+                this.Width = 861;
+                this.Height = 267;
+                button4.Text = ">>";
+            }
+            else
+            {
+                this.Width = 382;
+                this.Height = 198;
+                button4.Text = "<<";
+
+            }
         }
     }
 }

@@ -54,6 +54,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.txtDesktopPath = new System.Windows.Forms.TextBox();
             this.btnBrowse = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
             this.panelArrows.SuspendLayout();
@@ -137,7 +138,7 @@
             this.cmbIconList.FormattingEnabled = true;
             this.cmbIconList.Location = new System.Drawing.Point(12, 12);
             this.cmbIconList.Name = "cmbIconList";
-            this.cmbIconList.Size = new System.Drawing.Size(225, 27);
+            this.cmbIconList.Size = new System.Drawing.Size(234, 27);
             this.cmbIconList.TabIndex = 10000001;
             this.cmbIconList.TabStop = false;
             // 
@@ -217,6 +218,7 @@
             // 
             // panelArrows
             // 
+            this.panelArrows.Controls.Add(this.button4);
             this.panelArrows.Controls.Add(this.ButtonSpace);
             this.panelArrows.Controls.Add(this.ButtonLeft);
             this.panelArrows.Controls.Add(this.ButtonDown);
@@ -381,11 +383,24 @@
             this.btnBrowse.UseVisualStyleBackColor = false;
             this.btnBrowse.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button4.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(282, 4);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(47, 23);
+            this.button4.TabIndex = 10000021;
+            this.button4.TabStop = false;
+            this.button4.Text = ">>";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click_2);
+            // 
             // MarioForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(843, 212);
+            this.ClientSize = new System.Drawing.Size(902, 336);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.txtDesktopPath);
             this.Controls.Add(this.groupBox1);
@@ -406,6 +421,7 @@
             this.KeyPreview = true;
             this.Name = "MarioForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ماریو";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.MarioForm_Load);
@@ -448,5 +464,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox txtDesktopPath;
         private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.Button button4;
     }
 }

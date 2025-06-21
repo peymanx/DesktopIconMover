@@ -16,7 +16,7 @@ namespace DesktopIconMover
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MarioForm());
+            Application.Run(new MainForm());
         }
     }
 }
