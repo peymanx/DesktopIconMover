@@ -47,7 +47,7 @@ namespace DesktopIconMover
         private const uint LVM_GETITEMPOSITION = 0x1000 + 16;
         private const uint LVM_GETITEMTEXT = 0x1000 + 45;
         const int WM_COMMAND = 0x111;
-        private const string PacmanFile = @"F:\peyman\desktop\pacman.png";
+        private string PacmanFile;
 
         static IntPtr GetDesktopListView()
         {
@@ -298,6 +298,7 @@ namespace DesktopIconMover
         private void MainForm_Load(object sender, EventArgs e)
         {
             trackBar1_Scroll(null,null);
+            PacmanFile = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -25,7 +26,7 @@ namespace DesktopIconMover
 
 
         public int Step { get; set; } = 10;
-
+        public string MarioPath { get; set; }
 
         public int Target { get; set; }
         private readonly List<string> iconNames = new List<string>();
@@ -33,7 +34,6 @@ namespace DesktopIconMover
         public enum Direction { Up, Left, Right, Down, Null };
 
         public Direction Dir { get; set; } = Direction.Null;
-        public string MarioFile { get; private set; } = @"f:\peyman\desktop\mario.png";
 
         // توابع WinAPI
         [DllImport("user32.dll", SetLastError = true)]
@@ -262,7 +262,7 @@ namespace DesktopIconMover
                 Dir = Direction.Left;
                 if (chkMario.Checked)
                 {
-                    Properties.Resources.mario_left.Save(MarioFile);
+                    Properties.Resources.mario_left.Save(MarioPath);
                     RefreshDesktop();
                 }
 
@@ -270,7 +270,7 @@ namespace DesktopIconMover
                 ButtonLeft.BackColor = Color.Gold;
             }
             panelArrows.Focus();
-            RefreshDesktop();
+
 
         }
 
@@ -285,7 +285,7 @@ namespace DesktopIconMover
                 Dir = Direction.Right;
                 if (chkMario.Checked)
                 {
-                    Properties.Resources.mario_right.Save(MarioFile);
+                    Properties.Resources.mario_right.Save(MarioPath);
                     RefreshDesktop();
                 }
 
@@ -294,7 +294,7 @@ namespace DesktopIconMover
                 ButtonRight.Focus();
             }
             panelArrows.Focus();
-            RefreshDesktop();
+
         }
 
         private void numX_ValueChanged(object sender, EventArgs e)
@@ -312,6 +312,9 @@ namespace DesktopIconMover
         private void MarioForm_Load(object sender, EventArgs e)
         {
             numY.Value = numGround.Value;
+            txtDesktopPath.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            MarioPath = Path.Combine(txtDesktopPath.Text, "mario.png");
 
         }
 
@@ -333,8 +336,19 @@ namespace DesktopIconMover
                 ResetArrowButtonColor();
                 ButtonSpace.BackColor = Color.Gold;
                 Target = (int)numY.Value - (int)numJump.Value;
+                if (chkMario.Checked)
+                {
+                    if (Dir == Direction.Right)
+                        Properties.Resources.mario_jump_right.Save(MarioPath);
+                    else if (Dir == Direction.Left)
+                        Properties.Resources.mario_jump_left.Save(MarioPath);
+                    else
+                        Properties.Resources.mario_jump_right.Save(MarioPath    );
+                }
 
                 timerJump.Enabled = true;
+
+                RefreshDesktop();
 
             }
 
@@ -345,10 +359,20 @@ namespace DesktopIconMover
 
 
             numY.Value -= 5;
-            if (numY.Value < Target)
+            if (numY.Value < Target) // jump ended - grounded
             {
                 timerJump.Enabled = false;
                 Target = (int)numY.Value + (int)numJump.Value;
+
+                if (chkMario.Checked)
+                {
+                    if (Dir == Direction.Right)
+                        Properties.Resources.mario_right.Save(MarioPath);
+                    else if (Dir == Direction.Left)
+                        Properties.Resources.mario_left.Save(MarioPath);
+                    else
+                        Properties.Resources.mario_right.Save(MarioPath);
+                }
 
             }
 
@@ -359,18 +383,21 @@ namespace DesktopIconMover
         {
             if (numY.Value < numGround.Value && !timerJump.Enabled)
             {
-                numY.Value += 5;
+                numY.Value += 6;
                 panelArrows.Focus();
                 MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
 
             }
 
-            else if (numY.Value > numGround.Value)
+            if (numY.Value > numGround.Value)
             {
                 numY.Value = numGround.Value;
                 panelArrows.Focus();
                 MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
 
+
+
+                RefreshDesktop();
             }
 
 
@@ -379,6 +406,26 @@ namespace DesktopIconMover
         private void ButtonDown_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Wallpaper.Set( Properties.Resources.supermario_wallpaper01, Wallpaper.Style.Stretched );
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var open = new FolderBrowserDialog();
+            if(open.ShowDialog() == DialogResult.OK)
+                txtDesktopPath.Text = open.SelectedPath;
+        }
+        
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var randomName = $"goomba {new Random().Next(111111111, 999999999)}.png";
+            Properties.Resources.goomba.Save(Path.Combine(txtDesktopPath.Text,randomName));
+
+            RefreshDesktop();
         }
     }
 }

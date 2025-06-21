@@ -49,11 +49,17 @@
             this.timerGravity = new System.Windows.Forms.Timer(this.components);
             this.chkMario = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.txtDesktopPath = new System.Windows.Forms.TextBox();
+            this.btnBrowse = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
             this.panelArrows.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numGround)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numJump)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ButtonRight
@@ -138,7 +144,7 @@
             // numX
             // 
             this.numX.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numX.Location = new System.Drawing.Point(526, 28);
+            this.numX.Location = new System.Drawing.Point(737, 170);
             this.numX.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -161,7 +167,7 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(541, 7);
+            this.label2.Location = new System.Drawing.Point(752, 149);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 18);
             this.label2.TabIndex = 10000003;
@@ -170,7 +176,7 @@
             // numY
             // 
             this.numY.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numY.Location = new System.Drawing.Point(423, 28);
+            this.numY.Location = new System.Drawing.Point(634, 170);
             this.numY.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -193,14 +199,14 @@
             // 
             // timerJump
             // 
-            this.timerJump.Interval = 2;
+            this.timerJump.Interval = 3;
             this.timerJump.Tick += new System.EventHandler(this.timerJump_Tick);
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button2.Font = new System.Drawing.Font("Lucida Console", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(423, 74);
+            this.button2.Location = new System.Drawing.Point(408, 170);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(64, 36);
             this.button2.TabIndex = 10000006;
@@ -224,7 +230,7 @@
             // numGround
             // 
             this.numGround.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numGround.Location = new System.Drawing.Point(629, 28);
+            this.numGround.Location = new System.Drawing.Point(737, 58);
             this.numGround.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -239,14 +245,14 @@
             this.numGround.Size = new System.Drawing.Size(97, 32);
             this.numGround.TabIndex = 10000010;
             this.numGround.Value = new decimal(new int[] {
-            860,
+            814,
             0,
             0,
             0});
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(580, 6);
+            this.label1.Location = new System.Drawing.Point(688, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(149, 19);
             this.label1.TabIndex = 10000009;
@@ -255,7 +261,7 @@
             // numJump
             // 
             this.numJump.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numJump.Location = new System.Drawing.Point(629, 84);
+            this.numJump.Location = new System.Drawing.Point(737, 114);
             this.numJump.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -270,14 +276,14 @@
             this.numJump.Size = new System.Drawing.Size(97, 32);
             this.numJump.TabIndex = 10000012;
             this.numJump.Value = new decimal(new int[] {
-            195,
+            300,
             0,
             0,
             0});
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(580, 65);
+            this.label3.Location = new System.Drawing.Point(688, 95);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(149, 19);
             this.label3.TabIndex = 10000011;
@@ -294,14 +300,14 @@
             // timerGravity
             // 
             this.timerGravity.Enabled = true;
-            this.timerGravity.Interval = 2;
+            this.timerGravity.Interval = 3;
             this.timerGravity.Tick += new System.EventHandler(this.timerGravity_Tick);
             // 
             // chkMario
             // 
             this.chkMario.Checked = true;
             this.chkMario.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkMario.Location = new System.Drawing.Point(508, 122);
+            this.chkMario.Location = new System.Drawing.Point(72, 31);
             this.chkMario.Name = "chkMario";
             this.chkMario.Size = new System.Drawing.Size(225, 23);
             this.chkMario.TabIndex = 10000014;
@@ -310,19 +316,80 @@
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(438, 6);
+            this.label5.Location = new System.Drawing.Point(649, 148);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 18);
             this.label5.TabIndex = 10000015;
             this.label5.Text = "y:";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(166, 58);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 33);
+            this.button1.TabIndex = 10000016;
+            this.button1.TabStop = false;
+            this.button1.Text = "تصویر زمینه";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.chkMario);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Location = new System.Drawing.Point(408, 45);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(303, 119);
+            this.groupBox1.TabIndex = 10000017;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "درون ریزی بازی";
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(30, 58);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(130, 33);
+            this.button3.TabIndex = 10000017;
+            this.button3.TabStop = false;
+            this.button3.Text = "ساخت گومبا";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // txtDesktopPath
+            // 
+            this.txtDesktopPath.Enabled = false;
+            this.txtDesktopPath.Location = new System.Drawing.Point(574, 10);
+            this.txtDesktopPath.Name = "txtDesktopPath";
+            this.txtDesktopPath.Size = new System.Drawing.Size(260, 23);
+            this.txtDesktopPath.TabIndex = 10000018;
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnBrowse.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBrowse.Location = new System.Drawing.Point(408, 8);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(160, 36);
+            this.btnBrowse.TabIndex = 10000019;
+            this.btnBrowse.TabStop = false;
+            this.btnBrowse.Text = "تنظیم مسیر دسکتاپ...";
+            this.btnBrowse.UseVisualStyleBackColor = false;
+            this.btnBrowse.Click += new System.EventHandler(this.button4_Click);
+            // 
             // MarioForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(359, 144);
+            this.ClientSize = new System.Drawing.Size(843, 212);
+            this.Controls.Add(this.btnBrowse);
+            this.Controls.Add(this.txtDesktopPath);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.chkMario);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbIconList);
             this.Controls.Add(this.label4);
@@ -349,7 +416,9 @@
             this.panelArrows.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numGround)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numJump)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -374,5 +443,10 @@
         private System.Windows.Forms.Timer timerGravity;
         private System.Windows.Forms.CheckBox chkMario;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txtDesktopPath;
+        private System.Windows.Forms.Button btnBrowse;
     }
 }

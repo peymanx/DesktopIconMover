@@ -220,10 +220,10 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 103);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 218);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.statusStrip1.Size = new System.Drawing.Size(187, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(665, 26);
             this.statusStrip1.TabIndex = 10000001;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -300,7 +300,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(187, 129);
+            this.ClientSize = new System.Drawing.Size(665, 244);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.chkLock);
             this.Controls.Add(this.label5);
