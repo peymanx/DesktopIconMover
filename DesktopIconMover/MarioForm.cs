@@ -59,7 +59,7 @@ namespace DesktopIconMover
         const uint LVM_SETITEMPOSITION = 0x1000 + 15;
         private const uint LVM_GETITEMPOSITION = 0x1000 + 16;
         private const uint LVM_GETITEMTEXT = 0x1000 + 45;
-
+        const int WM_COMMAND = 0x111;
         static IntPtr GetDesktopListView()
         {
             IntPtr progman = FindWindow("Progman", null);
@@ -86,6 +86,16 @@ namespace DesktopIconMover
         }
 
 
+        static void RefreshDesktop()
+        {
+            // دریافت هندل پنجره دسکتاپ (SysListView32)
+            IntPtr progman = FindWindow("Progman", null);
+            IntPtr desktopWnd = FindWindowEx(progman, IntPtr.Zero, "SHELLDLL_DefView", null);
+            IntPtr listView = FindWindowEx(desktopWnd, IntPtr.Zero, "SysListView32", "FolderView");
+
+            // ارسال پیام WM_COMMAND با کد ریفرش
+            SendMessage(desktopWnd, WM_COMMAND, new IntPtr(0x7103), IntPtr.Zero);
+        }
 
 
         private void LoadDesktopIcons()
@@ -192,7 +202,7 @@ namespace DesktopIconMover
             panelArrows.Focus();
         }
 
-      
+
 
 
 
@@ -207,20 +217,31 @@ namespace DesktopIconMover
         {
 
 
-            if (e.KeyCode == Keys.Left)
+
+        }
+
+
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+
+            if (keyData == Keys.Left)
                 ButtonLeft_Click(null, null);
 
-            else if (e.KeyCode == Keys.Right)
+            else if (keyData == Keys.Right)
                 ButtonRight_Click(null, null);
 
-            else if (e.KeyCode == Keys.Space)
+            else if (keyData == Keys.Space)
             {
-                e.SuppressKeyPress = false;
+
                 ButtonSpace_Click(null, null);
 
             }
-        }
 
+
+            panelArrows.Focus();
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
         private void MarioForm_KeyDown(object sender, KeyEventArgs e)
         {
 
@@ -240,12 +261,16 @@ namespace DesktopIconMover
             {
                 Dir = Direction.Left;
                 if (chkMario.Checked)
+                {
                     Properties.Resources.mario_left.Save(MarioFile);
+                    RefreshDesktop();
+                }
 
                 ResetArrowButtonColor();
                 ButtonLeft.BackColor = Color.Gold;
             }
             panelArrows.Focus();
+            RefreshDesktop();
 
         }
 
@@ -259,15 +284,17 @@ namespace DesktopIconMover
             {
                 Dir = Direction.Right;
                 if (chkMario.Checked)
+                {
                     Properties.Resources.mario_right.Save(MarioFile);
-
+                    RefreshDesktop();
+                }
 
                 ResetArrowButtonColor();
                 ButtonRight.BackColor = Color.Gold;
                 ButtonRight.Focus();
             }
             panelArrows.Focus();
-
+            RefreshDesktop();
         }
 
         private void numX_ValueChanged(object sender, EventArgs e)
@@ -317,14 +344,14 @@ namespace DesktopIconMover
         {
 
 
-                numY.Value -= 5;
-                if (numY.Value < Target)
-                {
-                    timerJump.Enabled  = false;
-                    Target = (int)numY.Value + (int)numJump.Value;
+            numY.Value -= 5;
+            if (numY.Value < Target)
+            {
+                timerJump.Enabled = false;
+                Target = (int)numY.Value + (int)numJump.Value;
 
-                }
-           
+            }
+
 
         }
 

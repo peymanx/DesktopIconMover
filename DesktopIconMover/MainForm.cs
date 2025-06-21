@@ -16,7 +16,7 @@ namespace DesktopIconMover
 {
     public partial class MainForm : Form
     {
-        public int Step { get; set; } = 30;
+        public int Step { get; set; } = 25;
         private readonly List<string> iconNames = new List<string>();
 
         public enum Direction { Up, Left, Right, Down, Null };
@@ -46,6 +46,7 @@ namespace DesktopIconMover
         const uint LVM_SETITEMPOSITION = 0x1000 + 15;
         private const uint LVM_GETITEMPOSITION = 0x1000 + 16;
         private const uint LVM_GETITEMTEXT = 0x1000 + 45;
+        const int WM_COMMAND = 0x111;
         private const string PacmanFile = @"F:\peyman\desktop\pacman.png";
 
         static IntPtr GetDesktopListView()
@@ -79,7 +80,16 @@ namespace DesktopIconMover
             LoadDesktopIcons();
         }
 
+        static void RefreshDesktop()
+        {
+            // دریافت هندل پنجره دسکتاپ (SysListView32)
+            IntPtr progman = FindWindow("Progman", null);
+            IntPtr desktopWnd = FindWindowEx(progman, IntPtr.Zero, "SHELLDLL_DefView", null);
+            IntPtr listView = FindWindowEx(desktopWnd, IntPtr.Zero, "SysListView32", "FolderView");
 
+            // ارسال پیام WM_COMMAND با کد ریفرش
+            SendMessage(desktopWnd, WM_COMMAND, new IntPtr(0x7103), IntPtr.Zero);
+        }
 
 
         private void LoadDesktopIcons()
@@ -196,6 +206,8 @@ namespace DesktopIconMover
                     Properties.Resources.up.Save(PacmanFile);
                 ResetArrowButtonColor();
                 ButtonUp.BackColor = Color.Gold;
+                RefreshDesktop();
+
             }
 
 
@@ -213,6 +225,8 @@ namespace DesktopIconMover
                     Properties.Resources.down.Save(PacmanFile);
                 ResetArrowButtonColor();
                 ButtonDown.BackColor = Color.Gold;
+                RefreshDesktop();
+
             }
 
 
@@ -240,6 +254,8 @@ namespace DesktopIconMover
                     Properties.Resources.left.Save(PacmanFile);
                 ResetArrowButtonColor();
                 ButtonLeft.BackColor = Color.Gold;
+                RefreshDesktop();
+
             }
 
 
@@ -259,6 +275,8 @@ namespace DesktopIconMover
                 ResetArrowButtonColor();
                 ButtonRight.BackColor = Color.Gold;
                 ButtonRight.Focus();
+
+                RefreshDesktop();
             }
 
 
@@ -275,6 +293,8 @@ namespace DesktopIconMover
                  Step = 30;
         }
 
+
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             trackBar1_Scroll(null,null);
@@ -282,9 +302,9 @@ namespace DesktopIconMover
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
+            
 
-            if (e.KeyCode == Keys.Escape)
-                chkLock.Checked = false;
+        
 
 
         }
@@ -293,16 +313,7 @@ namespace DesktopIconMover
         {
 
 
-            if (e.KeyCode == Keys.Up)
-                btnUp(null, null);
-            else if (e.KeyCode == Keys.Down)
-                btnDown(null, null);
-
-            else if (e.KeyCode == Keys.Left)
-                btnLeft(null, null);
-
-            if (e.KeyCode == Keys.Right)
-                btnRight(null, null);
+  
 
 
 
@@ -311,7 +322,6 @@ namespace DesktopIconMover
 
         private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
         {
-
 
         }
 
@@ -359,6 +369,36 @@ namespace DesktopIconMover
             this.Hide();
             new MarioForm().ShowDialog();
             this.Show();
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+
+            if (keyData == Keys.Escape)
+                chkLock.Checked = false;
+
+
+            if (keyData == Keys.Up)
+                btnUp(null, null);
+            else if (keyData == Keys.Down)
+                btnDown(null, null);
+
+            else if (keyData == Keys.Left)
+                btnLeft(null, null);
+
+            if (keyData == Keys.Right)
+                btnRight(null, null);
+
+            panelArrowKeys.Focus();
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+
+
+        private void MainForm_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+
+   
         }
     }
 }
