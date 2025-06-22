@@ -56,6 +56,7 @@
             this.txtDesktopPath = new System.Windows.Forms.TextBox();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.chkHardRefresh = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
             this.panelArrows.SuspendLayout();
@@ -411,11 +412,21 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // chkHardRefresh
+            // 
+            this.chkHardRefresh.Location = new System.Drawing.Point(197, 187);
+            this.chkHardRefresh.Name = "chkHardRefresh";
+            this.chkHardRefresh.Size = new System.Drawing.Size(156, 22);
+            this.chkHardRefresh.TabIndex = 10000022;
+            this.chkHardRefresh.Text = "ریفرش هارد";
+            this.chkHardRefresh.UseVisualStyleBackColor = true;
+            // 
             // MarioForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(846, 221);
+            this.Controls.Add(this.chkHardRefresh);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.txtDesktopPath);
             this.Controls.Add(this.groupBox1);
@@ -481,5 +492,6 @@
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.CheckBox chkHardRefresh;
     }
 }

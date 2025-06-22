@@ -199,7 +199,11 @@ namespace DesktopIconMover
                     Properties.Resources.up.Save(PacmanFile);
                 ResetArrowButtonColor();
                 ButtonUp.BackColor = Color.Gold;
-                DesktopRefresher.RefreshDesktop();
+                if (chkHardRefresh.Checked)
+                    DesktopRefresher.HardRefresh();
+                else
+                    DesktopRefresher.RefreshDesktop();
+
 
             }
 
@@ -218,7 +222,11 @@ namespace DesktopIconMover
                     Properties.Resources.down.Save(PacmanFile);
                 ResetArrowButtonColor();
                 ButtonDown.BackColor = Color.Gold;
-                DesktopRefresher.RefreshDesktop();
+                if (chkHardRefresh.Checked)
+                    DesktopRefresher.HardRefresh();
+                else
+                    DesktopRefresher.RefreshDesktop();
+
 
             }
 
@@ -247,7 +255,10 @@ namespace DesktopIconMover
                     Properties.Resources.left.Save(PacmanFile);
                 ResetArrowButtonColor();
                 ButtonLeft.BackColor = Color.Gold;
-                DesktopRefresher.RefreshDesktop();
+                if (chkHardRefresh.Checked)
+                    DesktopRefresher.HardRefresh();
+                else
+                    DesktopRefresher.RefreshDesktop();
 
             }
 
@@ -282,7 +293,10 @@ namespace DesktopIconMover
                 ResetArrowButtonColor();
                 ButtonRight.BackColor = Color.Gold;
                 ButtonRight.Focus();
-                DesktopRefresher.RefreshDesktop();
+                if (chkHardRefresh.Checked)
+                    DesktopRefresher.HardRefresh();
+                else
+                    DesktopRefresher.RefreshDesktop();
 
             }
 
@@ -313,7 +327,7 @@ namespace DesktopIconMover
             if (timer1.Enabled) Step = 5;
             else
                 Step = 30;
-            button3_Click(sender, e);
+
         }
 
 
@@ -452,8 +466,11 @@ namespace DesktopIconMover
 
             image.Save(Path.Combine(DesktopPath, randomName));
 
+            if (chkHardRefresh.Checked)
+                DesktopRefresher.HardRefresh();
+            else
+                DesktopRefresher.RefreshDesktop();
 
-            DesktopRefresher.RefreshDesktop();
         }
 
         private void button3_Click(object sender, EventArgs e)

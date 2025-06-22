@@ -55,6 +55,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.chkPortal = new System.Windows.Forms.CheckBox();
+            this.chkHardRefresh = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
             this.panelArrowKeys.SuspendLayout();
@@ -292,7 +293,7 @@
             this.button1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Lucida Console", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(404, 232);
+            this.button1.Location = new System.Drawing.Point(91, 234);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(216, 27);
             this.button1.TabIndex = 10000018;
@@ -366,12 +367,22 @@
             this.chkPortal.Text = "پرتال گوشه ها";
             this.chkPortal.UseVisualStyleBackColor = true;
             // 
+            // chkHardRefresh
+            // 
+            this.chkHardRefresh.Location = new System.Drawing.Point(467, 239);
+            this.chkHardRefresh.Name = "chkHardRefresh";
+            this.chkHardRefresh.Size = new System.Drawing.Size(156, 22);
+            this.chkHardRefresh.TabIndex = 10000021;
+            this.chkHardRefresh.Text = "ریفرش هارد";
+            this.chkHardRefresh.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(632, 299);
+            this.Controls.Add(this.chkHardRefresh);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
@@ -442,5 +453,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.CheckBox chkPortal;
+        private System.Windows.Forms.CheckBox chkHardRefresh;
     }
 }

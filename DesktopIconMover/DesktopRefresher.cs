@@ -18,11 +18,17 @@ public static class DesktopRefresher
 
     public static void RefreshDesktop()
     {
-        // مرحله اول: نوتیفای به Explorer
-       // SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_IDLIST, IntPtr.Zero, IntPtr.Zero);
 
         // مرحله دوم: ارسال کلید F5
         SendF5Key();
+
+    }
+
+    public static void HardRefresh()
+    {
+        // مرحله اول: نوتیفای به Explorer
+        SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_IDLIST, IntPtr.Zero, IntPtr.Zero);
+
 
     }
 

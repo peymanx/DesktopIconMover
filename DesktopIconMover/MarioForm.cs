@@ -298,7 +298,10 @@ namespace DesktopIconMover
                 if (chkMario.Checked)
                 {
                     Properties.Resources.mario_left.Save(MarioPath);
-                    DesktopRefresher.RefreshDesktop();
+                    if (chkHardRefresh.Checked)
+                        DesktopRefresher.HardRefresh();
+                    else
+                        DesktopRefresher.RefreshDesktop();
                 }
 
                 ResetArrowButtonColor();
@@ -321,7 +324,11 @@ namespace DesktopIconMover
                 if (chkMario.Checked)
                 {
                     Properties.Resources.mario_right.Save(MarioPath);
-                    DesktopRefresher.RefreshDesktop();
+                    if (chkHardRefresh.Checked)
+                        DesktopRefresher.HardRefresh();
+                    else
+                        DesktopRefresher.RefreshDesktop();
+
                 }
 
                 ResetArrowButtonColor();
@@ -384,7 +391,10 @@ namespace DesktopIconMover
 
                 timerJump.Enabled = true;
 
-                DesktopRefresher.RefreshDesktop();
+                if (chkHardRefresh.Checked)
+                    DesktopRefresher.HardRefresh();
+                else
+                    DesktopRefresher.RefreshDesktop();
 
             }
 
@@ -433,7 +443,10 @@ namespace DesktopIconMover
 
 
 
-                DesktopRefresher.RefreshDesktop();
+                if (chkHardRefresh.Checked)
+                    DesktopRefresher.HardRefresh();
+                else
+                    DesktopRefresher.RefreshDesktop();
             }
 
 
@@ -460,8 +473,10 @@ namespace DesktopIconMover
         {
             var randomName = $"goomba_{new Random().Next(1111, 9999)}.png";
             Properties.Resources.goomba.Save(Path.Combine(txtDesktopPath.Text, randomName));
-
-            DesktopRefresher.RefreshDesktop();
+            if (chkHardRefresh.Checked)
+                DesktopRefresher.HardRefresh();
+            else
+                DesktopRefresher.RefreshDesktop();
         }
 
         private void button4_Click_1(object sender, EventArgs e)
@@ -495,8 +510,10 @@ namespace DesktopIconMover
             else
                 Properties.Resources.koopa_green.Save(Path.Combine(txtDesktopPath.Text, randomName));
 
-
-            DesktopRefresher.RefreshDesktop();
+            if (chkHardRefresh.Checked)
+                DesktopRefresher.HardRefresh();
+            else
+                DesktopRefresher.RefreshDesktop();
 
         }
     }
