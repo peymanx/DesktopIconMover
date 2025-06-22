@@ -1,15 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.IO;
 
 
@@ -398,7 +391,7 @@ namespace DesktopIconMover
         int ghost = 0;
         private void button2_Click_1(object sender, EventArgs e)
         {
-            var randomName = $"ghost {new Random().Next(111111111, 999999999)}.png";
+            var randomName = $"ghost {new Random().Next(1111, 9999)}.png";
             var image = Properties.Resources.ghost_blue;
 
 
