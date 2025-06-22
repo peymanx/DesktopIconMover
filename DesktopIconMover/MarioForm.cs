@@ -379,7 +379,7 @@ namespace DesktopIconMover
                     else if (Dir == Direction.Left)
                         Properties.Resources.mario_jump_left.Save(MarioPath);
                     else
-                        Properties.Resources.mario_jump_right.Save(MarioPath    );
+                        Properties.Resources.mario_jump_right.Save(MarioPath);
                 }
 
                 timerJump.Enabled = true;
@@ -446,20 +446,20 @@ namespace DesktopIconMover
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Wallpaper.Set( Properties.Resources.supermario_wallpaper01, Wallpaper.Style.Stretched );
+            Wallpaper.Set(Properties.Resources.supermario_wallpaper01, Wallpaper.Style.Stretched);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             var open = new FolderBrowserDialog();
-            if(open.ShowDialog() == DialogResult.OK)
+            if (open.ShowDialog() == DialogResult.OK)
                 txtDesktopPath.Text = open.SelectedPath;
         }
-        
+
         private void button3_Click(object sender, EventArgs e)
         {
-            var randomName = $"goomba {new Random().Next(111111111, 999999999)}.png";
-            Properties.Resources.goomba.Save(Path.Combine(txtDesktopPath.Text,randomName));
+            var randomName = $"goomba_{new Random().Next(1111, 9999)}.png";
+            Properties.Resources.goomba.Save(Path.Combine(txtDesktopPath.Text, randomName));
 
             DesktopRefresher.RefreshDesktop();
         }
@@ -484,6 +484,20 @@ namespace DesktopIconMover
                 button4.Text = "<<";
 
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var rand = new Random().Next(1111, 9999);
+            var randomName = $"koopa_{rand}.png";
+            if (rand % 2 == 0)
+                Properties.Resources.koopa_red.Save(Path.Combine(txtDesktopPath.Text, randomName));
+            else
+                Properties.Resources.koopa_green.Save(Path.Combine(txtDesktopPath.Text, randomName));
+
+
+            DesktopRefresher.RefreshDesktop();
+
         }
     }
 }
