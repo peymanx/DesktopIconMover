@@ -8,7 +8,7 @@ public struct POINT
     public int Y;
 }
 
-public class MyDesktopIconMover
+public class WindowsAPI
 {
     const int LVM_GETITEMPOSITION = 0x1010;
     const int LVM_SETITEMPOSITION = 0x100F;
@@ -18,6 +18,14 @@ public class MyDesktopIconMover
 
     [DllImport("user32.dll", SetLastError = true)]
     public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+
+
+    [DllImport("user32.dll")]
+    static extern int GetSystemMetrics(int nIndex);
+
+    const int SM_CXSCREEN = 0;
+    const int SM_CYSCREEN = 1;
+
 
     [DllImport("user32.dll", SetLastError = true)]
     public static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
@@ -38,6 +46,9 @@ public class MyDesktopIconMover
         }
         return FindWindowEx(desktopWnd, IntPtr.Zero, "SysListView32", "FolderView");
     }
+
+
+
 
     public static void MoveIconRelative(int iconIndex, int dx, int dy)
     {

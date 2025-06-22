@@ -105,7 +105,7 @@ namespace DesktopIconMover
 
             cmbIconList.Items.AddRange(iconNames.ToArray());
 
-            cmbIconList.SelectedIndex = iconNames.Count-1;
+            cmbIconList.SelectedIndex = iconNames.Count - 1;
         }
         public static void MoveIconRelative(int iconIndex, int dx, int dy)
         {
@@ -233,7 +233,7 @@ namespace DesktopIconMover
             ButtonLeft.BackColor = Color.WhiteSmoke;
             ButtonUp.BackColor = Color.WhiteSmoke;
             ButtonDown.BackColor = Color.WhiteSmoke;
-             panelArrowKeys.Focus();
+            panelArrowKeys.Focus();
         }
 
         private void btnLeft(object sender, EventArgs e)
@@ -251,12 +251,26 @@ namespace DesktopIconMover
 
             }
 
+            if (chkPortal.Checked)
+            {
+                var space = DesktopIconMetrics.GetDesktopIconSpacing();
+                if (space.HasValue)
+                {
+                    if (numX.Value < -space.Value.Width)
+                    {
+                        var w = DisplayResolutionInfo.GetPhysicalScreenResolution().Width;
+                        numX.Value = w;
+                    }
+                }
+
+            }
+
 
         }
 
         private void btnRight(object sender, EventArgs e)
         {
-            numX.Value += Step ;
+            numX.Value += Step;
 
             MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
 
@@ -268,13 +282,26 @@ namespace DesktopIconMover
                 ResetArrowButtonColor();
                 ButtonRight.BackColor = Color.Gold;
                 ButtonRight.Focus();
-
                 DesktopRefresher.RefreshDesktop();
-
 
             }
 
+            if (chkPortal.Checked)
+            {
 
+                var space = DesktopIconMetrics.GetDesktopIconSpacing();
+                if (space.HasValue)
+                {
+                    var w = DisplayResolutionInfo.GetPhysicalScreenResolution().Width;
+
+                    if (numX.Value > w + space.Value.Width)
+                    {
+                        numX.Value = 0 - space.Value.Width / 2;
+                    }
+
+                }
+
+            }
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -285,7 +312,7 @@ namespace DesktopIconMover
 
             if (timer1.Enabled) Step = 5;
             else
-                 Step = 30;
+                Step = 30;
             button3_Click(sender, e);
         }
 
@@ -293,7 +320,7 @@ namespace DesktopIconMover
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            trackBar1_Scroll(null,null);
+            trackBar1_Scroll(null, null);
             DesktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             PacmanFile = Path.Combine(DesktopPath, "pacman.png");
 
@@ -302,9 +329,9 @@ namespace DesktopIconMover
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
-            
 
-        
+
+
 
 
         }
@@ -313,7 +340,7 @@ namespace DesktopIconMover
         {
 
 
-  
+
 
 
 
@@ -359,8 +386,8 @@ namespace DesktopIconMover
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             timer1.Interval = trackBar1.Value * 2;
-            lblSpeed.Text = (trackBar1.Maximum - trackBar1.Value +1).ToString();
-            if(timer1.Enabled) timer1_Tick(sender, e);
+            lblSpeed.Text = (trackBar1.Maximum - trackBar1.Value + 1).ToString();
+            if (timer1.Enabled) timer1_Tick(sender, e);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -398,7 +425,7 @@ namespace DesktopIconMover
         private void MainForm_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
 
-   
+
         }
         int ghost = 0;
         private void button2_Click_1(object sender, EventArgs e)
@@ -406,7 +433,7 @@ namespace DesktopIconMover
             var randomName = $"ghost {new Random().Next(111111111, 999999999)}.png";
             var image = Properties.Resources.ghost_blue;
 
- 
+
             ghost = ++ghost % 3;
             switch (ghost)
             {
@@ -433,8 +460,8 @@ namespace DesktopIconMover
         {
             if (button3.Text == "<<")
             {
-                this.Width = 592;
-                this.Height = 326;
+                this.Width = 650;
+                this.Height = 346;
                 button3.Text = ">>";
             }
             else

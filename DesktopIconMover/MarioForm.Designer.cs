@@ -41,6 +41,7 @@
             this.timerJump = new System.Windows.Forms.Timer(this.components);
             this.button2 = new System.Windows.Forms.Button();
             this.panelArrows = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.numGround = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.numJump = new System.Windows.Forms.NumericUpDown();
@@ -54,7 +55,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.txtDesktopPath = new System.Windows.Forms.TextBox();
             this.btnBrowse = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
             this.panelArrows.SuspendLayout();
@@ -207,7 +208,7 @@
             // 
             this.button2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button2.Font = new System.Drawing.Font("Lucida Console", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(408, 170);
+            this.button2.Location = new System.Drawing.Point(380, 152);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(64, 36);
             this.button2.TabIndex = 10000006;
@@ -228,6 +229,19 @@
             this.panelArrows.Name = "panelArrows";
             this.panelArrows.Size = new System.Drawing.Size(341, 92);
             this.panelArrows.TabIndex = 10000007;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button4.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(282, 4);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(47, 23);
+            this.button4.TabIndex = 10000021;
+            this.button4.TabStop = false;
+            this.button4.Text = ">>";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click_2);
             // 
             // numGround
             // 
@@ -309,9 +323,9 @@
             // 
             this.chkMario.Checked = true;
             this.chkMario.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkMario.Location = new System.Drawing.Point(72, 31);
+            this.chkMario.Location = new System.Drawing.Point(151, 26);
             this.chkMario.Name = "chkMario";
-            this.chkMario.Size = new System.Drawing.Size(225, 23);
+            this.chkMario.Size = new System.Drawing.Size(168, 23);
             this.chkMario.TabIndex = 10000014;
             this.chkMario.Text = "ایجاد پیوسته تصویر ماریو";
             this.chkMario.UseVisualStyleBackColor = true;
@@ -328,23 +342,24 @@
             // 
             this.button1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(166, 58);
+            this.button1.Location = new System.Drawing.Point(166, 62);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 33);
+            this.button1.Size = new System.Drawing.Size(152, 33);
             this.button1.TabIndex = 10000016;
             this.button1.TabStop = false;
-            this.button1.Text = "تصویر زمینه";
+            this.button1.Text = "تنظیم تصویر زمینه";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.chkMario);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Location = new System.Drawing.Point(408, 45);
+            this.groupBox1.Location = new System.Drawing.Point(380, 34);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(303, 119);
+            this.groupBox1.Size = new System.Drawing.Size(331, 112);
             this.groupBox1.TabIndex = 10000017;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "درون ریزی بازی";
@@ -353,7 +368,7 @@
             // 
             this.button3.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(30, 58);
+            this.button3.Location = new System.Drawing.Point(15, 20);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(130, 33);
             this.button3.TabIndex = 10000017;
@@ -365,16 +380,16 @@
             // txtDesktopPath
             // 
             this.txtDesktopPath.Enabled = false;
-            this.txtDesktopPath.Location = new System.Drawing.Point(574, 10);
+            this.txtDesktopPath.Location = new System.Drawing.Point(546, 10);
             this.txtDesktopPath.Name = "txtDesktopPath";
-            this.txtDesktopPath.Size = new System.Drawing.Size(260, 23);
+            this.txtDesktopPath.Size = new System.Drawing.Size(288, 23);
             this.txtDesktopPath.TabIndex = 10000018;
             // 
             // btnBrowse
             // 
             this.btnBrowse.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnBrowse.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBrowse.Location = new System.Drawing.Point(408, 8);
+            this.btnBrowse.Location = new System.Drawing.Point(380, 0);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(160, 36);
             this.btnBrowse.TabIndex = 10000019;
@@ -383,24 +398,23 @@
             this.btnBrowse.UseVisualStyleBackColor = false;
             this.btnBrowse.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button4
+            // button5
             // 
-            this.button4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button4.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(282, 4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(47, 23);
-            this.button4.TabIndex = 10000021;
-            this.button4.TabStop = false;
-            this.button4.Text = ">>";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click_2);
+            this.button5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(15, 61);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(130, 33);
+            this.button5.TabIndex = 10000018;
+            this.button5.TabStop = false;
+            this.button5.Text = "ساخت لاکپشت";
+            this.button5.UseVisualStyleBackColor = false;
             // 
             // MarioForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 336);
+            this.ClientSize = new System.Drawing.Size(846, 221);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.txtDesktopPath);
             this.Controls.Add(this.groupBox1);
@@ -465,5 +479,6 @@
         private System.Windows.Forms.TextBox txtDesktopPath;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }

@@ -466,15 +466,15 @@ namespace DesktopIconMover
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            MyDesktopIconMover.MoveIconRelative(0, 100, 0);
+            WindowsAPI.MoveIconRelative(0, 100, 0);
         }
 
         private void button4_Click_2(object sender, EventArgs e)
         {
             if (button4.Text == "<<")
             {
-                this.Width = 861;
-                this.Height = 267;
+                this.Width = 864;
+                this.Height = 268;
                 button4.Text = ">>";
             }
             else

@@ -51,9 +51,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.chkPortal = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
             this.panelArrowKeys.SuspendLayout();
@@ -85,7 +86,7 @@
             // numY
             // 
             this.numY.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numY.Location = new System.Drawing.Point(399, 176);
+            this.numY.Location = new System.Drawing.Point(462, 194);
             this.numY.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -109,7 +110,7 @@
             // numX
             // 
             this.numX.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numX.Location = new System.Drawing.Point(481, 176);
+            this.numX.Location = new System.Drawing.Point(544, 194);
             this.numX.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -132,7 +133,7 @@
             // 
             // ButtonReload
             // 
-            this.ButtonReload.Location = new System.Drawing.Point(343, 158);
+            this.ButtonReload.Location = new System.Drawing.Point(406, 176);
             this.ButtonReload.Name = "ButtonReload";
             this.ButtonReload.Size = new System.Drawing.Size(50, 50);
             this.ButtonReload.TabIndex = 6;
@@ -225,10 +226,10 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 258);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 273);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.statusStrip1.Size = new System.Drawing.Size(569, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(632, 26);
             this.statusStrip1.TabIndex = 10000001;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -240,7 +241,7 @@
             // 
             // chkPacman
             // 
-            this.chkPacman.Location = new System.Drawing.Point(18, 38);
+            this.chkPacman.Location = new System.Drawing.Point(92, 32);
             this.chkPacman.Name = "chkPacman";
             this.chkPacman.Size = new System.Drawing.Size(176, 20);
             this.chkPacman.TabIndex = 10000002;
@@ -272,7 +273,7 @@
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(393, 154);
+            this.label5.Location = new System.Drawing.Point(456, 172);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 18);
             this.label5.TabIndex = 10000017;
@@ -280,7 +281,7 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(475, 155);
+            this.label2.Location = new System.Drawing.Point(538, 173);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 18);
             this.label2.TabIndex = 10000016;
@@ -291,7 +292,7 @@
             this.button1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Lucida Console", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(341, 214);
+            this.button1.Location = new System.Drawing.Point(404, 232);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(216, 27);
             this.button1.TabIndex = 10000018;
@@ -302,22 +303,37 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkPortal);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.chkPacman);
             this.groupBox1.Location = new System.Drawing.Point(343, 15);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(214, 130);
+            this.groupBox1.Size = new System.Drawing.Size(280, 155);
             this.groupBox1.TabIndex = 10000019;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "درون ربزی پک-من";
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(78, 85);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(190, 27);
+            this.button4.TabIndex = 10000021;
+            this.button4.TabStop = false;
+            this.button4.Text = "تنظیم تصویر";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(18, 64);
+            this.button2.Location = new System.Drawing.Point(77, 116);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(190, 27);
             this.button2.TabIndex = 10000020;
@@ -339,26 +355,23 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // chkPortal
             // 
-            this.button4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(18, 97);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(190, 27);
-            this.button4.TabIndex = 10000021;
-            this.button4.TabStop = false;
-            this.button4.Text = "تنظیم تصویر";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.chkPortal.Checked = true;
+            this.chkPortal.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPortal.Location = new System.Drawing.Point(91, 57);
+            this.chkPortal.Name = "chkPortal";
+            this.chkPortal.Size = new System.Drawing.Size(176, 20);
+            this.chkPortal.TabIndex = 10000022;
+            this.chkPortal.Text = "پرتال گوشه ها";
+            this.chkPortal.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(569, 284);
+            this.ClientSize = new System.Drawing.Size(632, 299);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
@@ -428,5 +441,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.CheckBox chkPortal;
     }
 }
