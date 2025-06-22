@@ -35,64 +35,6 @@ namespace DesktopIconMover
 
         public Direction Dir { get; set; } = Direction.Null;
 
-        // توابع WinAPI
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern bool EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam);
-
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        static extern int SendMessage(IntPtr hWnd, int msg, int wParam, IntPtr lParam);
-
-
-
-        const int LVM_GETITEMPOSITION2 = 0x1010;
-        const int LVM_SETITEMPOSITION2 = 0x100F;
-
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        public static extern IntPtr SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern int SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
-
-        delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
-
-        // ثابت‌ها
-        const uint LVM_GETITEMCOUNT = 0x1000 + 4;
-        const uint LVM_SETITEMPOSITION = 0x1000 + 15;
-        private const uint LVM_GETITEMPOSITION = 0x1000 + 16;
-        private const uint LVM_GETITEMTEXT = 0x1000 + 45;
-        const int WM_COMMAND = 0x111;
-        static IntPtr GetDesktopListView()
-        {
-            IntPtr progman = FindWindow("Progman", null);
-            SendMessage(progman, 0x052C, IntPtr.Zero, IntPtr.Zero);
-
-            IntPtr listView = IntPtr.Zero;
-
-            EnumWindows((topHandle, lParam) =>
-            {
-                IntPtr shellView = FindWindowEx(topHandle, IntPtr.Zero, "SHELLDLL_DefView", null);
-                if (shellView != IntPtr.Zero)
-                {
-                    IntPtr sysListView = FindWindowEx(shellView, IntPtr.Zero, "SysListView32", "FolderView");
-                    if (sysListView != IntPtr.Zero)
-                    {
-                        listView = sysListView;
-                        return false; // Stop
-                    }
-                }
-                return true;
-            }, IntPtr.Zero);
-
-            return listView;
-        }
-
-
 
 
 
@@ -100,10 +42,10 @@ namespace DesktopIconMover
         {
             cmbIconList.Items.Clear();
 
-            IntPtr hwndListView = GetDesktopListView();
+            IntPtr hwndListView = WindowsAPI.GetDesktopListView();
             if (hwndListView == IntPtr.Zero) return;
 
-            int count = SendMessage(hwndListView, LVM_GETITEMCOUNT, IntPtr.Zero, IntPtr.Zero);
+            int count = WindowsAPI.SendMessage(hwndListView, WindowsAPI.LVM_GETITEMCOUNT, 0, IntPtr.Zero);
             StringBuilder itemText = new StringBuilder(256);
 
             for (int i = 0; i < count; i++)
@@ -120,10 +62,10 @@ namespace DesktopIconMover
         }
         public static void MoveIconRelative(int iconIndex, int dx, int dy)
         {
-            IntPtr hwndListView = GetDesktopListView();
+            IntPtr hwndListView = WindowsAPI.GetDesktopListView();
             if (hwndListView == IntPtr.Zero) return;
 
-            int posData = SendMessage(hwndListView, LVM_GETITEMPOSITION, (IntPtr)iconIndex, IntPtr.Zero);
+            int posData = WindowsAPI.SendMessage(hwndListView, WindowsAPI.LVM_GETITEMPOSITION, iconIndex, IntPtr.Zero);
 
             int currentX = posData & 0xFFFF;
             int currentY = (posData >> 16) & 0xFFFF;
@@ -132,7 +74,7 @@ namespace DesktopIconMover
             int newY = currentY + dy;
 
             IntPtr lParam = (IntPtr)((newY << 16) | (newX & 0xFFFF));
-            SendMessage(hwndListView, LVM_SETITEMPOSITION, (IntPtr)iconIndex, lParam);
+            WindowsAPI.SendMessage(hwndListView, WindowsAPI.LVM_SETITEMPOSITION, (IntPtr)iconIndex, lParam);
 
             Console.WriteLine($"آیکون {iconIndex} به مکان جدید ({newX}, {newY}) منتقل شد.");
         }
@@ -144,88 +86,10 @@ namespace DesktopIconMover
             public int Y;
         }
 
-        public static void MoveIconRelative2(int iconIndex, int dx, int dy)
-        {
-            IntPtr hwndListView = GetDesktopListView();
-            if (hwndListView == IntPtr.Zero) return;
-
-            // حافظه موقت برای دریافت مختصات
-            IntPtr pointPtr = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(POINT)));
-            try
-            {
-                bool success = SendMessage(hwndListView, LVM_GETITEMPOSITION2, (IntPtr)iconIndex, pointPtr) != IntPtr.Zero;
-                if (!success)
-                {
-                    Console.WriteLine("موقعیت فعلی آیکون خوانده نشد.");
-                    return;
-                }
-
-                POINT currentPos = Marshal.PtrToStructure<POINT>(pointPtr);
-                int newX = currentPos.X + dx;
-                int newY = currentPos.Y + dy;
-
-                IntPtr lParam = (IntPtr)((newY << 16) | (newX & 0xFFFF));
-                SendMessage(hwndListView, LVM_SETITEMPOSITION, (IntPtr)iconIndex, lParam);
-
-                Console.WriteLine($"آیکون {iconIndex} به مکان جدید ({newX}, {newY}) منتقل شد.");
-            }
-            finally
-            {
-                Marshal.FreeHGlobal(pointPtr);
-            }
-        }
-
-        private void BtnMoveIcon_Click(object sender, EventArgs e)
-        {
-            if (cmbIconList.SelectedIndex == -1) return;
-
-            int selectedIndex = cmbIconList.SelectedIndex;
-            IntPtr hwndListView = GetDesktopListView();
-            if (hwndListView == IntPtr.Zero) return;
-
-            IntPtr lParam = (IntPtr)(((int)numY.Value << 16) | ((int)numX.Value & 0xFFFF));
-            SendMessage(hwndListView, LVM_SETITEMPOSITION, (IntPtr)selectedIndex, lParam);
-
-
-        }
 
 
 
 
-
-
-        private void btnUp(object sender, EventArgs e)
-        {
-            numY.Value -= Step;
-            MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
-
-            if (Dir != Direction.Up)
-            {
-                Dir = Direction.Up;
-                ResetArrowButtonColor();
-                ButtonUp.BackColor = Color.Gold;
-            }
-
-            panelArrows.Focus();
-
-        }
-
-        private void btnDown(object sender, EventArgs e)
-        {
-            numY.Value += Step;
-
-            MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
-            if (Dir != Direction.Down)
-            {
-                Dir = Direction.Down;
-                ResetArrowButtonColor();
-                ButtonDown.BackColor = Color.Gold;
-            }
-
-
-
-
-        }
 
         private void ResetArrowButtonColor()
         {
@@ -239,14 +103,6 @@ namespace DesktopIconMover
 
 
 
-
-
-
-
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-
-        }
 
         private void MarioForm_KeyUp(object sender, KeyEventArgs e)
         {
