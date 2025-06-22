@@ -23,58 +23,12 @@ namespace DesktopIconMover
         public enum Direction { Up, Left, Right, Down, Null };
 
         public Direction Dir { get; set; } = Direction.Null;
-        // توابع WinAPI
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern bool EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam);
-
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        static extern int SendMessage(IntPtr hWnd, int msg, int wParam, IntPtr lParam);
 
 
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern int SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
 
-        delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
-
-        // ثابت‌ها
-        const uint LVM_GETITEMCOUNT = 0x1000 + 4;
-        const uint LVM_SETITEMPOSITION = 0x1000 + 15;
-        private const uint LVM_GETITEMPOSITION = 0x1000 + 16;
-        private const uint LVM_GETITEMTEXT = 0x1000 + 45;
-        const int WM_COMMAND = 0x111;
         private string PacmanFile;
         private string DesktopPath;
 
-        static IntPtr GetDesktopListView()
-        {
-            IntPtr progman = FindWindow("Progman", null);
-            SendMessage(progman, 0x052C, IntPtr.Zero, IntPtr.Zero);
-
-            IntPtr listView = IntPtr.Zero;
-
-            EnumWindows((topHandle, lParam) =>
-            {
-                IntPtr shellView = FindWindowEx(topHandle, IntPtr.Zero, "SHELLDLL_DefView", null);
-                if (shellView != IntPtr.Zero)
-                {
-                    IntPtr sysListView = FindWindowEx(shellView, IntPtr.Zero, "SysListView32", "FolderView");
-                    if (sysListView != IntPtr.Zero)
-                    {
-                        listView = sysListView;
-                        return false; // Stop
-                    }
-                }
-                return true;
-            }, IntPtr.Zero);
-
-            return listView;
-        }
         public MainForm()
         {
             InitializeComponent();
@@ -83,16 +37,14 @@ namespace DesktopIconMover
         }
 
 
-
-
         private void LoadDesktopIcons()
         {
             cmbIconList.Items.Clear();
 
-            IntPtr hwndListView = GetDesktopListView();
+            IntPtr hwndListView = WindowsAPI.GetDesktopListView();
             if (hwndListView == IntPtr.Zero) return;
 
-            int count = SendMessage(hwndListView, LVM_GETITEMCOUNT, IntPtr.Zero, IntPtr.Zero);
+            int count = WindowsAPI.SendMessage(hwndListView, WindowsAPI.LVM_GETITEMCOUNT, 0, IntPtr.Zero);
             StringBuilder itemText = new StringBuilder(256);
 
             for (int i = 0; i < count; i++)
@@ -107,12 +59,14 @@ namespace DesktopIconMover
 
             cmbIconList.SelectedIndex = iconNames.Count - 1;
         }
+
+
         public static void MoveIconRelative(int iconIndex, int dx, int dy)
         {
-            IntPtr hwndListView = GetDesktopListView();
+            IntPtr hwndListView = WindowsAPI.GetDesktopListView();
             if (hwndListView == IntPtr.Zero) return;
 
-            int posData = SendMessage(hwndListView, LVM_GETITEMPOSITION, (IntPtr)iconIndex, IntPtr.Zero);
+            int posData = WindowsAPI.SendMessage(hwndListView, WindowsAPI.LVM_GETITEMPOSITION, iconIndex, IntPtr.Zero);
 
             int currentX = posData & 0xFFFF;
             int currentY = (posData >> 16) & 0xFFFF;
@@ -121,7 +75,7 @@ namespace DesktopIconMover
             int newY = currentY + dy;
 
             IntPtr lParam = (IntPtr)((newY << 16) | (newX & 0xFFFF));
-            SendMessage(hwndListView, LVM_SETITEMPOSITION, (IntPtr)iconIndex, lParam);
+            WindowsAPI.SendMessage(hwndListView, WindowsAPI.LVM_SETITEMPOSITION, iconIndex, lParam);
 
             Console.WriteLine($"آیکون {iconIndex} به مکان جدید ({newX}, {newY}) منتقل شد.");
         }
@@ -132,11 +86,11 @@ namespace DesktopIconMover
             if (cmbIconList.SelectedIndex == -1) return;
 
             int selectedIndex = cmbIconList.SelectedIndex;
-            IntPtr hwndListView = GetDesktopListView();
+            IntPtr hwndListView = WindowsAPI.GetDesktopListView();
             if (hwndListView == IntPtr.Zero) return;
 
             IntPtr lParam = (IntPtr)(((int)numY.Value << 16) | ((int)numX.Value & 0xFFFF));
-            SendMessage(hwndListView, LVM_SETITEMPOSITION, (IntPtr)selectedIndex, lParam);
+            WindowsAPI.SendMessage(hwndListView, WindowsAPI.LVM_SETITEMPOSITION, selectedIndex, lParam);
 
 
         }

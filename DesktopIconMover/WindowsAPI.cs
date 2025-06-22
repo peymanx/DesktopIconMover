@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Text;
+using System.Windows.Forms;
 
 [StructLayout(LayoutKind.Sequential)]
 public struct POINT
@@ -10,14 +12,42 @@ public struct POINT
 
 public class WindowsAPI
 {
-    const int LVM_GETITEMPOSITION = 0x1010;
-    const int LVM_SETITEMPOSITION = 0x100F;
 
+
+
+    // توابع WinAPI
+    [DllImport("user32.dll", SetLastError = true)]
+    static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+
+    [DllImport("user32.dll", SetLastError = true)]
+    static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
+
+    [DllImport("user32.dll", SetLastError = true)]
+    static extern bool EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam);
+
+    [DllImport("user32.dll", CharSet = CharSet.Auto)]
+    public static extern int SendMessage(IntPtr hWnd, int msg, int wParam, IntPtr lParam);
+
+
+
+    delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
     [DllImport("user32.dll", CharSet = CharSet.Auto)]
     public static extern IntPtr SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
 
     [DllImport("user32.dll", SetLastError = true)]
-    public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+    static extern int SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
+
+
+
+    // ثابت‌ها
+    public const int LVM_GETITEMCOUNT = 0x1000 + 4;
+    public const int LVM_SETITEMPOSITION = 0x1000 + 15;
+    public const int LVM_GETITEMPOSITION = 0x1000 + 16;
+    public const int LVM_GETITEMTEXT = 0x1000 + 45;
+    public const int WM_COMMAND = 0x111;
+
+
+
 
 
     [DllImport("user32.dll")]
@@ -27,8 +57,7 @@ public class WindowsAPI
     const int SM_CYSCREEN = 1;
 
 
-    [DllImport("user32.dll", SetLastError = true)]
-    public static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
+
 
     public static IntPtr GetDesktopListView()
     {
@@ -63,7 +92,7 @@ public class WindowsAPI
         IntPtr pointPtr = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(POINT)));
         try
         {
-            bool success = SendMessage(hwndListView, LVM_GETITEMPOSITION, (IntPtr)iconIndex, pointPtr) != IntPtr.Zero;
+            bool success = SendMessage(hwndListView, LVM_GETITEMPOSITION, iconIndex, pointPtr) != 0;
             if (!success)
             {
                 Console.WriteLine("موقعیت فعلی آیکون قابل دریافت نیست.");
@@ -77,7 +106,7 @@ public class WindowsAPI
             IntPtr lParam = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(POINT)));
             Marshal.StructureToPtr(newPoint, lParam, false);
 
-            SendMessage(hwndListView, LVM_SETITEMPOSITION, (IntPtr)iconIndex, lParam);
+            SendMessage(hwndListView, LVM_SETITEMPOSITION, iconIndex, lParam);
 
             Console.WriteLine($"آیکون {iconIndex} منتقل شد به ({newPoint.X}, {newPoint.Y})");
 
