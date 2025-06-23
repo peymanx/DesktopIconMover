@@ -166,4 +166,25 @@
   <data name="koopa_red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\koopa_red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="eraser" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eraser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pencil_black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pencil_black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pencil_blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pencil_blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pencil_gold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pencil_gold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pencil_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pencil_green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pencil_red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pencil_red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pencil_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pencil_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

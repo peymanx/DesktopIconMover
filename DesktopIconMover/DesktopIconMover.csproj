@@ -51,7 +51,14 @@
   <ItemGroup>
     <Compile Include="DesktopIconMetrics.cs" />
     <Compile Include="DesktopRefresher.cs" />
+    <Compile Include="DesktopWallpaperHelper.cs" />
     <Compile Include="DisplayResolutionInfo.cs" />
+    <Compile Include="DrawForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DrawForm.Designer.cs">
+      <DependentUpon>DrawForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,10 +71,16 @@
     <Compile Include="MarioForm.Designer.cs">
       <DependentUpon>MarioForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\FileName.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="WindowsAPI.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Wallpaper.cs" />
+    <Compile Include="Wallpaper.cs" />
+    <EmbeddedResource Include="DrawForm.resx">
+      <DependentUpon>DrawForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,6 +114,13 @@
     <Content Include="Mario_Gameplay.tif" />
     <Content Include="Microsoft-Fluentui-Emoji-3d-Flashlight-3d.ico" />
     <Content Include="Pacman_Gameplay.tif" />
+    <None Include="Resources\eraser.png" />
+    <None Include="Resources\pencil_white.png" />
+    <None Include="Resources\pencil_black.png" />
+    <None Include="Resources\pencil_green.png" />
+    <None Include="Resources\pencil_gold.png" />
+    <None Include="Resources\pencil_red.png" />
+    <None Include="Resources\pencil_blue.png" />
     <None Include="Resources\koopa_green.png" />
     <None Include="Resources\koopa_red.png" />
     <None Include="Resources\pacman_wallpaper.jpg" />

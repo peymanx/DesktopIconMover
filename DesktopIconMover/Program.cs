@@ -6,6 +6,8 @@ using System.Windows.Forms;
 
 namespace DesktopIconMover
 {
+    public enum Direction { Up, Left, Right, Down, Null };
+
     internal static class Program
     {
         /// <summary>
@@ -16,7 +18,7 @@ namespace DesktopIconMover
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new DrawForm());
         }
     }
 }

@@ -13,8 +13,6 @@ namespace DesktopIconMover
         public int Step { get; set; } = 25;
         private readonly List<string> iconNames = new List<string>();
 
-        public enum Direction { Up, Left, Right, Down, Null };
-
         public Direction Dir { get; set; } = Direction.Null;
 
 

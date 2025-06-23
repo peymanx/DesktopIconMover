@@ -23,7 +23,6 @@ namespace DesktopIconMover
         public int Target { get; set; }
         private readonly List<string> iconNames = new List<string>();
 
-        public enum Direction { Up, Left, Right, Down, Null };
 
         public Direction Dir { get; set; } = Direction.Null;
 
@@ -52,6 +51,7 @@ namespace DesktopIconMover
 
             cmbIconList.SelectedIndex = iconNames.Count - 1;
         }
+
         public static void MoveIconRelative(int iconIndex, int dx, int dy)
         {
             IntPtr hwndListView = WindowsAPI.GetDesktopListView();
