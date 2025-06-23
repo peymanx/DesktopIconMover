@@ -8,7 +8,7 @@ using System.IO;
 
 namespace DesktopIconMover
 {
-    public partial class MainForm : Form
+    public partial class PacmanForm : Form
     {
         public int Step { get; set; } = 25;
         private readonly List<string> iconNames = new List<string>();
@@ -20,7 +20,7 @@ namespace DesktopIconMover
         private string PacmanFile;
         private string DesktopPath;
 
-        public MainForm()
+        public PacmanForm()
         {
             InitializeComponent();
 
@@ -140,11 +140,14 @@ namespace DesktopIconMover
             if (Dir != Direction.Up)
             {
                 Dir = Direction.Up;
-
+                if (chkPacman.Checked)
+                    Properties.Resources.up.Save(PacmanFile);
                 ResetArrowButtonColor();
                 ButtonUp.BackColor = Color.Gold;
-
-                DesktopRefresher.RefreshDesktop();
+                if (chkHardRefresh.Checked)
+                    DesktopRefresher.HardRefresh();
+                else
+                    DesktopRefresher.RefreshDesktop();
 
 
             }
@@ -160,11 +163,14 @@ namespace DesktopIconMover
             if (Dir != Direction.Down)
             {
                 Dir = Direction.Down;
-
+                if (chkPacman.Checked)
+                    Properties.Resources.down.Save(PacmanFile);
                 ResetArrowButtonColor();
                 ButtonDown.BackColor = Color.Gold;
-
-                DesktopRefresher.RefreshDesktop();
+                if (chkHardRefresh.Checked)
+                    DesktopRefresher.HardRefresh();
+                else
+                    DesktopRefresher.RefreshDesktop();
 
 
             }
@@ -190,15 +196,30 @@ namespace DesktopIconMover
             if (Dir != Direction.Left)
             {
                 Dir = Direction.Left;
-
+                if (chkPacman.Checked)
+                    Properties.Resources.left.Save(PacmanFile);
                 ResetArrowButtonColor();
                 ButtonLeft.BackColor = Color.Gold;
-
-                DesktopRefresher.RefreshDesktop();
+                if (chkHardRefresh.Checked)
+                    DesktopRefresher.HardRefresh();
+                else
+                    DesktopRefresher.RefreshDesktop();
 
             }
 
+            if (chkPortal.Checked)
+            {
+                var space = DesktopIconMetrics.GetDesktopIconSpacing();
+                if (space.HasValue)
+                {
+                    if (numX.Value < -space.Value.Width)
+                    {
+                        var w = DisplayResolutionInfo.GetPhysicalScreenResolution().Width;
+                        numX.Value = w;
+                    }
+                }
 
+            }
 
 
         }
@@ -212,16 +233,34 @@ namespace DesktopIconMover
             if (Dir != Direction.Right)
             {
                 Dir = Direction.Right;
-
+                if (chkPacman.Checked)
+                    Properties.Resources.right.Save(PacmanFile);
                 ResetArrowButtonColor();
                 ButtonRight.BackColor = Color.Gold;
                 ButtonRight.Focus();
-
-                DesktopRefresher.RefreshDesktop();
+                if (chkHardRefresh.Checked)
+                    DesktopRefresher.HardRefresh();
+                else
+                    DesktopRefresher.RefreshDesktop();
 
             }
 
+            if (chkPortal.Checked)
+            {
 
+                var space = DesktopIconMetrics.GetDesktopIconSpacing();
+                if (space.HasValue)
+                {
+                    var w = DisplayResolutionInfo.GetPhysicalScreenResolution().Width;
+
+                    if (numX.Value > w + space.Value.Width)
+                    {
+                        numX.Value = 0 - space.Value.Width / 2;
+                    }
+
+                }
+
+            }
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -372,8 +411,10 @@ namespace DesktopIconMover
 
             image.Save(Path.Combine(DesktopPath, randomName));
 
-
-            DesktopRefresher.RefreshDesktop();
+            if (chkHardRefresh.Checked)
+                DesktopRefresher.HardRefresh();
+            else
+                DesktopRefresher.RefreshDesktop();
 
         }
 
@@ -381,14 +422,14 @@ namespace DesktopIconMover
         {
             if (button3.Text == "<<")
             {
-                this.Width = 910;
-                this.Height = 305;
+                this.Width = 650;
+                this.Height = 346;
                 button3.Text = ">>";
             }
             else
             {
-                this.Width = 320;
-                this.Height = 170;
+                this.Width = 338;
+                this.Height = 165;
                 button3.Text = "<<";
 
             }
@@ -398,22 +439,6 @@ namespace DesktopIconMover
         {
             Wallpaper.Set(Properties.Resources.pacman_wallpaper, Wallpaper.Style.Stretched);
 
-        }
-
-        private void button2_Click_2(object sender, EventArgs e)
-        {
-            chkLock.Checked = false;
-            this.Hide();
-            new PacmanForm().ShowDialog();
-            this.Show();
-        }
-
-        private void button4_Click_1(object sender, EventArgs e)
-        {
-            chkLock.Checked = false;
-            this.Hide();
-            new DrawForm().ShowDialog();
-            this.Show();
         }
     }
 }

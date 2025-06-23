@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MarioForm));
             this.ButtonRight = new System.Windows.Forms.Button();
-            this.ButtonUp = new System.Windows.Forms.Button();
-            this.ButtonDown = new System.Windows.Forms.Button();
             this.ButtonLeft = new System.Windows.Forms.Button();
             this.ButtonSpace = new System.Windows.Forms.Button();
             this.cmbIconList = new System.Windows.Forms.ComboBox();
@@ -58,65 +56,41 @@
             this.txtDesktopPath = new System.Windows.Forms.TextBox();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.chkHardRefresh = new System.Windows.Forms.CheckBox();
+            this.ButtonUp = new System.Windows.Forms.Button();
+            this.ButtonDown = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
             this.panelArrows.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numGround)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numJump)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // ButtonRight
             // 
             this.ButtonRight.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ButtonRight.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonRight.Image = ((System.Drawing.Image)(resources.GetObject("ButtonRight.Image")));
             this.ButtonRight.Location = new System.Drawing.Point(106, 45);
             this.ButtonRight.Name = "ButtonRight";
             this.ButtonRight.Size = new System.Drawing.Size(41, 40);
             this.ButtonRight.TabIndex = 1;
             this.ButtonRight.TabStop = false;
-            this.ButtonRight.Text = "<";
             this.ButtonRight.UseVisualStyleBackColor = false;
             this.ButtonRight.Click += new System.EventHandler(this.ButtonRight_Click);
-            // 
-            // ButtonUp
-            // 
-            this.ButtonUp.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ButtonUp.Enabled = false;
-            this.ButtonUp.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonUp.Location = new System.Drawing.Point(64, 5);
-            this.ButtonUp.Name = "ButtonUp";
-            this.ButtonUp.Size = new System.Drawing.Size(41, 40);
-            this.ButtonUp.TabIndex = 2;
-            this.ButtonUp.TabStop = false;
-            this.ButtonUp.Text = "^";
-            this.ButtonUp.UseVisualStyleBackColor = false;
-            this.ButtonUp.Click += new System.EventHandler(this.ButtonUp_Click);
-            // 
-            // ButtonDown
-            // 
-            this.ButtonDown.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ButtonDown.Enabled = false;
-            this.ButtonDown.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonDown.Location = new System.Drawing.Point(64, 45);
-            this.ButtonDown.Name = "ButtonDown";
-            this.ButtonDown.Size = new System.Drawing.Size(41, 40);
-            this.ButtonDown.TabIndex = 3;
-            this.ButtonDown.TabStop = false;
-            this.ButtonDown.Text = "v";
-            this.ButtonDown.UseVisualStyleBackColor = false;
-            this.ButtonDown.Click += new System.EventHandler(this.ButtonDown_Click);
             // 
             // ButtonLeft
             // 
             this.ButtonLeft.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ButtonLeft.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonLeft.Image = ((System.Drawing.Image)(resources.GetObject("ButtonLeft.Image")));
             this.ButtonLeft.Location = new System.Drawing.Point(23, 45);
             this.ButtonLeft.Name = "ButtonLeft";
             this.ButtonLeft.Size = new System.Drawing.Size(41, 40);
             this.ButtonLeft.TabIndex = 4;
             this.ButtonLeft.TabStop = false;
-            this.ButtonLeft.Text = ">";
             this.ButtonLeft.UseVisualStyleBackColor = false;
             this.ButtonLeft.Click += new System.EventHandler(this.ButtonLeft_Click);
             // 
@@ -212,7 +186,7 @@
             this.button2.Font = new System.Drawing.Font("Lucida Console", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(380, 152);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(64, 36);
+            this.button2.Size = new System.Drawing.Size(58, 50);
             this.button2.TabIndex = 10000006;
             this.button2.TabStop = false;
             this.button2.Text = "Lock";
@@ -344,7 +318,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(166, 62);
+            this.button1.Location = new System.Drawing.Point(166, 60);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(152, 33);
             this.button1.TabIndex = 10000016;
@@ -404,7 +378,7 @@
             // 
             this.btnBrowse.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnBrowse.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBrowse.Location = new System.Drawing.Point(380, 0);
+            this.btnBrowse.Location = new System.Drawing.Point(380, 3);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(160, 36);
             this.btnBrowse.TabIndex = 10000019;
@@ -422,11 +396,52 @@
             this.chkHardRefresh.Text = "ریفرش هارد";
             this.chkHardRefresh.UseVisualStyleBackColor = true;
             // 
+            // ButtonUp
+            // 
+            this.ButtonUp.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ButtonUp.Enabled = false;
+            this.ButtonUp.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.ButtonUp.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonUp.Location = new System.Drawing.Point(64, 5);
+            this.ButtonUp.Name = "ButtonUp";
+            this.ButtonUp.Size = new System.Drawing.Size(41, 40);
+            this.ButtonUp.TabIndex = 2;
+            this.ButtonUp.TabStop = false;
+            this.ButtonUp.Text = "  ";
+            this.ButtonUp.UseVisualStyleBackColor = false;
+            this.ButtonUp.Click += new System.EventHandler(this.ButtonUp_Click);
+            // 
+            // ButtonDown
+            // 
+            this.ButtonDown.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ButtonDown.Enabled = false;
+            this.ButtonDown.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.ButtonDown.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonDown.Location = new System.Drawing.Point(64, 45);
+            this.ButtonDown.Name = "ButtonDown";
+            this.ButtonDown.Size = new System.Drawing.Size(41, 40);
+            this.ButtonDown.TabIndex = 3;
+            this.ButtonDown.TabStop = false;
+            this.ButtonDown.Text = "  ";
+            this.ButtonDown.UseVisualStyleBackColor = false;
+            this.ButtonDown.Click += new System.EventHandler(this.ButtonDown_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(493, 148);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(135, 69);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 10000023;
+            this.pictureBox1.TabStop = false;
+            // 
             // MarioForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(846, 221);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.chkHardRefresh);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.txtDesktopPath);
@@ -461,6 +476,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numGround)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numJump)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -468,8 +484,6 @@
 
         #endregion
         private System.Windows.Forms.Button ButtonRight;
-        private System.Windows.Forms.Button ButtonUp;
-        private System.Windows.Forms.Button ButtonDown;
         private System.Windows.Forms.Button ButtonLeft;
         private System.Windows.Forms.Button ButtonSpace;
         private System.Windows.Forms.ComboBox cmbIconList;
@@ -495,5 +509,8 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.CheckBox chkHardRefresh;
+        private System.Windows.Forms.Button ButtonDown;
+        private System.Windows.Forms.Button ButtonUp;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
