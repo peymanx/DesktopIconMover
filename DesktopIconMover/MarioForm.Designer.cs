@@ -41,6 +41,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.panelArrows = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
+            this.ButtonDown = new System.Windows.Forms.Button();
+            this.ButtonUp = new System.Windows.Forms.Button();
             this.numGround = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.numJump = new System.Windows.Forms.NumericUpDown();
@@ -56,8 +58,6 @@
             this.txtDesktopPath = new System.Windows.Forms.TextBox();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.chkHardRefresh = new System.Windows.Forms.CheckBox();
-            this.ButtonUp = new System.Windows.Forms.Button();
-            this.ButtonDown = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
@@ -219,6 +219,36 @@
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click_2);
             // 
+            // ButtonDown
+            // 
+            this.ButtonDown.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ButtonDown.Enabled = false;
+            this.ButtonDown.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.ButtonDown.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonDown.Location = new System.Drawing.Point(64, 45);
+            this.ButtonDown.Name = "ButtonDown";
+            this.ButtonDown.Size = new System.Drawing.Size(41, 40);
+            this.ButtonDown.TabIndex = 3;
+            this.ButtonDown.TabStop = false;
+            this.ButtonDown.Text = "  ";
+            this.ButtonDown.UseVisualStyleBackColor = false;
+            this.ButtonDown.Click += new System.EventHandler(this.ButtonDown_Click);
+            // 
+            // ButtonUp
+            // 
+            this.ButtonUp.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ButtonUp.Enabled = false;
+            this.ButtonUp.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.ButtonUp.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonUp.Location = new System.Drawing.Point(64, 5);
+            this.ButtonUp.Name = "ButtonUp";
+            this.ButtonUp.Size = new System.Drawing.Size(41, 40);
+            this.ButtonUp.TabIndex = 2;
+            this.ButtonUp.TabStop = false;
+            this.ButtonUp.Text = "  ";
+            this.ButtonUp.UseVisualStyleBackColor = false;
+            this.ButtonUp.Click += new System.EventHandler(this.ButtonUp_Click);
+            // 
             // numGround
             // 
             this.numGround.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -237,7 +267,7 @@
             this.numGround.Size = new System.Drawing.Size(97, 32);
             this.numGround.TabIndex = 10000010;
             this.numGround.Value = new decimal(new int[] {
-            814,
+            806,
             0,
             0,
             0});
@@ -396,36 +426,6 @@
             this.chkHardRefresh.Text = "ریفرش هارد";
             this.chkHardRefresh.UseVisualStyleBackColor = true;
             // 
-            // ButtonUp
-            // 
-            this.ButtonUp.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ButtonUp.Enabled = false;
-            this.ButtonUp.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ButtonUp.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonUp.Location = new System.Drawing.Point(64, 5);
-            this.ButtonUp.Name = "ButtonUp";
-            this.ButtonUp.Size = new System.Drawing.Size(41, 40);
-            this.ButtonUp.TabIndex = 2;
-            this.ButtonUp.TabStop = false;
-            this.ButtonUp.Text = "  ";
-            this.ButtonUp.UseVisualStyleBackColor = false;
-            this.ButtonUp.Click += new System.EventHandler(this.ButtonUp_Click);
-            // 
-            // ButtonDown
-            // 
-            this.ButtonDown.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ButtonDown.Enabled = false;
-            this.ButtonDown.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ButtonDown.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonDown.Location = new System.Drawing.Point(64, 45);
-            this.ButtonDown.Name = "ButtonDown";
-            this.ButtonDown.Size = new System.Drawing.Size(41, 40);
-            this.ButtonDown.TabIndex = 3;
-            this.ButtonDown.TabStop = false;
-            this.ButtonDown.Text = "  ";
-            this.ButtonDown.UseVisualStyleBackColor = false;
-            this.ButtonDown.Click += new System.EventHandler(this.ButtonDown_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -463,10 +463,12 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "MarioForm";
+            this.Opacity = 0.94D;
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ماریو";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MarioForm_FormClosing);
             this.Load += new System.EventHandler(this.MarioForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MarioForm_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MarioForm_KeyUp);

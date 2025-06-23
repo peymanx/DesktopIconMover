@@ -41,8 +41,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.chkLock = new System.Windows.Forms.CheckBox();
             this.panelArrowKeys = new System.Windows.Forms.Panel();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.chkPacman = new System.Windows.Forms.CheckBox();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.lblSpeed = new System.Windows.Forms.Label();
@@ -58,7 +56,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
             this.panelArrowKeys.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -69,25 +66,25 @@
             this.cmbIconList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIconList.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbIconList.FormattingEnabled = true;
-            this.cmbIconList.Location = new System.Drawing.Point(12, 131);
+            this.cmbIconList.Location = new System.Drawing.Point(344, 35);
             this.cmbIconList.Name = "cmbIconList";
-            this.cmbIconList.Size = new System.Drawing.Size(293, 27);
+            this.cmbIconList.Size = new System.Drawing.Size(277, 27);
             this.cmbIconList.TabIndex = 10000000;
             this.cmbIconList.TabStop = false;
             this.cmbIconList.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(191, 106);
+            this.label1.Location = new System.Drawing.Point(498, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 21);
+            this.label1.Size = new System.Drawing.Size(126, 21);
             this.label1.TabIndex = 1;
             this.label1.Text = "کدوم آیکون باشه؟";
             // 
             // numY
             // 
             this.numY.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numY.Location = new System.Drawing.Point(462, 194);
+            this.numY.Location = new System.Drawing.Point(463, 247);
             this.numY.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -111,7 +108,7 @@
             // numX
             // 
             this.numX.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numX.Location = new System.Drawing.Point(544, 194);
+            this.numX.Location = new System.Drawing.Point(545, 247);
             this.numX.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -196,7 +193,8 @@
             // 
             // chkLock
             // 
-            this.chkLock.Location = new System.Drawing.Point(149, 161);
+            this.chkLock.Font = new System.Drawing.Font("Tahoma", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkLock.Location = new System.Drawing.Point(153, 99);
             this.chkLock.Name = "chkLock";
             this.chkLock.Size = new System.Drawing.Size(156, 22);
             this.chkLock.TabIndex = 13;
@@ -216,24 +214,6 @@
             this.panelArrowKeys.Size = new System.Drawing.Size(171, 84);
             this.panelArrowKeys.TabIndex = 0;
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 273);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.statusStrip1.Size = new System.Drawing.Size(632, 26);
-            this.statusStrip1.TabIndex = 10000001;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(83, 20);
-            this.toolStripStatusLabel1.Text = "@peymanx";
-            // 
             // chkPacman
             // 
             this.chkPacman.Checked = true;
@@ -248,7 +228,7 @@
             // trackBar1
             // 
             this.trackBar1.LargeChange = 1;
-            this.trackBar1.Location = new System.Drawing.Point(12, 189);
+            this.trackBar1.Location = new System.Drawing.Point(12, 114);
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -261,7 +241,7 @@
             // lblSpeed
             // 
             this.lblSpeed.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSpeed.Location = new System.Drawing.Point(19, 228);
+            this.lblSpeed.Location = new System.Drawing.Point(19, 143);
             this.lblSpeed.Name = "lblSpeed";
             this.lblSpeed.Size = new System.Drawing.Size(55, 29);
             this.lblSpeed.TabIndex = 10000005;
@@ -270,7 +250,7 @@
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(456, 172);
+            this.label5.Location = new System.Drawing.Point(457, 225);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 18);
             this.label5.TabIndex = 10000017;
@@ -278,7 +258,7 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(538, 173);
+            this.label2.Location = new System.Drawing.Point(539, 226);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 18);
             this.label2.TabIndex = 10000016;
@@ -290,7 +270,7 @@
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.chkPacman);
-            this.groupBox1.Location = new System.Drawing.Point(343, 15);
+            this.groupBox1.Location = new System.Drawing.Point(344, 68);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(280, 155);
             this.groupBox1.TabIndex = 10000019;
@@ -351,7 +331,7 @@
             // 
             // chkHardRefresh
             // 
-            this.chkHardRefresh.Location = new System.Drawing.Point(467, 239);
+            this.chkHardRefresh.Location = new System.Drawing.Point(468, 286);
             this.chkHardRefresh.Name = "chkHardRefresh";
             this.chkHardRefresh.Size = new System.Drawing.Size(156, 22);
             this.chkHardRefresh.TabIndex = 10000021;
@@ -361,7 +341,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(343, 189);
+            this.pictureBox1.Location = new System.Drawing.Point(344, 242);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(50, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -373,7 +353,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(632, 299);
+            this.ClientSize = new System.Drawing.Size(321, 168);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.chkHardRefresh);
             this.Controls.Add(this.button3);
@@ -382,7 +362,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblSpeed);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.panelArrowKeys);
             this.Controls.Add(this.numX);
@@ -396,9 +375,11 @@
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "PacmanForm";
+            this.Opacity = 0.94D;
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PacmanForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Click += new System.EventHandler(this.MainForm_Click);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
@@ -408,8 +389,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).EndInit();
             this.panelArrowKeys.ResumeLayout(false);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -431,8 +410,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.CheckBox chkLock;
         private System.Windows.Forms.Panel panelArrowKeys;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.CheckBox chkPacman;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label lblSpeed;

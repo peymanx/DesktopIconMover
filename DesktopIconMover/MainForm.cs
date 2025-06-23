@@ -15,9 +15,6 @@ namespace DesktopIconMover
 
         public Direction Dir { get; set; } = Direction.Null;
 
-
-
-        private string PacmanFile;
         private string DesktopPath;
 
         public MainForm()
@@ -242,7 +239,6 @@ namespace DesktopIconMover
         {
             trackBar1_Scroll(null, null);
             DesktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            PacmanFile = Path.Combine(DesktopPath, "pacman.png");
 
             button3_Click(sender, e);
         }
@@ -314,6 +310,11 @@ namespace DesktopIconMover
         {
             chkLock.Checked = false;
             this.Hide();
+
+            var desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            var MarioPath = Path.Combine(desktop, "mario.png");
+
+            Properties.Resources.mario_right.Save(MarioPath);
             new MarioForm().ShowDialog();
             this.Show();
         }
@@ -404,6 +405,9 @@ namespace DesktopIconMover
         {
             chkLock.Checked = false;
             this.Hide();
+            var PacmanFile = Path.Combine(DesktopPath, "pacman.png");
+            Properties.Resources.right.Save(PacmanFile);
+
             new PacmanForm().ShowDialog();
             this.Show();
         }
@@ -414,6 +418,11 @@ namespace DesktopIconMover
             this.Hide();
             new DrawForm().ShowDialog();
             this.Show();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timer1.Enabled = false;
         }
     }
 }

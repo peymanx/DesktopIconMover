@@ -23,7 +23,9 @@ namespace DesktopIconMover
         public PacmanForm()
         {
             InitializeComponent();
-
+            DesktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            PacmanFile = Path.Combine(DesktopPath, "pacman.png");
+            Properties.Resources.right.Save(PacmanFile);
             LoadDesktopIcons();
         }
 
@@ -280,8 +282,6 @@ namespace DesktopIconMover
         private void MainForm_Load(object sender, EventArgs e)
         {
             trackBar1_Scroll(null, null);
-            DesktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            PacmanFile = Path.Combine(DesktopPath, "pacman.png");
 
             button3_Click(sender, e);
         }
@@ -422,14 +422,14 @@ namespace DesktopIconMover
         {
             if (button3.Text == "<<")
             {
-                this.Width = 650;
-                this.Height = 346;
+                this.Width = 655;
+                this.Height = 373;
                 button3.Text = ">>";
             }
             else
             {
-                this.Width = 338;
-                this.Height = 165;
+                this.Width = 339;
+                this.Height = 219;
                 button3.Text = "<<";
 
             }
@@ -439,6 +439,11 @@ namespace DesktopIconMover
         {
             Wallpaper.Set(Properties.Resources.pacman_wallpaper, Wallpaper.Style.Stretched);
 
+        }
+
+        private void PacmanForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timer1.Enabled = false;
         }
     }
 }

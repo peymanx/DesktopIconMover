@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace DesktopIconMover
@@ -13,7 +14,12 @@ namespace DesktopIconMover
         public MarioForm()
         {
             InitializeComponent();
-            LoadDesktopIcons();
+            txtDesktopPath.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            MarioPath = Path.Combine(txtDesktopPath.Text, "mario.png");
+
+            Properties.Resources.mario_right.Save(MarioPath);
+
+
 
         }
 
@@ -201,11 +207,12 @@ namespace DesktopIconMover
 
         private void MarioForm_Load(object sender, EventArgs e)
         {
+            LoadDesktopIcons();
             numY.Value = numGround.Value;
-            txtDesktopPath.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-            MarioPath = Path.Combine(txtDesktopPath.Text, "mario.png");
             button4_Click_2(sender, e);
+
+
 
         }
 
@@ -363,6 +370,11 @@ namespace DesktopIconMover
             else
                 DesktopRefresher.RefreshDesktop();
 
+        }
+
+        private void MarioForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timerGravity.Enabled = timerJump.Enabled = false;
         }
     }
 }
