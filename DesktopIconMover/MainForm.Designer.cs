@@ -51,10 +51,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkPortal = new System.Windows.Forms.CheckBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.chkPortal = new System.Windows.Forms.CheckBox();
             this.chkHardRefresh = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
@@ -315,6 +315,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "درون ربزی پک-من";
             // 
+            // chkPortal
+            // 
+            this.chkPortal.Checked = true;
+            this.chkPortal.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPortal.Location = new System.Drawing.Point(91, 57);
+            this.chkPortal.Name = "chkPortal";
+            this.chkPortal.Size = new System.Drawing.Size(176, 20);
+            this.chkPortal.TabIndex = 10000022;
+            this.chkPortal.Text = "پرتال گوشه ها";
+            this.chkPortal.UseVisualStyleBackColor = true;
+            // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -355,17 +366,6 @@
             this.button3.Text = ">>";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // chkPortal
-            // 
-            this.chkPortal.Checked = true;
-            this.chkPortal.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkPortal.Location = new System.Drawing.Point(91, 57);
-            this.chkPortal.Name = "chkPortal";
-            this.chkPortal.Size = new System.Drawing.Size(176, 20);
-            this.chkPortal.TabIndex = 10000022;
-            this.chkPortal.Text = "پرتال گوشه ها";
-            this.chkPortal.UseVisualStyleBackColor = true;
             // 
             // chkHardRefresh
             // 

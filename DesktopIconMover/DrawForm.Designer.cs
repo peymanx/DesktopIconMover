@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DrawForm));
             this.panelArrows = new System.Windows.Forms.Panel();
+            this.btnEraser = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btnPen = new System.Windows.Forms.Button();
             this.ButtonLeft = new System.Windows.Forms.Button();
@@ -50,7 +51,6 @@
             this.button9 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button10 = new System.Windows.Forms.Button();
-            this.btnEraser = new System.Windows.Forms.Button();
             this.panelArrows.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -69,6 +69,19 @@
             this.panelArrows.Name = "panelArrows";
             this.panelArrows.Size = new System.Drawing.Size(337, 92);
             this.panelArrows.TabIndex = 10000008;
+            // 
+            // btnEraser
+            // 
+            this.btnEraser.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnEraser.Font = new System.Drawing.Font("Lucida Console", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEraser.Image = ((System.Drawing.Image)(resources.GetObject("btnEraser.Image")));
+            this.btnEraser.Location = new System.Drawing.Point(207, 34);
+            this.btnEraser.Name = "btnEraser";
+            this.btnEraser.Size = new System.Drawing.Size(56, 51);
+            this.btnEraser.TabIndex = 10000022;
+            this.btnEraser.TabStop = false;
+            this.btnEraser.UseVisualStyleBackColor = false;
+            this.btnEraser.Click += new System.EventHandler(this.btnEraser_Click);
             // 
             // button4
             // 
@@ -100,12 +113,13 @@
             // 
             this.ButtonLeft.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ButtonLeft.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonLeft.Image = ((System.Drawing.Image)(resources.GetObject("ButtonLeft.Image")));
             this.ButtonLeft.Location = new System.Drawing.Point(20, 45);
             this.ButtonLeft.Name = "ButtonLeft";
             this.ButtonLeft.Size = new System.Drawing.Size(36, 40);
             this.ButtonLeft.TabIndex = 4;
             this.ButtonLeft.TabStop = false;
-            this.ButtonLeft.Text = ">";
+            this.ButtonLeft.Text = "  ";
             this.ButtonLeft.UseVisualStyleBackColor = false;
             this.ButtonLeft.Click += new System.EventHandler(this.ButtonLeft_Click);
             // 
@@ -113,12 +127,13 @@
             // 
             this.ButtonDown.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ButtonDown.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonDown.Image = ((System.Drawing.Image)(resources.GetObject("ButtonDown.Image")));
             this.ButtonDown.Location = new System.Drawing.Point(56, 45);
             this.ButtonDown.Name = "ButtonDown";
             this.ButtonDown.Size = new System.Drawing.Size(36, 40);
             this.ButtonDown.TabIndex = 3;
             this.ButtonDown.TabStop = false;
-            this.ButtonDown.Text = "v";
+            this.ButtonDown.Text = "  ";
             this.ButtonDown.UseVisualStyleBackColor = false;
             this.ButtonDown.Click += new System.EventHandler(this.ButtonDown_Click);
             // 
@@ -126,12 +141,13 @@
             // 
             this.ButtonUp.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ButtonUp.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonUp.Image = ((System.Drawing.Image)(resources.GetObject("ButtonUp.Image")));
             this.ButtonUp.Location = new System.Drawing.Point(56, 5);
             this.ButtonUp.Name = "ButtonUp";
             this.ButtonUp.Size = new System.Drawing.Size(36, 40);
             this.ButtonUp.TabIndex = 2;
             this.ButtonUp.TabStop = false;
-            this.ButtonUp.Text = "^";
+            this.ButtonUp.Text = "  ";
             this.ButtonUp.UseVisualStyleBackColor = false;
             this.ButtonUp.Click += new System.EventHandler(this.ButtonUp_Click);
             // 
@@ -139,12 +155,13 @@
             // 
             this.ButtonRight.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ButtonRight.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonRight.Image = ((System.Drawing.Image)(resources.GetObject("ButtonRight.Image")));
             this.ButtonRight.Location = new System.Drawing.Point(93, 45);
             this.ButtonRight.Name = "ButtonRight";
             this.ButtonRight.Size = new System.Drawing.Size(36, 40);
             this.ButtonRight.TabIndex = 1;
             this.ButtonRight.TabStop = false;
-            this.ButtonRight.Text = "<";
+            this.ButtonRight.Text = "  ";
             this.ButtonRight.UseVisualStyleBackColor = false;
             this.ButtonRight.Click += new System.EventHandler(this.ButtonRight_Click);
             // 
@@ -278,12 +295,13 @@
             // button9
             // 
             this.button9.Font = new System.Drawing.Font("Tahoma", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(577, 189);
+            this.button9.Location = new System.Drawing.Point(547, 189);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(110, 29);
+            this.button9.Size = new System.Drawing.Size(140, 29);
             this.button9.TabIndex = 10000026;
             this.button9.Text = "انتخاب عکس...";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // pictureBox1
             // 
@@ -298,32 +316,20 @@
             // button10
             // 
             this.button10.Font = new System.Drawing.Font("Tahoma", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button10.Location = new System.Drawing.Point(431, 222);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(110, 29);
+            this.button10.Size = new System.Drawing.Size(256, 29);
             this.button10.TabIndex = 10000027;
             this.button10.Text = "بوم سیاه";
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
-            // btnEraser
-            // 
-            this.btnEraser.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnEraser.Font = new System.Drawing.Font("Lucida Console", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEraser.Image = ((System.Drawing.Image)(resources.GetObject("btnEraser.Image")));
-            this.btnEraser.Location = new System.Drawing.Point(207, 34);
-            this.btnEraser.Name = "btnEraser";
-            this.btnEraser.Size = new System.Drawing.Size(56, 51);
-            this.btnEraser.TabIndex = 10000022;
-            this.btnEraser.TabStop = false;
-            this.btnEraser.UseVisualStyleBackColor = false;
-            this.btnEraser.Click += new System.EventHandler(this.btnEraser_Click);
-            // 
             // DrawForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(766, 334);
+            this.ClientSize = new System.Drawing.Size(742, 273);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.cmbIconList);
@@ -335,6 +341,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "DrawForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;

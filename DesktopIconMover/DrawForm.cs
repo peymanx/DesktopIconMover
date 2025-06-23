@@ -428,5 +428,37 @@ namespace DesktopIconMover
             DesktopRefresher.HardRefresh();
 
         }
+        private void LoadImageOntoCanvas(string imagePath)
+        {
+            try
+            {
+                using (Image img = Image.FromFile(imagePath))
+                {
+                    using (Graphics g = Graphics.FromImage(canvas))
+                    {
+                        // رسم تصویر روی بوم در گوشه بالا چپ، یا می‌تونی اندازه رو مقیاس بدی
+                        g.DrawImage(img, new Rectangle(0, 0, canvas.Width, canvas.Height));
+                    }
+
+                    pictureBox1.Invalidate(); // رفرش تصویر
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("خطا در بارگذاری تصویر: " + ex.Message);
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            var open = new OpenFileDialog
+            {
+                Filter="عکس|*.jpg;*.png;*.bmp"
+            };
+            if(open.ShowDialog() == DialogResult.OK)
+            {
+                LoadImageOntoCanvas(open.FileName);
+            }
+        }
     }
 }

@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Microsoft-Fluentui-Emoji-3d-Flashlight-3d.ico</ApplicationIcon>
+    <ApplicationIcon>Papirus-Team-Papirus-Apps-Preferences-desktop-color %281%29.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -114,6 +114,8 @@
     <Content Include="Mario_Gameplay.tif" />
     <Content Include="Microsoft-Fluentui-Emoji-3d-Flashlight-3d.ico" />
     <Content Include="Pacman_Gameplay.tif" />
+    <Content Include="Papirus-Team-Papirus-Apps-Preferences-desktop-color %281%29.ico" />
+    <Content Include="Papirus-Team-Papirus-Apps-Preferences-desktop-theme %281%29.ico" />
     <None Include="Resources\eraser.png" />
     <None Include="Resources\pencil_white.png" />
     <None Include="Resources\pencil_black.png" />

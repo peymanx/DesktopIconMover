@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MarioForm));
             this.ButtonRight = new System.Windows.Forms.Button();
             this.ButtonUp = new System.Windows.Forms.Button();
             this.ButtonDown = new System.Windows.Forms.Button();
@@ -52,10 +53,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.txtDesktopPath = new System.Windows.Forms.TextBox();
             this.btnBrowse = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.chkHardRefresh = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
@@ -365,6 +366,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "درون ریزی بازی";
             // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(15, 61);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(130, 33);
+            this.button5.TabIndex = 10000018;
+            this.button5.TabStop = false;
+            this.button5.Text = "ساخت لاکپشت";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -399,19 +413,6 @@
             this.btnBrowse.UseVisualStyleBackColor = false;
             this.btnBrowse.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(15, 61);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(130, 33);
-            this.button5.TabIndex = 10000018;
-            this.button5.TabStop = false;
-            this.button5.Text = "ساخت لاکپشت";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // chkHardRefresh
             // 
             this.chkHardRefresh.Location = new System.Drawing.Point(197, 187);
@@ -444,6 +445,7 @@
             this.Controls.Add(this.numY);
             this.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "MarioForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
