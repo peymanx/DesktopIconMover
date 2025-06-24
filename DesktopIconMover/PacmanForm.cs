@@ -26,12 +26,56 @@ namespace DesktopIconMover
             DesktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             PacmanFile = Path.Combine(DesktopPath, "pacman.png");
             Properties.Resources.right.Save(PacmanFile);
+
+            (int Width, int Height) = DisplayResolutionInfo.GetPhysicalScreenResolution();
+            canvas = new Bitmap(Width, Height);
+            pictureBox1.Image = canvas;
             LoadDesktopIcons();
+
         }
 
+        Bitmap canvas;
+        Brush BrushColor = Brushes.Black;
+        int Size = 50;
+
+
+        private void DrawImageOnCanvas(Image inputImage)
+        {
+            if (inputImage == null) return;
+
+            using (Graphics g = Graphics.FromImage(canvas))
+            {
+                // رسم عکس در موقعیت دلخواه، مثلاً بالا-چپ
+                g.DrawImage(inputImage, new Rectangle(0, 0, inputImage.Width, inputImage.Height));
+                pictureBox1.Image = canvas;
+
+            }
+
+            pictureBox1.Invalidate(); // رفرش تصویر در PictureBox
+        }
+
+        private void DrawOn(int x, int y, int w, int h)
+        {
+
+            if(chkDotEater.Checked== false) return;
+            using (Graphics g = Graphics.FromImage(canvas))
+            {
+                var rect = new Rectangle(x,y, w, h); // مستطیل مقصد
+                g.FillRectangle(BrushColor, rect);
+            }
+
+            // قرار دادن تصویر در PictureBox
+            pictureBox1.Image = canvas;
+            DrawImageOnCanvas(Properties.Resources.Pacman_frame);
+
+            Wallpaper.Set(pictureBox1.Image, Wallpaper.Style.Stretched);
+
+
+        }
 
         private void LoadDesktopIcons()
         {
+            iconNames.Clear();
             cmbIconList.Items.Clear();
 
             IntPtr hwndListView = WindowsAPI.GetDesktopListView();
@@ -137,6 +181,9 @@ namespace DesktopIconMover
         private void btnUp(object sender, EventArgs e)
         {
             numY.Value -= Step;
+            
+            DrawOn((int)numX.Value, (int)numY.Value-8,Size,Size);
+
             MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
 
             if (Dir != Direction.Up)
@@ -160,6 +207,8 @@ namespace DesktopIconMover
         private void btnDown(object sender, EventArgs e)
         {
             numY.Value += Step;
+            DrawOn((int)numX.Value, (int)numY.Value +5, Size, Size);
+
 
             MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
             if (Dir != Direction.Down)
@@ -194,6 +243,9 @@ namespace DesktopIconMover
         private void btnLeft(object sender, EventArgs e)
         {
             numX.Value -= Step;
+            DrawOn((int)numX.Value-5, (int)numY.Value, Size, Size);
+
+
             MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
             if (Dir != Direction.Left)
             {
@@ -229,6 +281,8 @@ namespace DesktopIconMover
         private void btnRight(object sender, EventArgs e)
         {
             numX.Value += Step;
+            
+            DrawOn((int)numX.Value+5, (int)numY.Value, Size, Size);
 
             MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
 
@@ -265,15 +319,24 @@ namespace DesktopIconMover
             }
         }
 
+        public int CalculateSize()
+        {
+            return (int)(DesktopIconMetrics.GetDesktopIconSpacing().Value.Height * 1.3);
+
+        }
+
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             timer1.Enabled = chkLock.Checked;
             cmbIconList.Enabled = !chkLock.Checked;
             ResetArrowButtonColor();
 
-            if (timer1.Enabled) Step = 5;
+
+
+            if (timer1.Enabled) Step = (int)( CalculateSize() / 3);
             else
-                Step = 30;
+                Size = CalculateSize();
+
 
         }
 
@@ -282,8 +345,13 @@ namespace DesktopIconMover
         private void MainForm_Load(object sender, EventArgs e)
         {
             trackBar1_Scroll(null, null);
+            Size = CalculateSize();
+            SetDefaultGamePlay();
+
+            btnRight(sender, e);
 
             button3_Click(sender, e);
+
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
@@ -344,7 +412,7 @@ namespace DesktopIconMover
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            timer1.Interval = trackBar1.Value * 2;
+            timer1.Interval = trackBar1.Value * 7;
             lblSpeed.Text = (trackBar1.Maximum - trackBar1.Value + 1).ToString();
             if (timer1.Enabled) timer1_Tick(sender, e);
         }
@@ -416,20 +484,22 @@ namespace DesktopIconMover
             else
                 DesktopRefresher.RefreshDesktop();
 
+            LoadDesktopIcons();
+
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             if (button3.Text == "<<")
             {
-                this.Width = 655;
-                this.Height = 373;
+                this.Width = 660;
+                this.Height = 404;
                 button3.Text = ">>";
             }
             else
             {
-                this.Width = 339;
-                this.Height = 219;
+                this.Width = 336;
+                this.Height = 213;
                 button3.Text = "<<";
 
             }
@@ -437,13 +507,31 @@ namespace DesktopIconMover
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Wallpaper.Set(Properties.Resources.pacman_wallpaper, Wallpaper.Style.Stretched);
+            SetDefaultGamePlay();
 
+        }
+
+        private void SetDefaultGamePlay()
+        {
+            DrawImageOnCanvas(Properties.Resources.Pacman_frame);
+            DrawImageOnCanvas(Properties.Resources.Pacman_dots);
+
+            Wallpaper.Set(pictureBox1.Image, Wallpaper.Style.Stretched);
         }
 
         private void PacmanForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             timer1.Enabled = false;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (File.Exists(PacmanFile))
+            {
+                File.Delete(PacmanFile);
+            }
+            Properties.Resources.right.Save(PacmanFile);
+            LoadDesktopIcons();
         }
     }
 }

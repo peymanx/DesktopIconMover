@@ -34,10 +34,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.numY = new System.Windows.Forms.NumericUpDown();
             this.numX = new System.Windows.Forms.NumericUpDown();
-            this.ButtonUp = new System.Windows.Forms.Button();
-            this.ButtonRight = new System.Windows.Forms.Button();
-            this.ButtonLeft = new System.Windows.Forms.Button();
-            this.ButtonDown = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.chkLock = new System.Windows.Forms.CheckBox();
             this.panelArrowKeys = new System.Windows.Forms.Panel();
@@ -52,7 +48,13 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.chkHardRefresh = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ButtonRight = new System.Windows.Forms.Button();
+            this.ButtonUp = new System.Windows.Forms.Button();
+            this.ButtonDown = new System.Windows.Forms.Button();
+            this.ButtonLeft = new System.Windows.Forms.Button();
+            this.chkDotEater = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
             this.panelArrowKeys.SuspendLayout();
@@ -84,7 +86,7 @@
             // numY
             // 
             this.numY.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numY.Location = new System.Drawing.Point(463, 247);
+            this.numY.Location = new System.Drawing.Point(463, 292);
             this.numY.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -99,7 +101,7 @@
             this.numY.Size = new System.Drawing.Size(76, 32);
             this.numY.TabIndex = 3;
             this.numY.Value = new decimal(new int[] {
-            100,
+            150,
             0,
             0,
             0});
@@ -108,7 +110,7 @@
             // numX
             // 
             this.numX.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numX.Location = new System.Drawing.Point(545, 247);
+            this.numX.Location = new System.Drawing.Point(545, 292);
             this.numX.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -128,63 +130,6 @@
             0,
             0});
             this.numX.ValueChanged += new System.EventHandler(this.numX_ValueChanged);
-            // 
-            // ButtonUp
-            // 
-            this.ButtonUp.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ButtonUp.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonUp.Image = ((System.Drawing.Image)(resources.GetObject("ButtonUp.Image")));
-            this.ButtonUp.Location = new System.Drawing.Point(59, 3);
-            this.ButtonUp.Name = "ButtonUp";
-            this.ButtonUp.Size = new System.Drawing.Size(47, 40);
-            this.ButtonUp.TabIndex = 2;
-            this.ButtonUp.TabStop = false;
-            this.ButtonUp.Text = " ";
-            this.ButtonUp.UseVisualStyleBackColor = false;
-            this.ButtonUp.Click += new System.EventHandler(this.btnUp);
-            // 
-            // ButtonRight
-            // 
-            this.ButtonRight.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ButtonRight.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonRight.Image = ((System.Drawing.Image)(resources.GetObject("ButtonRight.Image")));
-            this.ButtonRight.Location = new System.Drawing.Point(106, 43);
-            this.ButtonRight.Name = "ButtonRight";
-            this.ButtonRight.Size = new System.Drawing.Size(47, 40);
-            this.ButtonRight.TabIndex = 1;
-            this.ButtonRight.TabStop = false;
-            this.ButtonRight.Text = " ";
-            this.ButtonRight.UseVisualStyleBackColor = false;
-            this.ButtonRight.Click += new System.EventHandler(this.btnRight);
-            this.ButtonRight.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ButtonRight_MouseClick);
-            // 
-            // ButtonLeft
-            // 
-            this.ButtonLeft.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ButtonLeft.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonLeft.Image = ((System.Drawing.Image)(resources.GetObject("ButtonLeft.Image")));
-            this.ButtonLeft.Location = new System.Drawing.Point(12, 43);
-            this.ButtonLeft.Name = "ButtonLeft";
-            this.ButtonLeft.Size = new System.Drawing.Size(47, 40);
-            this.ButtonLeft.TabIndex = 4;
-            this.ButtonLeft.TabStop = false;
-            this.ButtonLeft.Text = " ";
-            this.ButtonLeft.UseVisualStyleBackColor = false;
-            this.ButtonLeft.Click += new System.EventHandler(this.btnLeft);
-            // 
-            // ButtonDown
-            // 
-            this.ButtonDown.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ButtonDown.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonDown.Image = ((System.Drawing.Image)(resources.GetObject("ButtonDown.Image")));
-            this.ButtonDown.Location = new System.Drawing.Point(59, 43);
-            this.ButtonDown.Name = "ButtonDown";
-            this.ButtonDown.Size = new System.Drawing.Size(47, 40);
-            this.ButtonDown.TabIndex = 3;
-            this.ButtonDown.TabStop = false;
-            this.ButtonDown.Text = " ";
-            this.ButtonDown.UseVisualStyleBackColor = false;
-            this.ButtonDown.Click += new System.EventHandler(this.btnDown);
             // 
             // timer1
             // 
@@ -241,7 +186,7 @@
             // lblSpeed
             // 
             this.lblSpeed.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSpeed.Location = new System.Drawing.Point(19, 143);
+            this.lblSpeed.Location = new System.Drawing.Point(17, 139);
             this.lblSpeed.Name = "lblSpeed";
             this.lblSpeed.Size = new System.Drawing.Size(55, 29);
             this.lblSpeed.TabIndex = 10000005;
@@ -250,7 +195,7 @@
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(457, 225);
+            this.label5.Location = new System.Drawing.Point(457, 270);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 18);
             this.label5.TabIndex = 10000017;
@@ -258,7 +203,7 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(539, 226);
+            this.label2.Location = new System.Drawing.Point(539, 271);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 18);
             this.label2.TabIndex = 10000016;
@@ -266,13 +211,14 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkDotEater);
             this.groupBox1.Controls.Add(this.chkPortal);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.chkPacman);
             this.groupBox1.Location = new System.Drawing.Point(344, 68);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(280, 155);
+            this.groupBox1.Size = new System.Drawing.Size(280, 200);
             this.groupBox1.TabIndex = 10000019;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "درون ربزی پک-من";
@@ -298,7 +244,7 @@
             this.button4.Size = new System.Drawing.Size(244, 27);
             this.button4.TabIndex = 10000021;
             this.button4.TabStop = false;
-            this.button4.Text = "تنظیم تصویر";
+            this.button4.Text = "بازنشانی تصویر";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -320,7 +266,7 @@
             // 
             this.button3.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button3.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(266, 15);
+            this.button3.Location = new System.Drawing.Point(266, 12);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(47, 40);
             this.button3.TabIndex = 10000020;
@@ -331,29 +277,110 @@
             // 
             // chkHardRefresh
             // 
-            this.chkHardRefresh.Location = new System.Drawing.Point(468, 286);
+            this.chkHardRefresh.Checked = true;
+            this.chkHardRefresh.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkHardRefresh.Location = new System.Drawing.Point(468, 331);
             this.chkHardRefresh.Name = "chkHardRefresh";
             this.chkHardRefresh.Size = new System.Drawing.Size(156, 22);
             this.chkHardRefresh.TabIndex = 10000021;
             this.chkHardRefresh.Text = "ریفرش هارد";
             this.chkHardRefresh.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(344, 280);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(81, 73);
+            this.button1.TabIndex = 10000026;
+            this.button1.Text = "Refresh";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(344, 242);
+            this.pictureBox1.BackColor = System.Drawing.Color.Black;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 175);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 10000024;
+            this.pictureBox1.Size = new System.Drawing.Size(301, 175);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 10000025;
             this.pictureBox1.TabStop = false;
+            // 
+            // ButtonRight
+            // 
+            this.ButtonRight.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ButtonRight.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonRight.Image = ((System.Drawing.Image)(resources.GetObject("ButtonRight.Image")));
+            this.ButtonRight.Location = new System.Drawing.Point(106, 43);
+            this.ButtonRight.Name = "ButtonRight";
+            this.ButtonRight.Size = new System.Drawing.Size(47, 40);
+            this.ButtonRight.TabIndex = 1;
+            this.ButtonRight.TabStop = false;
+            this.ButtonRight.Text = " ";
+            this.ButtonRight.UseVisualStyleBackColor = false;
+            this.ButtonRight.Click += new System.EventHandler(this.btnRight);
+            this.ButtonRight.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ButtonRight_MouseClick);
+            // 
+            // ButtonUp
+            // 
+            this.ButtonUp.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ButtonUp.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonUp.Image = ((System.Drawing.Image)(resources.GetObject("ButtonUp.Image")));
+            this.ButtonUp.Location = new System.Drawing.Point(59, 3);
+            this.ButtonUp.Name = "ButtonUp";
+            this.ButtonUp.Size = new System.Drawing.Size(47, 40);
+            this.ButtonUp.TabIndex = 2;
+            this.ButtonUp.TabStop = false;
+            this.ButtonUp.Text = " ";
+            this.ButtonUp.UseVisualStyleBackColor = false;
+            this.ButtonUp.Click += new System.EventHandler(this.btnUp);
+            // 
+            // ButtonDown
+            // 
+            this.ButtonDown.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ButtonDown.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonDown.Image = ((System.Drawing.Image)(resources.GetObject("ButtonDown.Image")));
+            this.ButtonDown.Location = new System.Drawing.Point(59, 43);
+            this.ButtonDown.Name = "ButtonDown";
+            this.ButtonDown.Size = new System.Drawing.Size(47, 40);
+            this.ButtonDown.TabIndex = 3;
+            this.ButtonDown.TabStop = false;
+            this.ButtonDown.Text = " ";
+            this.ButtonDown.UseVisualStyleBackColor = false;
+            this.ButtonDown.Click += new System.EventHandler(this.btnDown);
+            // 
+            // ButtonLeft
+            // 
+            this.ButtonLeft.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ButtonLeft.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonLeft.Image = ((System.Drawing.Image)(resources.GetObject("ButtonLeft.Image")));
+            this.ButtonLeft.Location = new System.Drawing.Point(12, 43);
+            this.ButtonLeft.Name = "ButtonLeft";
+            this.ButtonLeft.Size = new System.Drawing.Size(47, 40);
+            this.ButtonLeft.TabIndex = 4;
+            this.ButtonLeft.TabStop = false;
+            this.ButtonLeft.Text = " ";
+            this.ButtonLeft.UseVisualStyleBackColor = false;
+            this.ButtonLeft.Click += new System.EventHandler(this.btnLeft);
+            // 
+            // chkDotEater
+            // 
+            this.chkDotEater.Checked = true;
+            this.chkDotEater.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDotEater.Location = new System.Drawing.Point(112, 151);
+            this.chkDotEater.Name = "chkDotEater";
+            this.chkDotEater.Size = new System.Drawing.Size(156, 22);
+            this.chkDotEater.TabIndex = 10000027;
+            this.chkDotEater.Text = "نقطه خور";
+            this.chkDotEater.UseVisualStyleBackColor = true;
             // 
             // PacmanForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(321, 168);
+            this.ClientSize = new System.Drawing.Size(638, 383);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.chkHardRefresh);
             this.Controls.Add(this.button3);
@@ -378,6 +405,7 @@
             this.Opacity = 0.94D;
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "               بازی پک-من";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PacmanForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -422,5 +450,7 @@
         private System.Windows.Forms.CheckBox chkPortal;
         private System.Windows.Forms.CheckBox chkHardRefresh;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox chkDotEater;
     }
 }
