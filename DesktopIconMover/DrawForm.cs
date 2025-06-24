@@ -43,7 +43,7 @@ namespace DesktopIconMover
         {
             Wallpaper.Set(pictureBox1.Image, Wallpaper.Style.Stretched);
         }
-        int space = 50;
+
         private void Red_clicked(object sender, EventArgs e)
         {
             BrushColor = Brushes.Red;
@@ -470,6 +470,7 @@ namespace DesktopIconMover
             if(open.ShowDialog() == DialogResult.OK)
             {
                 LoadImageOntoCanvas(open.FileName);
+                UpdateDesktopBackground(sender, e);
             }
         }
     }

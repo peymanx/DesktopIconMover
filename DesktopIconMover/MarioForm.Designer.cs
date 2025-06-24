@@ -136,7 +136,7 @@
             this.numX.Size = new System.Drawing.Size(97, 32);
             this.numX.TabIndex = 10000004;
             this.numX.Value = new decimal(new int[] {
-            100,
+            200,
             0,
             0,
             0});
