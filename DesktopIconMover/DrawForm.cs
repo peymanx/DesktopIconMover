@@ -19,7 +19,13 @@ namespace DesktopIconMover
             (int Width, int Height) = DisplayResolutionInfo.GetPhysicalScreenResolution();
             canvas = new Bitmap(Width, Height);
             pictureBox1.Image = canvas;
-            LoadDesktopIcons();
+
+
+            DesktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            var icon_size = DesktopIconMetrics.GetDesktopIconSpacing();
+            if (icon_size.HasValue)
+                Size = icon_size.Value.Width / 2;
 
         }
 
@@ -44,12 +50,12 @@ namespace DesktopIconMover
             btnSelectedColor.BackColor = Color.Red;
             BtnPen_Clicked(sender, e);
 
-            DrawIconOnDesktop();
+            PencilIconGenerate();
             DesktopRefresher.HardRefresh();
 
         }
 
-        private void DrawOn()
+        private void DrawOnScreen()
         {
 
 
@@ -65,6 +71,8 @@ namespace DesktopIconMover
 
             // قرار دادن تصویر در PictureBox
             pictureBox1.Image = canvas;
+            UpdateDesktopBackground(null, null);
+
 
         }
 
@@ -86,31 +94,33 @@ namespace DesktopIconMover
             UpdateDesktopBackground(null, null);
         }
 
+
+        private void ResetBrush()
+        {
+            PencilIconGenerate();
+            LoadDesktopIcons();
+            PencilIconGenerate();
+            DesktopRefresher.HardRefresh();
+            ButtonRight_Click(null, null);
+        }
+
         private void DrawForm_Load(object sender, EventArgs e)
         {
-            DesktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            BrushColor = Brushes.Red;
-            btnSelectedColor.BackColor = Color.Red;
-            button4_Click(sender, e);
 
 
-            var icon_size = DesktopIconMetrics.GetDesktopIconSpacing();
-            if (icon_size.HasValue)
-            {
-
-                Size = icon_size.Value.Width / 2;
+            Minimize(sender, e);
 
 
-            }
+            ResetBrush();
 
         }
 
         private void ButtonUp_Click(object sender, EventArgs e)
         {
             Y -= Size;
-            DrawOn();
 
             MoveIconRelative(cmbIconList.SelectedIndex, X, Y);
+            DrawOnScreen();
 
             if (Dir != Direction.Up)
             {
@@ -119,9 +129,10 @@ namespace DesktopIconMover
 
 
             }
-            DrawIconOnDesktop();
+
+            PencilIconGenerate();
             panelArrows.Focus();
-            UpdateDesktopBackground(null, null);
+
 
 
         }
@@ -176,10 +187,10 @@ namespace DesktopIconMover
         private void ButtonRight_Click(object sender, EventArgs e)
         {
             X += Size;
-            DrawOn();
 
 
             MoveIconRelative(cmbIconList.SelectedIndex, X, Y);
+            DrawOnScreen();
 
             if (Dir != Direction.Right)
             {
@@ -187,13 +198,13 @@ namespace DesktopIconMover
                 ButtonRight.BackColor = Color.Gold;
                 ButtonRight.Focus();
             }
-            DrawIconOnDesktop();
+            PencilIconGenerate();
             panelArrows.Focus();
-            UpdateDesktopBackground(null, null);
+
 
         }
 
-        private void DrawIconOnDesktop()
+        private void PencilIconGenerate()
         {
             var pencil_path = Path.Combine(DesktopPath, "pencil.png");
 
@@ -251,9 +262,9 @@ namespace DesktopIconMover
         private void ButtonDown_Click(object sender, EventArgs e)
         {
             Y += Size;
-            DrawOn();
 
             MoveIconRelative(cmbIconList.SelectedIndex, X, Y);
+            DrawOnScreen();
 
             if (Dir != Direction.Down)
             {
@@ -262,9 +273,9 @@ namespace DesktopIconMover
                 ButtonDown.Focus();
 
             }
-            DrawIconOnDesktop();
+            PencilIconGenerate();
             panelArrows.Focus();
-            UpdateDesktopBackground(null, null);
+
 
 
         }
@@ -272,10 +283,10 @@ namespace DesktopIconMover
         private void ButtonLeft_Click(object sender, EventArgs e)
         {
             X -= Size;
-            DrawOn();
 
 
             MoveIconRelative(cmbIconList.SelectedIndex, X, Y);
+            DrawOnScreen();
 
             if (Dir != Direction.Left)
             {
@@ -284,9 +295,9 @@ namespace DesktopIconMover
 
                 ButtonLeft.Focus();
             }
-            DrawIconOnDesktop();
+            PencilIconGenerate();
             panelArrows.Focus();
-            UpdateDesktopBackground(null, null);
+
 
 
         }
@@ -294,7 +305,7 @@ namespace DesktopIconMover
         private void BtnPen_Clicked(object sender, EventArgs e)
         {
             //DrawingStat = !DrawingStat;
-            btnEraser.BackColor = ButtonRight.BackColor;
+            btnEraser.BackColor = btnClearBoom.BackColor;
             btnPen.BackColor = Color.Gold;
 
         }
@@ -341,8 +352,8 @@ namespace DesktopIconMover
             BrushColor = Brushes.Blue;
             btnSelectedColor.BackColor = Color.Blue;
             BtnPen_Clicked(sender, e);
-
-            DrawIconOnDesktop();
+            DrawOnScreen();
+            PencilIconGenerate();
             DesktopRefresher.HardRefresh();
 
         }
@@ -352,8 +363,8 @@ namespace DesktopIconMover
             BrushColor = Brushes.Lime;
             btnSelectedColor.BackColor = Color.Lime;
             BtnPen_Clicked(sender, e);
-
-            DrawIconOnDesktop();
+            DrawOnScreen();
+            PencilIconGenerate();
             DesktopRefresher.HardRefresh();
 
         }
@@ -362,7 +373,7 @@ namespace DesktopIconMover
         {
             BrushColor = Brushes.Black;
             btnSelectedColor.BackColor = Color.Black;
-            DrawIconOnDesktop();
+            PencilIconGenerate();
             DesktopRefresher.HardRefresh();
 
 
@@ -374,8 +385,8 @@ namespace DesktopIconMover
             BrushColor = Brushes.White;
             btnSelectedColor.BackColor = Color.White;
             BtnPen_Clicked(sender, e);
-
-            DrawIconOnDesktop();
+            DrawOnScreen();
+            PencilIconGenerate();
             DesktopRefresher.HardRefresh();
 
 
@@ -386,12 +397,13 @@ namespace DesktopIconMover
             BrushColor = Brushes.Gold;
             btnSelectedColor.BackColor = Color.Gold;
             BtnPen_Clicked(sender, e);
-            DrawIconOnDesktop();
+            DrawOnScreen();
+            PencilIconGenerate();
             DesktopRefresher.HardRefresh();
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void Minimize(object sender, EventArgs e)
         {
             if (button4.Text == "<<")
             {
@@ -422,8 +434,8 @@ namespace DesktopIconMover
 
             BrushColor = Brushes.Black;
             btnSelectedColor.BackColor = Color.Black;
-            DrawOn();
-            DrawIconOnDesktop();
+            DrawOnScreen();
+            PencilIconGenerate();
             UpdateDesktopBackground(null,null);
             DesktopRefresher.HardRefresh();
 

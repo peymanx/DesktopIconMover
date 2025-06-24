@@ -50,7 +50,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button10 = new System.Windows.Forms.Button();
+            this.btnClearBoom = new System.Windows.Forms.Button();
             this.panelArrows.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -94,7 +94,7 @@
             this.button4.TabStop = false;
             this.button4.Text = ">>";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.Minimize);
             // 
             // btnPen
             // 
@@ -313,24 +313,24 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // button10
+            // btnClearBoom
             // 
-            this.button10.Font = new System.Drawing.Font("Tahoma", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button10.Location = new System.Drawing.Point(431, 222);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(256, 29);
-            this.button10.TabIndex = 10000027;
-            this.button10.Text = "بوم سیاه";
-            this.button10.UseVisualStyleBackColor = false;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.btnClearBoom.Font = new System.Drawing.Font("Tahoma", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearBoom.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClearBoom.Location = new System.Drawing.Point(431, 222);
+            this.btnClearBoom.Name = "btnClearBoom";
+            this.btnClearBoom.Size = new System.Drawing.Size(256, 29);
+            this.btnClearBoom.TabIndex = 10000027;
+            this.btnClearBoom.Text = "بوم سیاه";
+            this.btnClearBoom.UseVisualStyleBackColor = false;
+            this.btnClearBoom.Click += new System.EventHandler(this.button10_Click);
             // 
             // DrawForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(742, 273);
-            this.Controls.Add(this.button10);
+            this.Controls.Add(this.btnClearBoom);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.cmbIconList);
             this.Controls.Add(this.label4);
@@ -345,6 +345,7 @@
             this.KeyPreview = true;
             this.Name = "DrawForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.DrawForm_Load);
             this.panelArrows.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -375,7 +376,7 @@
         private System.Windows.Forms.ComboBox cmbIconList;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button btnClearBoom;
         private System.Windows.Forms.Button btnEraser;
     }
 }

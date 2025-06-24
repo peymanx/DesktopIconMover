@@ -208,10 +208,10 @@ namespace DesktopIconMover
         {
             LoadDesktopIcons();
 
-            button4_Click_2(sender, e);
+            Minimize(sender, e);
 
             ResetPlayer();
-
+            SetDesktopBackground(sender, e);
 
 
         }
@@ -224,11 +224,6 @@ namespace DesktopIconMover
         private void ResetPlayer()
         {
             Properties.Resources.mario_right.Save(MarioPath);
-
-            //if (File.Exists(MarioPath))
-            //{
-            //    File.Delete(MarioPath);
-            //}
             Properties.Resources.mario_right.Save(MarioPath);
             LoadDesktopIcons();
             numY.Value = numGround.Value;
@@ -327,7 +322,7 @@ namespace DesktopIconMover
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void SetDesktopBackground(object sender, EventArgs e)
         {
             Wallpaper.Set(Properties.Resources.supermario_wallpaper01, Wallpaper.Style.Stretched);
         }
@@ -354,7 +349,7 @@ namespace DesktopIconMover
             WindowsAPI.MoveIconRelative(0, 100, 0);
         }
 
-        private void button4_Click_2(object sender, EventArgs e)
+        private void Minimize(object sender, EventArgs e)
         {
             if (button4.Text == "<<")
             {

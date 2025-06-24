@@ -347,7 +347,7 @@ namespace DesktopIconMover
             trackBar1_Scroll(null, null);
             Size = CalculateSize();
             SetDefaultGamePlay();
-
+            ResetPlayer();
             btnRight(sender, e);
 
             button3_Click(sender, e);
@@ -526,12 +526,18 @@ namespace DesktopIconMover
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            if (File.Exists(PacmanFile))
-            {
-                File.Delete(PacmanFile);
-            }
+            ResetPlayer();
+
+        }
+
+        private void ResetPlayer()
+        {
+            Properties.Resources.right.Save(PacmanFile);
+            Properties.Resources.right.Save(PacmanFile);
+            DesktopRefresher.HardRefresh();
             Properties.Resources.right.Save(PacmanFile);
             LoadDesktopIcons();
+            Properties.Resources.right.Save(PacmanFile);
         }
     }
 }

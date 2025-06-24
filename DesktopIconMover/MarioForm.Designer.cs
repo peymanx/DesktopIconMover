@@ -216,7 +216,7 @@
             this.button4.TabStop = false;
             this.button4.Text = ">>";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click_2);
+            this.button4.Click += new System.EventHandler(this.Minimize);
             // 
             // ButtonDown
             // 
@@ -354,7 +354,7 @@
             this.button1.TabStop = false;
             this.button1.Text = "تنظیم تصویر زمینه";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.SetDesktopBackground);
             // 
             // groupBox1
             // 
@@ -418,6 +418,8 @@
             // 
             // chkHardRefresh
             // 
+            this.chkHardRefresh.Checked = true;
+            this.chkHardRefresh.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkHardRefresh.Location = new System.Drawing.Point(197, 187);
             this.chkHardRefresh.Name = "chkHardRefresh";
             this.chkHardRefresh.Size = new System.Drawing.Size(156, 22);

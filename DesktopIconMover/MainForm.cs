@@ -27,6 +27,7 @@ namespace DesktopIconMover
 
         private void LoadDesktopIcons()
         {
+            iconNames.Clear();
             cmbIconList.Items.Clear();
 
             IntPtr hwndListView = WindowsAPI.GetDesktopListView();
@@ -92,7 +93,7 @@ namespace DesktopIconMover
         private void button2_Click(object sender, EventArgs e)
         {
             chkLock.Checked = false;
-            // LoadDesktopIcons();
+            LoadDesktopIcons();
             numX.Value = numY.Value = 100;
         }
 
@@ -240,7 +241,7 @@ namespace DesktopIconMover
             trackBar1_Scroll(null, null);
             DesktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-            button3_Click(sender, e);
+            Minimize(sender, e);
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
@@ -378,12 +379,12 @@ namespace DesktopIconMover
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Minimize(object sender, EventArgs e)
         {
             if (button3.Text == "<<")
             {
-                this.Width = 910;
-                this.Height = 305;
+                this.Width = 830;
+                this.Height = 300;
                 button3.Text = ">>";
             }
             else
