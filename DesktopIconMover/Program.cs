@@ -18,7 +18,7 @@ namespace DesktopIconMover
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PacmanForm());
+            Application.Run(new MainForm());
         }
     }
 }

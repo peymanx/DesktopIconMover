@@ -110,7 +110,6 @@
             // cmbIconList
             // 
             this.cmbIconList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbIconList.Enabled = false;
             this.cmbIconList.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbIconList.FormattingEnabled = true;
             this.cmbIconList.Location = new System.Drawing.Point(12, 12);
@@ -186,10 +185,10 @@
             this.button2.Font = new System.Drawing.Font("Lucida Console", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(380, 152);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(58, 50);
+            this.button2.Size = new System.Drawing.Size(77, 57);
             this.button2.TabIndex = 10000006;
             this.button2.TabStop = false;
-            this.button2.Text = "Lock";
+            this.button2.Text = "Refresh";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 

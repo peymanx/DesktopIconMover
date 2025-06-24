@@ -17,8 +17,6 @@ namespace DesktopIconMover
             txtDesktopPath.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             MarioPath = Path.Combine(txtDesktopPath.Text, "mario.png");
 
-            Properties.Resources.mario_right.Save(MarioPath);
-
 
 
         }
@@ -37,6 +35,7 @@ namespace DesktopIconMover
 
         private void LoadDesktopIcons()
         {
+            iconNames.Clear();
             cmbIconList.Items.Clear();
 
             IntPtr hwndListView = WindowsAPI.GetDesktopListView();
@@ -208,9 +207,10 @@ namespace DesktopIconMover
         private void MarioForm_Load(object sender, EventArgs e)
         {
             LoadDesktopIcons();
-            numY.Value = numGround.Value;
 
             button4_Click_2(sender, e);
+
+            ResetPlayer();
 
 
 
@@ -218,7 +218,22 @@ namespace DesktopIconMover
 
         private void button2_Click(object sender, EventArgs e)
         {
-            cmbIconList.Enabled = !cmbIconList.Enabled;
+            ResetPlayer();
+        }
+
+        private void ResetPlayer()
+        {
+            Properties.Resources.mario_right.Save(MarioPath);
+
+            //if (File.Exists(MarioPath))
+            //{
+            //    File.Delete(MarioPath);
+            //}
+            Properties.Resources.mario_right.Save(MarioPath);
+            LoadDesktopIcons();
+            numY.Value = numGround.Value;
+            DesktopRefresher.HardRefresh();
+            ButtonRight_Click( null,null);
         }
 
         private void ButtonSpace_Click(object sender, EventArgs e)
