@@ -1,6 +1,8 @@
 ﻿# 🎮 DesktopIconMover
 
-**DesktopIconMover** is a creative playground where your Windows desktop icons come to life! This application turns your desktop into an interactive canvas—allowing you to play games like **Pac-Man** and **Super Mario**, or even **paint** by moving real desktop icons.
+**DesktopIconMover** is a creative playground where your Windows desktop icons come to life! This application turns your desktop into an interactive canvas—allowing you to play games like **Pac-Man** and **Super Mario**, or even **paint** by moving real desktop icons.   
+
+![app_window](./Screenshots/app_window.png)
 
 ## 🧩 Features
 
@@ -33,7 +35,7 @@ Play Super Mario directly on your desktop.
 
 ### Paint Mode  
 Draw pixel-style images using icon placement.  
-![Paint Mode](./Screenshots/paint.png)
+![Paint Mode](./Screenshots/paint.png)c
 
 ## 💡 Inspiration
 
