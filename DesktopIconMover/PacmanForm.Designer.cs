@@ -37,12 +37,17 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.chkLock = new System.Windows.Forms.CheckBox();
             this.panelArrowKeys = new System.Windows.Forms.Panel();
+            this.ButtonRight = new System.Windows.Forms.Button();
+            this.ButtonUp = new System.Windows.Forms.Button();
+            this.ButtonDown = new System.Windows.Forms.Button();
+            this.ButtonLeft = new System.Windows.Forms.Button();
             this.chkPacman = new System.Windows.Forms.CheckBox();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.lblSpeed = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkDotEater = new System.Windows.Forms.CheckBox();
             this.chkPortal = new System.Windows.Forms.CheckBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -50,11 +55,7 @@
             this.chkHardRefresh = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.ButtonRight = new System.Windows.Forms.Button();
-            this.ButtonUp = new System.Windows.Forms.Button();
-            this.ButtonDown = new System.Windows.Forms.Button();
-            this.ButtonLeft = new System.Windows.Forms.Button();
-            this.chkDotEater = new System.Windows.Forms.CheckBox();
+            this.chkDebug = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
             this.panelArrowKeys.SuspendLayout();
@@ -86,7 +87,7 @@
             // numY
             // 
             this.numY.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numY.Location = new System.Drawing.Point(463, 292);
+            this.numY.Location = new System.Drawing.Point(456, 276);
             this.numY.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -110,7 +111,7 @@
             // numX
             // 
             this.numX.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numX.Location = new System.Drawing.Point(545, 292);
+            this.numX.Location = new System.Drawing.Point(538, 276);
             this.numX.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -158,153 +159,6 @@
             this.panelArrowKeys.Name = "panelArrowKeys";
             this.panelArrowKeys.Size = new System.Drawing.Size(171, 84);
             this.panelArrowKeys.TabIndex = 0;
-            // 
-            // chkPacman
-            // 
-            this.chkPacman.Checked = true;
-            this.chkPacman.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkPacman.Location = new System.Drawing.Point(92, 30);
-            this.chkPacman.Name = "chkPacman";
-            this.chkPacman.Size = new System.Drawing.Size(176, 20);
-            this.chkPacman.TabIndex = 10000002;
-            this.chkPacman.Text = "به روزرسانی آیکون";
-            this.chkPacman.UseVisualStyleBackColor = true;
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.LargeChange = 1;
-            this.trackBar1.Location = new System.Drawing.Point(12, 114);
-            this.trackBar1.Minimum = 1;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.trackBar1.Size = new System.Drawing.Size(298, 56);
-            this.trackBar1.SmallChange = 50;
-            this.trackBar1.TabIndex = 10000003;
-            this.trackBar1.Value = 10;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
-            // 
-            // lblSpeed
-            // 
-            this.lblSpeed.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSpeed.Location = new System.Drawing.Point(17, 139);
-            this.lblSpeed.Name = "lblSpeed";
-            this.lblSpeed.Size = new System.Drawing.Size(55, 29);
-            this.lblSpeed.TabIndex = 10000005;
-            this.lblSpeed.Text = "200";
-            this.lblSpeed.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label5
-            // 
-            this.label5.Location = new System.Drawing.Point(457, 270);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 18);
-            this.label5.TabIndex = 10000017;
-            this.label5.Text = "y:";
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(539, 271);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 18);
-            this.label2.TabIndex = 10000016;
-            this.label2.Text = "x:";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.chkDotEater);
-            this.groupBox1.Controls.Add(this.chkPortal);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.chkPacman);
-            this.groupBox1.Location = new System.Drawing.Point(344, 68);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(280, 200);
-            this.groupBox1.TabIndex = 10000019;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "درون ربزی پک-من";
-            // 
-            // chkPortal
-            // 
-            this.chkPortal.Checked = true;
-            this.chkPortal.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkPortal.Location = new System.Drawing.Point(91, 55);
-            this.chkPortal.Name = "chkPortal";
-            this.chkPortal.Size = new System.Drawing.Size(176, 20);
-            this.chkPortal.TabIndex = 10000022;
-            this.chkPortal.Text = "پرتال گوشه ها";
-            this.chkPortal.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(24, 83);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(244, 27);
-            this.button4.TabIndex = 10000021;
-            this.button4.TabStop = false;
-            this.button4.Text = "بازنشانی تصویر";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(23, 114);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(244, 27);
-            this.button2.TabIndex = 10000020;
-            this.button2.TabStop = false;
-            this.button2.Text = "+ ساخت روح رنگی";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button3.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(266, 12);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(47, 40);
-            this.button3.TabIndex = 10000020;
-            this.button3.TabStop = false;
-            this.button3.Text = ">>";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // chkHardRefresh
-            // 
-            this.chkHardRefresh.Checked = true;
-            this.chkHardRefresh.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkHardRefresh.Location = new System.Drawing.Point(468, 331);
-            this.chkHardRefresh.Name = "chkHardRefresh";
-            this.chkHardRefresh.Size = new System.Drawing.Size(156, 22);
-            this.chkHardRefresh.TabIndex = 10000021;
-            this.chkHardRefresh.Text = "ریفرش هارد";
-            this.chkHardRefresh.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(344, 280);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 73);
-            this.button1.TabIndex = 10000026;
-            this.button1.Text = "Refresh";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Black;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 175);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(301, 175);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 10000025;
-            this.pictureBox1.TabStop = false;
             // 
             // ButtonRight
             // 
@@ -363,6 +217,70 @@
             this.ButtonLeft.UseVisualStyleBackColor = false;
             this.ButtonLeft.Click += new System.EventHandler(this.btnLeft);
             // 
+            // chkPacman
+            // 
+            this.chkPacman.Checked = true;
+            this.chkPacman.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPacman.Location = new System.Drawing.Point(92, 30);
+            this.chkPacman.Name = "chkPacman";
+            this.chkPacman.Size = new System.Drawing.Size(176, 20);
+            this.chkPacman.TabIndex = 10000002;
+            this.chkPacman.Text = "به روزرسانی آیکون";
+            this.chkPacman.UseVisualStyleBackColor = true;
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.LargeChange = 1;
+            this.trackBar1.Location = new System.Drawing.Point(12, 114);
+            this.trackBar1.Minimum = 1;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.trackBar1.Size = new System.Drawing.Size(298, 56);
+            this.trackBar1.SmallChange = 50;
+            this.trackBar1.TabIndex = 10000003;
+            this.trackBar1.Value = 10;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // lblSpeed
+            // 
+            this.lblSpeed.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSpeed.Location = new System.Drawing.Point(17, 139);
+            this.lblSpeed.Name = "lblSpeed";
+            this.lblSpeed.Size = new System.Drawing.Size(55, 29);
+            this.lblSpeed.TabIndex = 10000005;
+            this.lblSpeed.Text = "200";
+            this.lblSpeed.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(450, 254);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(85, 18);
+            this.label5.TabIndex = 10000017;
+            this.label5.Text = "y:";
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(532, 255);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 18);
+            this.label2.TabIndex = 10000016;
+            this.label2.Text = "x:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.chkDotEater);
+            this.groupBox1.Controls.Add(this.chkPortal);
+            this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.chkPacman);
+            this.groupBox1.Location = new System.Drawing.Point(344, 68);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(280, 184);
+            this.groupBox1.TabIndex = 10000019;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "درون ربزی پک-من";
+            // 
             // chkDotEater
             // 
             this.chkDotEater.Checked = true;
@@ -374,12 +292,106 @@
             this.chkDotEater.Text = "نقطه خور";
             this.chkDotEater.UseVisualStyleBackColor = true;
             // 
+            // chkPortal
+            // 
+            this.chkPortal.Checked = true;
+            this.chkPortal.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPortal.Location = new System.Drawing.Point(91, 55);
+            this.chkPortal.Name = "chkPortal";
+            this.chkPortal.Size = new System.Drawing.Size(176, 20);
+            this.chkPortal.TabIndex = 10000022;
+            this.chkPortal.Text = "پرتال گوشه ها";
+            this.chkPortal.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(24, 83);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(244, 27);
+            this.button4.TabIndex = 10000021;
+            this.button4.TabStop = false;
+            this.button4.Text = "بازنشانی تصویر";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(23, 114);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(244, 27);
+            this.button2.TabIndex = 10000020;
+            this.button2.TabStop = false;
+            this.button2.Text = "+ ساخت روح رنگی";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button3.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(266, 12);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(47, 40);
+            this.button3.TabIndex = 10000020;
+            this.button3.TabStop = false;
+            this.button3.Text = ">>";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.Minimize);
+            // 
+            // chkHardRefresh
+            // 
+            this.chkHardRefresh.Checked = true;
+            this.chkHardRefresh.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkHardRefresh.Location = new System.Drawing.Point(461, 315);
+            this.chkHardRefresh.Name = "chkHardRefresh";
+            this.chkHardRefresh.Size = new System.Drawing.Size(156, 22);
+            this.chkHardRefresh.TabIndex = 10000021;
+            this.chkHardRefresh.Text = "ریفرش هارد";
+            this.chkHardRefresh.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(337, 264);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(81, 73);
+            this.button1.TabIndex = 10000026;
+            this.button1.Text = "Refresh";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Black;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 175);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(301, 175);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 10000025;
+            this.pictureBox1.TabStop = false;
+            // 
+            // chkDebug
+            // 
+            this.chkDebug.Location = new System.Drawing.Point(461, 337);
+            this.chkDebug.Name = "chkDebug";
+            this.chkDebug.Size = new System.Drawing.Size(156, 22);
+            this.chkDebug.TabIndex = 10000027;
+            this.chkDebug.Text = "دیباگ";
+            this.chkDebug.UseVisualStyleBackColor = true;
+            this.chkDebug.CheckedChanged += new System.EventHandler(this.chkDebug_CheckedChanged);
+            // 
             // PacmanForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(638, 383);
+            this.Controls.Add(this.chkDebug);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.chkHardRefresh);
@@ -452,5 +464,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox chkDotEater;
+        private System.Windows.Forms.CheckBox chkDebug;
     }
 }

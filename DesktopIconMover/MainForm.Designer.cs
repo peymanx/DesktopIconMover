@@ -47,10 +47,10 @@
             this.lblSpeed = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnMario = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnPacman = new System.Windows.Forms.Button();
+            this.btnPaint = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
@@ -269,22 +269,22 @@
             this.label2.TabIndex = 10000016;
             this.label2.Text = "x:";
             // 
-            // button1
+            // btnMario
             // 
-            this.button1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button1.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(316, 12);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.button1.Size = new System.Drawing.Size(206, 56);
-            this.button1.TabIndex = 10000018;
-            this.button1.TabStop = false;
-            this.button1.Text = "بازی سوپرماریو";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnMario.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMario.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMario.Image = ((System.Drawing.Image)(resources.GetObject("btnMario.Image")));
+            this.btnMario.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnMario.Location = new System.Drawing.Point(316, 12);
+            this.btnMario.Name = "btnMario";
+            this.btnMario.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnMario.Size = new System.Drawing.Size(206, 56);
+            this.btnMario.TabIndex = 10000018;
+            this.btnMario.TabStop = false;
+            this.btnMario.Text = "بازی سوپرماریو";
+            this.btnMario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMario.UseVisualStyleBackColor = false;
+            this.btnMario.Click += new System.EventHandler(this.button1_Click);
             // 
             // button3
             // 
@@ -299,39 +299,39 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.Minimize);
             // 
-            // button2
+            // btnPacman
             // 
-            this.button2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button2.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.Location = new System.Drawing.Point(316, 77);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.button2.Size = new System.Drawing.Size(206, 56);
-            this.button2.TabIndex = 10000021;
-            this.button2.TabStop = false;
-            this.button2.Text = "بازی پک-من";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_2);
+            this.btnPacman.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPacman.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPacman.Image = ((System.Drawing.Image)(resources.GetObject("btnPacman.Image")));
+            this.btnPacman.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPacman.Location = new System.Drawing.Point(316, 77);
+            this.btnPacman.Name = "btnPacman";
+            this.btnPacman.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnPacman.Size = new System.Drawing.Size(206, 56);
+            this.btnPacman.TabIndex = 10000021;
+            this.btnPacman.TabStop = false;
+            this.btnPacman.Text = "بازی پک-من";
+            this.btnPacman.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPacman.UseVisualStyleBackColor = false;
+            this.btnPacman.Click += new System.EventHandler(this.button2_Click_2);
             // 
-            // button4
+            // btnPaint
             // 
-            this.button4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button4.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.Location = new System.Drawing.Point(316, 141);
-            this.button4.Name = "button4";
-            this.button4.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.button4.Size = new System.Drawing.Size(206, 56);
-            this.button4.TabIndex = 10000022;
-            this.button4.TabStop = false;
-            this.button4.Text = "نقاشی روی دسکتاپ";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            this.btnPaint.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPaint.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPaint.Image = ((System.Drawing.Image)(resources.GetObject("btnPaint.Image")));
+            this.btnPaint.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPaint.Location = new System.Drawing.Point(316, 141);
+            this.btnPaint.Name = "btnPaint";
+            this.btnPaint.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnPaint.Size = new System.Drawing.Size(206, 56);
+            this.btnPaint.TabIndex = 10000022;
+            this.btnPaint.TabStop = false;
+            this.btnPaint.Text = "نقاشی روی دسکتاپ";
+            this.btnPaint.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPaint.UseVisualStyleBackColor = false;
+            this.btnPaint.Click += new System.EventHandler(this.button4_Click_1);
             // 
             // groupBox1
             // 
@@ -367,10 +367,10 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnPaint);
+            this.Controls.Add(this.btnPacman);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnMario);
             this.Controls.Add(this.chkLock);
             this.Controls.Add(this.lblSpeed);
             this.Controls.Add(this.trackBar1);
@@ -424,10 +424,10 @@
         private System.Windows.Forms.Label lblSpeed;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnMario;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnPacman;
+        private System.Windows.Forms.Button btnPaint;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
     }

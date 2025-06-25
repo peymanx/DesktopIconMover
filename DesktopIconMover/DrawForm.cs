@@ -6,8 +6,10 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace DesktopIconMover
 {
@@ -106,12 +108,22 @@ namespace DesktopIconMover
 
         private void DrawForm_Load(object sender, EventArgs e)
         {
-
-
+            Red_clicked(sender, e);
+           
             Minimize(sender, e);
 
 
-            ResetBrush();
+            new Task(() =>
+            {
+       
+                Thread.Sleep(2000);
+                LoadDesktopIcons();
+            ButtonRight_Click(null, null);
+
+
+                //ResetBrush();
+
+            }).Start();
 
         }
 
@@ -140,6 +152,7 @@ namespace DesktopIconMover
 
         private void LoadDesktopIcons()
         {
+            iconNames.Clear();
             cmbIconList.Items.Clear();
 
             IntPtr hwndListView = WindowsAPI.GetDesktopListView();
@@ -208,7 +221,7 @@ namespace DesktopIconMover
         {
             var pencil_path = Path.Combine(DesktopPath, "pencil.png");
 
-            var pen_image = Properties.Resources.pencil_white;
+            var pen_image = Properties.Resources.pencil_red;
 
             if (BrushColor == Brushes.Red)
             {
@@ -237,13 +250,13 @@ namespace DesktopIconMover
             }
             else
             {
-                pen_image = Properties.Resources.pencil_white;
+                pen_image = Properties.Resources.pencil_red;
             }
 
 
             pen_image.Save(pencil_path);
             if (BrushColor != Brushes.Black)
-                BtnPen_Clicked(null,null);
+                BtnPen_Clicked(null, null);
 
             ResetArrowButtonColor();
         }
@@ -332,13 +345,13 @@ namespace DesktopIconMover
             else if (keyData == Keys.G)
                 Green_clicked(null, null);
             else if (keyData == Keys.B)
-               Blue_Clicked(null, null);
+                Blue_Clicked(null, null);
             else if (keyData == Keys.K)
                 Black_Clicked(null, null);
             else if (keyData == Keys.W)
                 White_Clicked(null, null);
             else if (keyData == Keys.Y)
-               Gold_clicked(null, null);
+                Gold_clicked(null, null);
 
 
 
@@ -427,7 +440,7 @@ namespace DesktopIconMover
 
         private void btnEraser_Click(object sender, EventArgs e)
         {
-   
+
 
             btnEraser.BackColor = Color.Gold;
             btnPen.BackColor = ButtonRight.BackColor;
@@ -436,7 +449,7 @@ namespace DesktopIconMover
             btnSelectedColor.BackColor = Color.Black;
             DrawOnScreen();
             PencilIconGenerate();
-            UpdateDesktopBackground(null,null);
+            UpdateDesktopBackground(null, null);
             DesktopRefresher.HardRefresh();
 
         }
@@ -465,13 +478,18 @@ namespace DesktopIconMover
         {
             var open = new OpenFileDialog
             {
-                Filter="عکس|*.jpg;*.png;*.bmp"
+                Filter = "عکس|*.jpg;*.png;*.bmp"
             };
-            if(open.ShowDialog() == DialogResult.OK)
+            if (open.ShowDialog() == DialogResult.OK)
             {
                 LoadImageOntoCanvas(open.FileName);
                 UpdateDesktopBackground(sender, e);
             }
+        }
+
+        private void button10_Click_1(object sender, EventArgs e)
+        {
+            ResetBrush();
         }
     }
 }

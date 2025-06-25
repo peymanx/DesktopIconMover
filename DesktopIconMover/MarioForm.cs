@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DesktopIconMover
@@ -21,17 +23,31 @@ namespace DesktopIconMover
 
         }
 
-        public int Step { get; set; } = 10;
+        public int Step { get; set; } = 20;
         public string MarioPath { get; set; }
+
+        public bool Grounded
+        {
+            get
+            {
+                if (timerJump.Enabled) return false;
+                return !Falling;
+            }
+        }
+        public bool Falling
+        {
+            get
+            {
+                if (numY.Value < numGround.Value) return true;
+                return false;
+            }
+        }
 
         public int Target { get; set; }
         private readonly List<string> iconNames = new List<string>();
 
 
         public Direction Dir { get; set; } = Direction.Null;
-
-
-
 
         private void LoadDesktopIcons()
         {
@@ -56,6 +72,7 @@ namespace DesktopIconMover
 
             cmbIconList.SelectedIndex = iconNames.Count - 1;
         }
+
 
         public static void MoveIconRelative(int iconIndex, int dx, int dy)
         {
@@ -143,7 +160,12 @@ namespace DesktopIconMover
 
         private void ButtonLeft_Click(object sender, EventArgs e)
         {
-            numX.Value -= Step;
+
+            if (Grounded)
+                numX.Value -= Step;
+            else
+                numX.Value -= (Step / 4);
+
             MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
             if (Dir != Direction.Left)
             {
@@ -167,7 +189,11 @@ namespace DesktopIconMover
 
         private void ButtonRight_Click(object sender, EventArgs e)
         {
-            numX.Value += Step;
+
+            if (Grounded)
+                numX.Value += Step;
+            else
+                numX.Value += (Step / 4);
 
             MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
 
@@ -206,11 +232,18 @@ namespace DesktopIconMover
 
         private void MarioForm_Load(object sender, EventArgs e)
         {
-            LoadDesktopIcons();
+
 
             Minimize(sender, e);
 
             ResetPlayer();
+            new Task(() =>
+            {
+                Thread.Sleep(2000);
+                LoadDesktopIcons();
+                ButtonRight_Click(null, null);
+
+            }).Start();
             SetDesktopBackground(sender, e);
 
 
@@ -228,7 +261,6 @@ namespace DesktopIconMover
             LoadDesktopIcons();
             numY.Value = numGround.Value;
             DesktopRefresher.HardRefresh();
-            ButtonRight_Click( null,null);
         }
 
         private void ButtonSpace_Click(object sender, EventArgs e)
@@ -292,12 +324,13 @@ namespace DesktopIconMover
 
         private void timerGravity_Tick(object sender, EventArgs e)
         {
+
             if (numY.Value < numGround.Value && !timerJump.Enabled)
+
             {
                 numY.Value += 6;
                 panelArrows.Focus();
                 MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
-
             }
 
             if (numY.Value > numGround.Value)

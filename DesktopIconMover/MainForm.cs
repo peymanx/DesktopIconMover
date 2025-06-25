@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading.Tasks;
+using System.Threading;
 
 
 namespace DesktopIconMover
@@ -307,17 +309,63 @@ namespace DesktopIconMover
             if (timer1.Enabled) timer1_Tick(sender, e);
         }
 
+
+
+        public void DeleteOldFiles()
+        {
+            var mario = Path.Combine(DesktopPath, "mario.png");
+            var pacman = Path.Combine(DesktopPath, "pacman.png");
+            var pencil = Path.Combine(DesktopPath, "pencil.png");
+
+            File.Delete(mario);
+            File.Delete(pacman);
+            File.Delete(pencil);
+
+            string targetPath = DesktopPath;
+            string pattern = "ghost_*.png";
+
+            string[] files = Directory.GetFiles(targetPath, pattern);
+
+            foreach (string file in files)
+            {
+                File.Delete(file);
+            }
+
+            pattern = "goomba_*.png";
+
+            files = Directory.GetFiles(targetPath, pattern);
+
+            foreach (string file in files)
+            {
+                File.Delete(file);
+            }
+
+            pattern = "koopa_*.png";
+
+            files = Directory.GetFiles(targetPath, pattern);
+
+            foreach (string file in files)
+            {
+                File.Delete(file);
+            }
+
+
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             chkLock.Checked = false;
-            this.Hide();
 
-            var desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            var MarioPath = Path.Combine(desktop, "mario.png");
+            DeleteOldFiles();
 
+            var MarioPath = Path.Combine(DesktopPath, "mario.png");
             Properties.Resources.mario_right.Save(MarioPath);
+            btnMario.Enabled = false;
+
+            this.Hide();
             new MarioForm().ShowDialog();
             this.Show();
+
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -406,16 +454,24 @@ namespace DesktopIconMover
         {
             chkLock.Checked = false;
             this.Hide();
+            DeleteOldFiles();
+
             var PacmanFile = Path.Combine(DesktopPath, "pacman.png");
             Properties.Resources.right.Save(PacmanFile);
+            Properties.Resources.right.Save(PacmanFile);
 
+            DesktopRefresher.HardRefresh();
+            this.Hide();
             new PacmanForm().ShowDialog();
             this.Show();
+
         }
 
         private void button4_Click_1(object sender, EventArgs e)
         {
             chkLock.Checked = false;
+            DeleteOldFiles();
+
             this.Hide();
             new DrawForm().ShowDialog();
             this.Show();

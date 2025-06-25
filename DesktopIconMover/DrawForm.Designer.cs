@@ -51,6 +51,7 @@
             this.button9 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnClearBoom = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.panelArrows.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -275,12 +276,11 @@
             // cmbIconList
             // 
             this.cmbIconList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbIconList.Enabled = false;
             this.cmbIconList.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbIconList.FormattingEnabled = true;
-            this.cmbIconList.Location = new System.Drawing.Point(431, 13);
+            this.cmbIconList.Location = new System.Drawing.Point(493, 13);
             this.cmbIconList.Name = "cmbIconList";
-            this.cmbIconList.Size = new System.Drawing.Size(214, 27);
+            this.cmbIconList.Size = new System.Drawing.Size(152, 27);
             this.cmbIconList.TabIndex = 10000024;
             this.cmbIconList.TabStop = false;
             // 
@@ -325,11 +325,22 @@
             this.btnClearBoom.UseVisualStyleBackColor = false;
             this.btnClearBoom.Click += new System.EventHandler(this.button10_Click);
             // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(431, 13);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(58, 27);
+            this.button10.TabIndex = 10000028;
+            this.button10.Text = "reset";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click_1);
+            // 
             // DrawForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 273);
+            this.ClientSize = new System.Drawing.Size(921, 442);
+            this.Controls.Add(this.button10);
             this.Controls.Add(this.btnClearBoom);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.cmbIconList);
@@ -378,5 +389,6 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button btnClearBoom;
         private System.Windows.Forms.Button btnEraser;
+        private System.Windows.Forms.Button button10;
     }
 }

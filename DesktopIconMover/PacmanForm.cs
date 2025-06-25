@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading.Tasks;
+using System.Threading;
 
 
 namespace DesktopIconMover
@@ -57,10 +59,10 @@ namespace DesktopIconMover
         private void DrawOn(int x, int y, int w, int h)
         {
 
-            if(chkDotEater.Checked== false) return;
+            if (chkDotEater.Checked == false) return;
             using (Graphics g = Graphics.FromImage(canvas))
             {
-                var rect = new Rectangle(x,y, w, h); // مستطیل مقصد
+                var rect = new Rectangle(x, y, w, h); // مستطیل مقصد
                 g.FillRectangle(BrushColor, rect);
             }
 
@@ -181,8 +183,8 @@ namespace DesktopIconMover
         private void btnUp(object sender, EventArgs e)
         {
             numY.Value -= Step;
-            
-            DrawOn((int)numX.Value, (int)numY.Value-8,Size,Size);
+
+            DrawOn((int)numX.Value, (int)numY.Value - 8, Size, Size);
 
             MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
 
@@ -207,7 +209,7 @@ namespace DesktopIconMover
         private void btnDown(object sender, EventArgs e)
         {
             numY.Value += Step;
-            DrawOn((int)numX.Value, (int)numY.Value +5, Size, Size);
+            DrawOn((int)numX.Value, (int)numY.Value + 5, Size, Size);
 
 
             MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
@@ -243,7 +245,7 @@ namespace DesktopIconMover
         private void btnLeft(object sender, EventArgs e)
         {
             numX.Value -= Step;
-            DrawOn((int)numX.Value-5, (int)numY.Value, Size, Size);
+            DrawOn((int)numX.Value - 5, (int)numY.Value, Size, Size);
 
 
             MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
@@ -281,8 +283,8 @@ namespace DesktopIconMover
         private void btnRight(object sender, EventArgs e)
         {
             numX.Value += Step;
-            
-            DrawOn((int)numX.Value+5, (int)numY.Value, Size, Size);
+
+            DrawOn((int)numX.Value + 5, (int)numY.Value, Size, Size);
 
             MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
 
@@ -321,6 +323,7 @@ namespace DesktopIconMover
 
         public int CalculateSize()
         {
+            return 70;
             return (int)(DesktopIconMetrics.GetDesktopIconSpacing().Value.Height * 1.3);
 
         }
@@ -333,7 +336,7 @@ namespace DesktopIconMover
 
 
 
-            if (timer1.Enabled) Step = (int)( CalculateSize() / 3);
+            if (timer1.Enabled) Step = (int)(CalculateSize() / 3);
             else
                 Size = CalculateSize();
 
@@ -348,9 +351,18 @@ namespace DesktopIconMover
             Size = CalculateSize();
             SetDefaultGamePlay();
             ResetPlayer();
-            btnRight(sender, e);
 
-            button3_Click(sender, e);
+
+            new Task(() =>
+            {
+                Thread.Sleep(2000);
+                LoadDesktopIcons();
+                btnRight(sender, e);
+
+            }).Start();
+
+
+            Minimize(sender, e);
 
         }
 
@@ -457,7 +469,7 @@ namespace DesktopIconMover
         int ghost = 0;
         private void button2_Click_1(object sender, EventArgs e)
         {
-            var randomName = $"ghost {new Random().Next(1111, 9999)}.png";
+            var randomName = $"ghost_{new Random().Next(1111, 9999)}.png";
             var image = Properties.Resources.ghost_blue;
 
 
@@ -484,11 +496,10 @@ namespace DesktopIconMover
             else
                 DesktopRefresher.RefreshDesktop();
 
-            LoadDesktopIcons();
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Minimize(object sender, EventArgs e)
         {
             if (button3.Text == "<<")
             {
@@ -532,12 +543,22 @@ namespace DesktopIconMover
 
         private void ResetPlayer()
         {
-            Properties.Resources.right.Save(PacmanFile);
+
             Properties.Resources.right.Save(PacmanFile);
             DesktopRefresher.HardRefresh();
             Properties.Resources.right.Save(PacmanFile);
             LoadDesktopIcons();
-            Properties.Resources.right.Save(PacmanFile);
+        }
+
+        private void chkDebug_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkDebug.Checked)
+            {
+                BrushColor = Brushes.Lime;
+            }
+            else
+                BrushColor = Brushes.Black;
+
         }
     }
 }
