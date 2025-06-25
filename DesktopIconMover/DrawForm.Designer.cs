@@ -356,7 +356,7 @@
             this.KeyPreview = true;
             this.Name = "DrawForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.DrawForm_Load);
             this.panelArrows.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

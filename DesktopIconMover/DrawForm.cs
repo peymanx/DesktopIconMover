@@ -29,6 +29,7 @@ namespace DesktopIconMover
             if (icon_size.HasValue)
                 Size = icon_size.Value.Width / 2;
 
+
         }
 
         Bitmap canvas;
@@ -124,6 +125,10 @@ namespace DesktopIconMover
                 //ResetBrush();
 
             }).Start();
+
+            //var res = DisplayResolutionInfo.GetPhysicalScreenResolution();
+            //this.Location = new Point(res.Width - this.Width, this.Height);
+            this.Location = new Point(500,500);
 
         }
 
@@ -346,7 +351,7 @@ namespace DesktopIconMover
                 Green_clicked(null, null);
             else if (keyData == Keys.B)
                 Blue_Clicked(null, null);
-            else if (keyData == Keys.K)
+            else if (keyData == Keys.K || keyData == Keys.E)
                 Black_Clicked(null, null);
             else if (keyData == Keys.W)
                 White_Clicked(null, null);
