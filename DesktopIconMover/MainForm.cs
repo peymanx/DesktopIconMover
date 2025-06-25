@@ -360,7 +360,6 @@ namespace DesktopIconMover
 
             var MarioPath = Path.Combine(DesktopPath, "mario.png");
             Properties.Resources.mario_right.Save(MarioPath);
-            btnMario.Enabled = false;
 
             this.Hide();
             new MarioForm().ShowDialog();
