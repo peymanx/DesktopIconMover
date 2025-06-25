@@ -4,6 +4,7 @@
 
 ![app_window](./Screenshots/app_window.png)
 
+[Download Now](https://github.com/peymanx/DesktopIconMover/releases/download/beta/Desktop.Icon.Mover.X.exe)
 ## 🧩 Features
 
 - 🟡 **Play Pac-Man** using desktop icons as game pieces  
