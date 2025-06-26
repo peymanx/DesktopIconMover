@@ -418,7 +418,7 @@ namespace DesktopIconMover
         private void numGround_ValueChanged(object sender, EventArgs e)
         {
             UpdateGround();
-            if (numY.Value > numGround.Value) numY.Value = 1;
+           
             if (chkDebug.Checked) DrawOn();
         }
         Image CurrentWallpaper;
