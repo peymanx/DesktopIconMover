@@ -184,7 +184,7 @@
             this.numY.Size = new System.Drawing.Size(97, 32);
             this.numY.TabIndex = 10000002;
             this.numY.Value = new decimal(new int[] {
-            100,
+            1,
             0,
             0,
             0});
@@ -634,7 +634,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(856, 376);
+            this.ClientSize = new System.Drawing.Size(852, 379);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.chkDebug);
             this.Controls.Add(this.button7);

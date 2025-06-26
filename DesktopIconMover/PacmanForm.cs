@@ -90,7 +90,7 @@ namespace DesktopIconMover
             for (int i = 0; i < count; i++)
             {
                 // SendMessage2(hwndListView, LVM_GETITEMTEXT, (IntPtr)i, itemText);
-                string iconName = "آیکون شماره " + i;
+                string iconName = "آیکون شماره " + (i + 1);
                 iconNames.Add(iconName);
             }
 

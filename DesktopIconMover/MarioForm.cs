@@ -64,7 +64,7 @@ namespace DesktopIconMover
             for (int i = 0; i < count; i++)
             {
                 // SendMessage2(hwndListView, LVM_GETITEMTEXT, (IntPtr)i, itemText);
-                string iconName = "آیکون شماره " + i;
+                string iconName = "آیکون شماره " + (i+1);
                 iconNames.Add(iconName);
             }
 
@@ -266,7 +266,7 @@ namespace DesktopIconMover
             Properties.Resources.mario_right.Save(MarioPath);
             Properties.Resources.mario_right.Save(MarioPath);
             LoadDesktopIcons();
-            numY.Value = Ground;
+            numY.Value = 0;
             DesktopRefresher.HardRefresh();
         }
 
@@ -418,6 +418,7 @@ namespace DesktopIconMover
         private void numGround_ValueChanged(object sender, EventArgs e)
         {
             UpdateGround();
+            if (numY.Value > numGround.Value) numY.Value = 1;
             if (chkDebug.Checked) DrawOn();
         }
         Image CurrentWallpaper;
