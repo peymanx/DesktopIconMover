@@ -41,6 +41,7 @@ namespace DesktopIconMover
         int Size = 50;
 
 
+
         private void DrawImageOnCanvas(Image inputImage)
         {
             if (inputImage == null) return;

@@ -59,6 +59,18 @@
             this.btnBrowse = new System.Windows.Forms.Button();
             this.chkHardRefresh = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.numGround2 = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.numSep1 = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numSep2 = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.numGround3 = new System.Windows.Forms.NumericUpDown();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.chkDebug = new System.Windows.Forms.CheckBox();
+            this.button8 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
             this.panelArrows.SuspendLayout();
@@ -66,6 +78,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numJump)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numGround2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSep1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSep2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numGround3)).BeginInit();
             this.SuspendLayout();
             // 
             // ButtonRight
@@ -270,6 +286,7 @@
             0,
             0,
             0});
+            this.numGround.ValueChanged += new System.EventHandler(this.numGround_ValueChanged);
             // 
             // label1
             // 
@@ -437,11 +454,199 @@
             this.pictureBox1.TabIndex = 10000023;
             this.pictureBox1.TabStop = false;
             // 
+            // numGround2
+            // 
+            this.numGround2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numGround2.Location = new System.Drawing.Point(747, 266);
+            this.numGround2.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.numGround2.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.numGround2.Name = "numGround2";
+            this.numGround2.Size = new System.Drawing.Size(97, 32);
+            this.numGround2.TabIndex = 10000025;
+            this.numGround2.Value = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numGround2.ValueChanged += new System.EventHandler(this.numGround2_ValueChanged);
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(698, 244);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(149, 19);
+            this.label6.TabIndex = 10000024;
+            this.label6.Text = "زمین 2:";
+            // 
+            // numSep1
+            // 
+            this.numSep1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numSep1.Location = new System.Drawing.Point(644, 266);
+            this.numSep1.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.numSep1.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.numSep1.Name = "numSep1";
+            this.numSep1.Size = new System.Drawing.Size(97, 32);
+            this.numSep1.TabIndex = 10000027;
+            this.numSep1.Value = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.numSep1.ValueChanged += new System.EventHandler(this.numSep1_ValueChanged);
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(595, 244);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(149, 19);
+            this.label7.TabIndex = 10000026;
+            this.label7.Text = "جداکننده 1:";
+            // 
+            // numSep2
+            // 
+            this.numSep2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numSep2.Location = new System.Drawing.Point(644, 324);
+            this.numSep2.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.numSep2.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.numSep2.Name = "numSep2";
+            this.numSep2.Size = new System.Drawing.Size(97, 32);
+            this.numSep2.TabIndex = 10000029;
+            this.numSep2.Value = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.numSep2.ValueChanged += new System.EventHandler(this.numSep2_ValueChanged);
+            // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(595, 302);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(149, 19);
+            this.label8.TabIndex = 10000028;
+            this.label8.Text = "جداکننده 2:";
+            // 
+            // label9
+            // 
+            this.label9.Location = new System.Drawing.Point(698, 302);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(149, 19);
+            this.label9.TabIndex = 10000028;
+            this.label9.Text = "زمین 3:";
+            // 
+            // numGround3
+            // 
+            this.numGround3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numGround3.Location = new System.Drawing.Point(747, 324);
+            this.numGround3.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.numGround3.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.numGround3.Name = "numGround3";
+            this.numGround3.Size = new System.Drawing.Size(97, 32);
+            this.numGround3.TabIndex = 10000029;
+            this.numGround3.Value = new decimal(new int[] {
+            680,
+            0,
+            0,
+            0});
+            this.numGround3.ValueChanged += new System.EventHandler(this.numGround3_ValueChanged);
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(329, 266);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(152, 33);
+            this.button6.TabIndex = 10000019;
+            this.button6.TabStop = false;
+            this.button6.Text = "عکس ابری";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Location = new System.Drawing.Point(486, 266);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(152, 33);
+            this.button7.TabIndex = 10000030;
+            this.button7.TabStop = false;
+            this.button7.Text = "بارگذاری پارامتر";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // chkDebug
+            // 
+            this.chkDebug.Location = new System.Drawing.Point(470, 302);
+            this.chkDebug.Name = "chkDebug";
+            this.chkDebug.Size = new System.Drawing.Size(168, 23);
+            this.chkDebug.TabIndex = 10000019;
+            this.chkDebug.Text = "دیباگ";
+            this.chkDebug.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(35, 265);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(211, 33);
+            this.button8.TabIndex = 10000031;
+            this.button8.TabStop = false;
+            this.button8.Text = "پیام خوش آمدگویی فیک";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // MarioForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(846, 221);
+            this.ClientSize = new System.Drawing.Size(856, 376);
+            this.Controls.Add(this.button8);
+            this.Controls.Add(this.chkDebug);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.numGround3);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.numSep2);
+            this.Controls.Add(this.numSep1);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.numGround2);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.chkHardRefresh);
             this.Controls.Add(this.btnBrowse);
@@ -480,6 +685,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numJump)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numGround2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSep1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSep2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numGround3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -515,5 +724,17 @@
         private System.Windows.Forms.Button ButtonDown;
         private System.Windows.Forms.Button ButtonUp;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.NumericUpDown numGround2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown numSep1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown numSep2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown numGround3;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.CheckBox chkDebug;
+        private System.Windows.Forms.Button button8;
     }
 }

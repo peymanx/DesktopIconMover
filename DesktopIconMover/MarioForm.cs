@@ -18,12 +18,13 @@ namespace DesktopIconMover
             InitializeComponent();
             txtDesktopPath.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             MarioPath = Path.Combine(txtDesktopPath.Text, "mario.png");
-
+            Ground = (int)numGround.Value;
 
 
         }
 
         public int Step { get; set; } = 20;
+        public int Ground { get; set; }
         public string MarioPath { get; set; }
 
         public bool Grounded
@@ -38,7 +39,7 @@ namespace DesktopIconMover
         {
             get
             {
-                if (numY.Value < numGround.Value) return true;
+                if (numY.Value < Ground) return true;
                 return false;
             }
         }
@@ -129,7 +130,7 @@ namespace DesktopIconMover
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-
+            if (chkDebug.Checked) return false;
             if (keyData == Keys.Left)
                 ButtonLeft_Click(null, null);
 
@@ -161,6 +162,9 @@ namespace DesktopIconMover
         private void ButtonLeft_Click(object sender, EventArgs e)
         {
 
+
+            UpdateGroundLeft();
+
             if (Grounded)
                 numX.Value -= Step;
             else
@@ -190,6 +194,7 @@ namespace DesktopIconMover
         private void ButtonRight_Click(object sender, EventArgs e)
         {
 
+            UpdateGroundRight();
             if (Grounded)
                 numX.Value += Step;
             else
@@ -232,7 +237,9 @@ namespace DesktopIconMover
 
         private void MarioForm_Load(object sender, EventArgs e)
         {
-
+            (int Width, int Height) = DisplayResolutionInfo.GetPhysicalScreenResolution();
+            canvas = new Bitmap(Width, Height);
+            image = canvas;
 
             Minimize(sender, e);
 
@@ -259,17 +266,14 @@ namespace DesktopIconMover
             Properties.Resources.mario_right.Save(MarioPath);
             Properties.Resources.mario_right.Save(MarioPath);
             LoadDesktopIcons();
-            numY.Value = numGround.Value;
+            numY.Value = Ground;
             DesktopRefresher.HardRefresh();
         }
 
         private void ButtonSpace_Click(object sender, EventArgs e)
         {
 
-
-
-
-            if (numY.Value == numGround.Value)
+            if (numY.Value >= Ground)
             {
                 panelArrows.Focus();
 
@@ -305,7 +309,6 @@ namespace DesktopIconMover
             if (numY.Value < Target) // jump ended - grounded
             {
                 timerJump.Enabled = false;
-                Target = (int)numY.Value + (int)numJump.Value;
 
                 if (chkMario.Checked)
                 {
@@ -325,27 +328,15 @@ namespace DesktopIconMover
         private void timerGravity_Tick(object sender, EventArgs e)
         {
 
-            if (numY.Value < numGround.Value && !timerJump.Enabled)
+            if (Falling && !timerJump.Enabled)
 
             {
                 numY.Value += 6;
                 panelArrows.Focus();
                 MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
             }
+            return;
 
-            if (numY.Value > numGround.Value)
-            {
-                numY.Value = numGround.Value;
-                panelArrows.Focus();
-                MoveIconRelative(cmbIconList.SelectedIndex, (int)numX.Value, (int)numY.Value);
-
-
-
-                if (chkHardRefresh.Checked)
-                    DesktopRefresher.HardRefresh();
-                else
-                    DesktopRefresher.RefreshDesktop();
-            }
 
 
         }
@@ -358,6 +349,9 @@ namespace DesktopIconMover
         private void SetDesktopBackground(object sender, EventArgs e)
         {
             Wallpaper.Set(Properties.Resources.supermario_wallpaper01, Wallpaper.Style.Stretched);
+            CurrentWallpaper = Properties.Resources.supermario_wallpaper01;
+
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -395,6 +389,7 @@ namespace DesktopIconMover
                 this.Width = 382;
                 this.Height = 198;
                 button4.Text = "<<";
+                chkDebug.Checked = false;
 
             }
         }
@@ -418,6 +413,171 @@ namespace DesktopIconMover
         private void MarioForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             timerGravity.Enabled = timerJump.Enabled = false;
+        }
+
+        private void numGround_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateGround();
+            if (chkDebug.Checked) DrawOn();
+        }
+        Image CurrentWallpaper;
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Wallpaper.Set(Properties.Resources.Mario_cloud, Wallpaper.Style.Stretched);
+            CurrentWallpaper = Properties.Resources.Mario_cloud;
+
+        }
+
+        public void UpdateGround()
+        {
+            Ground = (int)numGround.Value;
+            if (numX.Value > numSep1.Value)
+                Ground = (int)numGround2.Value;
+            if (numX.Value > numSep2.Value)
+                Ground = (int)numGround3.Value;
+
+        }
+
+        public void UpdateGroundRight()
+        {
+            Ground = (int)numGround.Value;
+            if (numX.Value > numSep1.Value - 20)
+                Ground = (int)numGround2.Value;
+            if (numX.Value > numSep2.Value - 20)
+                Ground = (int)numGround3.Value;
+
+        }
+
+
+        public void UpdateGroundLeft()
+        {
+
+            Ground = (int)numGround.Value;
+            if (numX.Value - icon_height / 2 > numSep1.Value)
+                Ground = (int)numGround2.Value;
+            if (numX.Value - icon_height / 2 > numSep2.Value)
+                Ground = (int)numGround3.Value;
+
+        }
+
+
+        Bitmap canvas;
+        Image image;
+
+        private void DrawImageOnCanvas(Image inputImage)
+        {
+            if (inputImage == null) return;
+
+            using (Graphics g = Graphics.FromImage(canvas))
+            {
+                // رسم عکس در موقعیت دلخواه، مثلاً بالا-چپ
+                g.DrawImage(inputImage, new Rectangle(0, 0, inputImage.Width, inputImage.Height));
+                image = canvas;
+
+            }
+
+
+        }
+        int icon_height = 100;
+
+        private void DrawOn()
+        {
+            DrawImageOnCanvas(CurrentWallpaper);
+            (int w, int h) = DisplayResolutionInfo.GetPhysicalScreenResolution();
+
+            int g1 = (int)numGround.Value;
+            int g2 = (int)numGround2.Value;
+            int g3 = (int)numGround3.Value;
+
+            int s1 = (int)numSep1.Value;
+            int s2 = (int)numSep2.Value;
+
+
+            using (Graphics g = Graphics.FromImage(canvas))
+            {
+                var rect = new Rectangle(0, 0, s1, g1); // مستطیل مقصد
+                g.DrawRectangle(new Pen(Color.Black), rect);
+                rect = new Rectangle(0, 0, s1, g1 + icon_height); // مستطیل مقصد
+                g.DrawRectangle(new Pen(Color.Black), rect);
+
+                rect = new Rectangle(s1, g2, w - s2 - icon_height * 2, h - g2); // مستطیل مقصد
+                g.DrawRectangle(new Pen(Color.Yellow), rect);
+                rect = new Rectangle(s1, g2 + icon_height, w - s2 - icon_height * 2, h - g2); // مستطیل مقصد
+                g.DrawRectangle(new Pen(Color.Yellow), rect);
+
+                rect = new Rectangle(s2, g3, w - s2, h - g3); // مستطیل مقصد
+                g.DrawRectangle(new Pen(Color.Red), rect);
+                rect = new Rectangle(s2, g3 + icon_height, w - s2, h - g3); // مستطیل مقصد
+                g.DrawRectangle(new Pen(Color.Red), rect);
+
+            }
+
+            // قرار دادن تصویر در PictureBox
+            image = canvas;
+
+            Wallpaper.Set(image, Wallpaper.Style.Stretched);
+
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (chkDebug.Checked==false)
+            {
+                numX.Value = 200;
+                numGround.Value = numGround3.Value = 806;
+                numGround2.Value = 1050;
+                numSep1.Value = 1578;
+                numSep2.Value = 1650;
+                chkDebug.Checked = true;
+            }
+            else
+            {
+                chkDebug.Checked = true;
+            }
+
+            UpdateGround();
+            DrawOn();
+        }
+
+
+
+
+        private void numGround2_ValueChanged(object sender, EventArgs e)
+        {
+            chkDebug.Checked = true;
+            UpdateGround();
+            DrawOn();
+        }
+
+        private void numGround3_ValueChanged(object sender, EventArgs e)
+        {
+            chkDebug.Checked = true;
+
+            UpdateGround();
+            DrawOn();
+        }
+
+        private void numSep1_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateGround();
+
+            DrawOn();
+        }
+
+        private void numSep2_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateGround();
+
+            DrawOn();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            TopMost = false;
+            new Task(() =>
+
+            MessageBox.Show("من نقش زمان بازی رو دارم", "پیام", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning)).Start();
         }
     }
 }
