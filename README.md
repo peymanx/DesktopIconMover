@@ -36,7 +36,7 @@ Play Super Mario directly on your desktop.
 
 ### Paint Mode  
 Draw pixel-style images using icon placement.  
-![Paint Mode](./Screenshots/paint.png)c
+![Paint Mode](./Screenshots/paint.png)
 
 ## 💡 Inspiration
 
@@ -45,4 +45,4 @@ Ever wondered what would happen if your desktop icons stopped being static? *Des
 ---
 
 Feel free to contribute, fork, or just have fun with it!   
-Youtube.com/@peymanx
+Related to [peymanx youtube channel](https://Youtube.com/@peymanx)
