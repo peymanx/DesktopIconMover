@@ -124,6 +124,8 @@
     <Content Include="Mario_Gameplay.tif" />
     <Content Include="Pacman_Gameplay.tif" />
     <Content Include="Papirus-Team-Papirus-Apps-Preferences-desktop-color %281%29.ico" />
+    <None Include="Resources\pen_down.png" />
+    <None Include="Resources\pwn_up.png" />
     <None Include="Resources\Mario_cloud.png" />
     <None Include="Resources\Pacman_frame.png" />
     <None Include="Resources\Pacman_dots.png" />
