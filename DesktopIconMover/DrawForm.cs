@@ -509,8 +509,8 @@ namespace DesktopIconMover
             }
             else
             {
-                this.Width = 377;
-                this.Height = 250;
+                this.Width = 407;
+                this.Height = 261;
                 button4.Text = "<<";
 
             }

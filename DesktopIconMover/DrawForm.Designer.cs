@@ -71,17 +71,17 @@
             this.panelArrows.Controls.Add(this.ButtonRight);
             this.panelArrows.Location = new System.Drawing.Point(12, 3);
             this.panelArrows.Name = "panelArrows";
-            this.panelArrows.Size = new System.Drawing.Size(337, 100);
+            this.panelArrows.Size = new System.Drawing.Size(369, 109);
             this.panelArrows.TabIndex = 10000008;
             // 
             // btnEraser
             // 
             this.btnEraser.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnEraser.Font = new System.Drawing.Font("Lucida Console", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEraser.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEraser.Image = ((System.Drawing.Image)(resources.GetObject("btnEraser.Image")));
-            this.btnEraser.Location = new System.Drawing.Point(207, 31);
+            this.btnEraser.Location = new System.Drawing.Point(204, 30);
             this.btnEraser.Name = "btnEraser";
-            this.btnEraser.Size = new System.Drawing.Size(56, 65);
+            this.btnEraser.Size = new System.Drawing.Size(79, 73);
             this.btnEraser.TabIndex = 10000022;
             this.btnEraser.TabStop = false;
             this.btnEraser.Text = "E";
@@ -93,7 +93,7 @@
             // 
             this.button4.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button4.Font = new System.Drawing.Font("Lucida Console", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(283, 5);
+            this.button4.Location = new System.Drawing.Point(325, 3);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(41, 23);
             this.button4.TabIndex = 10000021;
@@ -106,9 +106,9 @@
             // 
             this.btnPen.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPen.Image = global::DesktopIconMover.Properties.Resources.pen_up;
-            this.btnPen.Location = new System.Drawing.Point(268, 31);
+            this.btnPen.Location = new System.Drawing.Point(284, 30);
             this.btnPen.Name = "btnPen";
-            this.btnPen.Size = new System.Drawing.Size(56, 65);
+            this.btnPen.Size = new System.Drawing.Size(79, 73);
             this.btnPen.TabIndex = 5;
             this.btnPen.TabStop = false;
             this.btnPen.Text = "SPACE";
@@ -121,9 +121,9 @@
             this.ButtonLeft.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ButtonLeft.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonLeft.Image = ((System.Drawing.Image)(resources.GetObject("ButtonLeft.Image")));
-            this.ButtonLeft.Location = new System.Drawing.Point(20, 45);
+            this.ButtonLeft.Location = new System.Drawing.Point(5, 63);
             this.ButtonLeft.Name = "ButtonLeft";
-            this.ButtonLeft.Size = new System.Drawing.Size(36, 40);
+            this.ButtonLeft.Size = new System.Drawing.Size(39, 40);
             this.ButtonLeft.TabIndex = 4;
             this.ButtonLeft.TabStop = false;
             this.ButtonLeft.Text = "  ";
@@ -135,9 +135,9 @@
             this.ButtonDown.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ButtonDown.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonDown.Image = ((System.Drawing.Image)(resources.GetObject("ButtonDown.Image")));
-            this.ButtonDown.Location = new System.Drawing.Point(56, 45);
+            this.ButtonDown.Location = new System.Drawing.Point(44, 63);
             this.ButtonDown.Name = "ButtonDown";
-            this.ButtonDown.Size = new System.Drawing.Size(36, 40);
+            this.ButtonDown.Size = new System.Drawing.Size(39, 40);
             this.ButtonDown.TabIndex = 3;
             this.ButtonDown.TabStop = false;
             this.ButtonDown.Text = "  ";
@@ -149,9 +149,9 @@
             this.ButtonUp.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ButtonUp.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonUp.Image = ((System.Drawing.Image)(resources.GetObject("ButtonUp.Image")));
-            this.ButtonUp.Location = new System.Drawing.Point(56, 5);
+            this.ButtonUp.Location = new System.Drawing.Point(44, 23);
             this.ButtonUp.Name = "ButtonUp";
-            this.ButtonUp.Size = new System.Drawing.Size(36, 40);
+            this.ButtonUp.Size = new System.Drawing.Size(39, 40);
             this.ButtonUp.TabIndex = 2;
             this.ButtonUp.TabStop = false;
             this.ButtonUp.Text = "  ";
@@ -163,9 +163,9 @@
             this.ButtonRight.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ButtonRight.Font = new System.Drawing.Font("Lucida Console", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonRight.Image = ((System.Drawing.Image)(resources.GetObject("ButtonRight.Image")));
-            this.ButtonRight.Location = new System.Drawing.Point(93, 45);
+            this.ButtonRight.Location = new System.Drawing.Point(83, 63);
             this.ButtonRight.Name = "ButtonRight";
-            this.ButtonRight.Size = new System.Drawing.Size(36, 40);
+            this.ButtonRight.Size = new System.Drawing.Size(39, 40);
             this.ButtonRight.TabIndex = 1;
             this.ButtonRight.TabStop = false;
             this.ButtonRight.Text = "  ";
@@ -177,9 +177,9 @@
             this.button1.BackColor = System.Drawing.Color.Red;
             this.button1.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(93, 17);
+            this.button1.Location = new System.Drawing.Point(101, 17);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(38, 46);
+            this.button1.Size = new System.Drawing.Size(42, 46);
             this.button1.TabIndex = 10000009;
             this.button1.Text = "R";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -191,9 +191,9 @@
             this.button2.BackColor = System.Drawing.Color.Lime;
             this.button2.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(133, 17);
+            this.button2.Location = new System.Drawing.Point(147, 17);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(38, 46);
+            this.button2.Size = new System.Drawing.Size(42, 46);
             this.button2.TabIndex = 10000010;
             this.button2.Text = "G";
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -205,9 +205,9 @@
             this.button3.BackColor = System.Drawing.Color.Blue;
             this.button3.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.Transparent;
-            this.button3.Location = new System.Drawing.Point(173, 17);
+            this.button3.Location = new System.Drawing.Point(193, 17);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(38, 46);
+            this.button3.Size = new System.Drawing.Size(42, 46);
             this.button3.TabIndex = 10000011;
             this.button3.Text = "B";
             this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -230,9 +230,9 @@
             this.button6.BackColor = System.Drawing.Color.Gold;
             this.button6.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.Black;
-            this.button6.Location = new System.Drawing.Point(53, 17);
+            this.button6.Location = new System.Drawing.Point(55, 17);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(38, 46);
+            this.button6.Size = new System.Drawing.Size(42, 46);
             this.button6.TabIndex = 10000013;
             this.button6.Text = "Y";
             this.button6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -244,9 +244,9 @@
             this.button7.BackColor = System.Drawing.Color.White;
             this.button7.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.Black;
-            this.button7.Location = new System.Drawing.Point(213, 17);
+            this.button7.Location = new System.Drawing.Point(239, 17);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(38, 46);
+            this.button7.Size = new System.Drawing.Size(42, 46);
             this.button7.TabIndex = 10000014;
             this.button7.Text = "W";
             this.button7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -258,9 +258,9 @@
             this.button8.BackColor = System.Drawing.Color.Black;
             this.button8.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(13, 17);
+            this.button8.Location = new System.Drawing.Point(9, 17);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(38, 46);
+            this.button8.Size = new System.Drawing.Size(42, 46);
             this.button8.TabIndex = 10000015;
             this.button8.Text = "K";
             this.button8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -275,9 +275,9 @@
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Location = new System.Drawing.Point(84, 104);
+            this.groupBox1.Location = new System.Drawing.Point(92, 117);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(265, 73);
+            this.groupBox1.Size = new System.Drawing.Size(289, 73);
             this.groupBox1.TabIndex = 10000016;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "انتخاب رنگ مداد";
@@ -287,7 +287,7 @@
             this.btnSelectedColor.BackColor = System.Drawing.Color.White;
             this.btnSelectedColor.Font = new System.Drawing.Font("Tahoma", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectedColor.ForeColor = System.Drawing.Color.White;
-            this.btnSelectedColor.Location = new System.Drawing.Point(11, 109);
+            this.btnSelectedColor.Location = new System.Drawing.Point(13, 121);
             this.btnSelectedColor.Name = "btnSelectedColor";
             this.btnSelectedColor.Size = new System.Drawing.Size(67, 68);
             this.btnSelectedColor.TabIndex = 10000017;
@@ -360,10 +360,10 @@
             this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStat});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 274);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 200);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.statusStrip1.Size = new System.Drawing.Size(788, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(391, 22);
             this.statusStrip1.TabIndex = 10000029;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -377,7 +377,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(788, 296);
+            this.ClientSize = new System.Drawing.Size(391, 222);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.btnClearBoom);
