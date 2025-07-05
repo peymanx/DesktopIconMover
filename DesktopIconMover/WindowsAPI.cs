@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
+
 [StructLayout(LayoutKind.Sequential)]
 public struct POINT
 {
@@ -36,6 +37,25 @@ public class WindowsAPI
 
     [DllImport("user32.dll", SetLastError = true)]
     static extern int SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
+
+
+    [DllImport("user32.dll")]
+    private static extern bool IsWindowVisible(IntPtr hWnd);
+
+    [DllImport("user32.dll")]
+    private static extern int GetWindowText(IntPtr hWnd, StringBuilder text, int maxLength);
+
+    [DllImport("user32.dll")]   // محل پنجره های باز در صفحه
+    private static extern bool GetWindowRect(IntPtr hWnd, out RECT rect);  
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct RECT
+    {
+        public int Left;
+        public int Top;
+        public int Right;
+        public int Bottom;
+    }
 
 
 
