@@ -42,14 +42,26 @@ namespace DesktopIconMover
         Brush BrushColor = Brushes.Black;
         int Size = 50;
 
+        private WaveOutEvent outputDevice;
+        private WaveFileReader waveReader;
+        private UnmanagedMemoryStream wavStream;
+
         private void PlayWav(UnmanagedMemoryStream wavStream)
         {
-   
+            if (outputDevice != null && outputDevice.PlaybackState == PlaybackState.Playing)
+            {
+                // می‌تونی صدای در حال پخش رو همونطوری نگه داری یا مثلاً پیام بدی
+                return;
+            }
 
+            // اگر پخش‌کننده قبلی وجود داشت، پاکش کن
+            outputDevice?.Stop();
+            outputDevice?.Dispose();
+            waveReader?.Dispose();
 
             // استفاده مستقیم از UnmanagedMemoryStream
-            var waveReader = new WaveFileReader(wavStream);
-            var outputDevice = new WaveOutEvent();
+            waveReader = new WaveFileReader(wavStream);
+             outputDevice = new WaveOutEvent();
             outputDevice.Init(waveReader);
             outputDevice.Play();
         }
@@ -113,7 +125,7 @@ namespace DesktopIconMover
         }
 
 
-        public static void MoveIconRelative(int iconIndex, int dx, int dy)
+        public  void MoveIconRelative(int iconIndex, int dx, int dy)
         {
             IntPtr hwndListView = WindowsAPI.GetDesktopListView();
             if (hwndListView == IntPtr.Zero) return;
