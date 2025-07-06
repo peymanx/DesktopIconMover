@@ -130,7 +130,7 @@
             this.cmbIconList.FormattingEnabled = true;
             this.cmbIconList.Location = new System.Drawing.Point(12, 12);
             this.cmbIconList.Name = "cmbIconList";
-            this.cmbIconList.Size = new System.Drawing.Size(234, 27);
+            this.cmbIconList.Size = new System.Drawing.Size(234, 24);
             this.cmbIconList.TabIndex = 10000001;
             this.cmbIconList.TabStop = false;
             // 
@@ -149,7 +149,7 @@
             0,
             -2147483648});
             this.numX.Name = "numX";
-            this.numX.Size = new System.Drawing.Size(97, 32);
+            this.numX.Size = new System.Drawing.Size(97, 27);
             this.numX.TabIndex = 10000004;
             this.numX.Value = new decimal(new int[] {
             200,
@@ -181,7 +181,7 @@
             0,
             -2147483648});
             this.numY.Name = "numY";
-            this.numY.Size = new System.Drawing.Size(97, 32);
+            this.numY.Size = new System.Drawing.Size(97, 27);
             this.numY.TabIndex = 10000002;
             this.numY.Value = new decimal(new int[] {
             1,
@@ -279,7 +279,7 @@
             0,
             -2147483648});
             this.numGround.Name = "numGround";
-            this.numGround.Size = new System.Drawing.Size(97, 32);
+            this.numGround.Size = new System.Drawing.Size(97, 27);
             this.numGround.TabIndex = 10000010;
             this.numGround.Value = new decimal(new int[] {
             806,
@@ -311,7 +311,7 @@
             0,
             -2147483648});
             this.numJump.Name = "numJump";
-            this.numJump.Size = new System.Drawing.Size(97, 32);
+            this.numJump.Size = new System.Drawing.Size(97, 27);
             this.numJump.TabIndex = 10000012;
             this.numJump.Value = new decimal(new int[] {
             300,
@@ -417,7 +417,7 @@
             this.txtDesktopPath.Enabled = false;
             this.txtDesktopPath.Location = new System.Drawing.Point(546, 10);
             this.txtDesktopPath.Name = "txtDesktopPath";
-            this.txtDesktopPath.Size = new System.Drawing.Size(288, 23);
+            this.txtDesktopPath.Size = new System.Drawing.Size(288, 20);
             this.txtDesktopPath.TabIndex = 10000018;
             // 
             // btnBrowse
@@ -469,7 +469,7 @@
             0,
             -2147483648});
             this.numGround2.Name = "numGround2";
-            this.numGround2.Size = new System.Drawing.Size(97, 32);
+            this.numGround2.Size = new System.Drawing.Size(97, 27);
             this.numGround2.TabIndex = 10000025;
             this.numGround2.Value = new decimal(new int[] {
             480,
@@ -501,7 +501,7 @@
             0,
             -2147483648});
             this.numSep1.Name = "numSep1";
-            this.numSep1.Size = new System.Drawing.Size(97, 32);
+            this.numSep1.Size = new System.Drawing.Size(97, 27);
             this.numSep1.TabIndex = 10000027;
             this.numSep1.Value = new decimal(new int[] {
             2000,
@@ -533,7 +533,7 @@
             0,
             -2147483648});
             this.numSep2.Name = "numSep2";
-            this.numSep2.Size = new System.Drawing.Size(97, 32);
+            this.numSep2.Size = new System.Drawing.Size(97, 27);
             this.numSep2.TabIndex = 10000029;
             this.numSep2.Value = new decimal(new int[] {
             2000,
@@ -573,7 +573,7 @@
             0,
             -2147483648});
             this.numGround3.Name = "numGround3";
-            this.numGround3.Size = new System.Drawing.Size(97, 32);
+            this.numGround3.Size = new System.Drawing.Size(97, 27);
             this.numGround3.TabIndex = 10000029;
             this.numGround3.Value = new decimal(new int[] {
             680,
@@ -632,7 +632,7 @@
             // 
             // MarioForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(852, 379);
             this.Controls.Add(this.button8);

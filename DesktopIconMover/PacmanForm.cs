@@ -6,6 +6,8 @@ using System.Windows.Forms;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
+using NAudio.Wave;
+
 
 
 namespace DesktopIconMover
@@ -40,7 +42,17 @@ namespace DesktopIconMover
         Brush BrushColor = Brushes.Black;
         int Size = 50;
 
+        private void PlayWav(UnmanagedMemoryStream wavStream)
+        {
+   
 
+
+            // استفاده مستقیم از UnmanagedMemoryStream
+            var waveReader = new WaveFileReader(wavStream);
+            var outputDevice = new WaveOutEvent();
+            outputDevice.Init(waveReader);
+            outputDevice.Play();
+        }
 
         private void DrawImageOnCanvas(Image inputImage)
         {
@@ -352,7 +364,7 @@ namespace DesktopIconMover
             Size = CalculateSize();
             SetDefaultGamePlay();
             ResetPlayer();
-
+            PlayWav(Properties.Resources.pacman_beginning);
 
             new Task(() =>
             {

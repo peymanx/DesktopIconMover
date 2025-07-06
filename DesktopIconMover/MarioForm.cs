@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
+using NAudio.Wave;
 
 namespace DesktopIconMover
 {
@@ -269,14 +271,21 @@ namespace DesktopIconMover
             numY.Value = 0;
             DesktopRefresher.HardRefresh();
         }
-
+        private void PlayEmbeddedMp3(byte[] music)
+        {
+            Stream mp3Stream = new MemoryStream(music);
+            var mp3Reader = new Mp3FileReader(mp3Stream);
+            var outputDevice = new WaveOutEvent();
+            outputDevice.Init(mp3Reader);
+            outputDevice.Play();
+        }
         private void ButtonSpace_Click(object sender, EventArgs e)
         {
 
             if (numY.Value >= Ground)
             {
                 panelArrows.Focus();
-
+                PlayEmbeddedMp3(Properties.Resources.mario_jump);
                 ResetArrowButtonColor();
                 ButtonSpace.BackColor = Color.Gold;
                 Target = (int)numY.Value - (int)numJump.Value;

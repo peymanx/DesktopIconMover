@@ -151,12 +151,32 @@ namespace DesktopIconMover.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] mario_bump {
+            get {
+                object obj = ResourceManager.GetObject("mario_bump", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Mario_cloud {
             get {
                 object obj = ResourceManager.GetObject("Mario_cloud", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] mario_jump {
+            get {
+                object obj = ResourceManager.GetObject("mario_jump", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -201,12 +221,39 @@ namespace DesktopIconMover.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream pacman_beginning {
+            get {
+                return ResourceManager.GetStream("pacman_beginning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream pacman_chomp {
+            get {
+                return ResourceManager.GetStream("pacman_chomp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Pacman_dots {
             get {
                 object obj = ResourceManager.GetObject("Pacman_dots", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream pacman_eatfruit {
+            get {
+                return ResourceManager.GetStream("pacman_eatfruit", resourceCulture);
             }
         }
         
